@@ -82,6 +82,9 @@ t_argparser_result      argparser_parse(const t_argparser *self,
 
 void                    argparser_result_free(t_argparser_result *result);
 
+/*
+** output_file: An Unix file descriptor.
+*/
 void                    argparser_print_usage(const t_argparser *self,
                                               int output_file);
 
