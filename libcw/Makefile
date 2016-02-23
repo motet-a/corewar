@@ -1,20 +1,20 @@
 ##
-## Makefile<test> for  in /home/antoine
+## Makefile<libcw> for  in /home/antoine
 ##
 ## Made by antoine
 ## Login   <antoine@epitech.net>
 ##
-## Started on  Tue Feb 23 00:03:21 2016 antoine
-## Last update Tue Feb 23 00:03:21 2016 antoine
+## Started on  Tue Feb 23 06:33:08 2016 antoine
+## Last update Tue Feb 23 06:33:08 2016 antoine
 ##
 
-NAME		= test
+NAME		= $(LIBCW_NAME)
 
 CFLAGS		+= -I..
 
-LDFLAGS		= -L../libcw -lcw
+LDFLAGS		= -L.. -lcw
 
-SOURCES		= test.c
+SOURCES		= argparser.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
@@ -22,7 +22,8 @@ OBJECTS		= $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
+	ar rc $(NAME) $(OBJECTS)
+	ranlib $(NAME)
 
 $(OBJECTS): $(SOURCES)
 	$(CC) -c $(SOURCES) $(CFLAGS)

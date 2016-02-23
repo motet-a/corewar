@@ -16,34 +16,25 @@ export CFLAGS		= -W -Wall -Wextra -std=c89
 
 export LIBCW_NAME	= libcw.a
 
-LDFLAGS			=
-
-NAME			= $(LIBCW_NAME)
-
-SOURCES			= argparser.c
-
-OBJECTS			= $(SOURCES:.c=.o)
+LIBCW_PATH		= libcw/$(LIBCW_NAME)
 
 
-all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+all: $(LIBCW_PATH)
 
-$(OBJECTS): $(SOURCES)
-	$(CC) -c $(SOURCES) $(CFLAGS)
+$(LIBCW_PATH):
+	$(MAKE) -C libcw/ all
 
 test: all
 	$(MAKE) -C test/ all
 
 clean:
-	$(RM) $(OBJECTS)
 	$(MAKE) -C test/ clean
+	$(MAKE) -C libcw/ clean
 
 fclean: clean
-	$(RM) $(NAME)
 	$(MAKE) -C test/ fclean
+	$(MAKE) -C libcw/ fclean
 
 re: fclean all
 
