@@ -33,23 +33,23 @@ typedef struct                  s_argument_descr
   const char                    *help;
 }                               t_argument_descr;
 
-typedef struct                  s_argument_list t_argument_list;
+typedef struct                  s_argparser_arg_list t_argparser_arg_list;
 
 /*
 ** If name is NULL, this structure represents an argument group.
 ** If name is not NULL, this structure represents an argument.
 */
-typedef struct                  s_argument
+typedef struct                  s_argparser_arg
 {
-  t_argument_list               *group;
+  t_argparser_arg_list          *group;
   const char                    *name;
   const char                    *value;
-}                               t_argument;
+}                               t_argparser_arg;
 
-struct                          s_argument_list
+struct                          s_argparser_arg_list
 {
-  t_argument                    argument;
-  struct s_argument_list        *next;
+  t_argparser_arg               argument;
+  struct s_argparser_arg_list   *next;
 };
 
 /*
@@ -57,7 +57,7 @@ struct                          s_argument_list
 */
 typedef struct                  s_argparser_result
 {
-  t_argument_list               *arguments;
+  t_argparser_arg_list          *arguments;
   char                          *error_message;
 }                               t_argparser_result;
 
