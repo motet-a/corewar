@@ -14,27 +14,43 @@
 typedef enum                    e_argparser_action
 {
   ARGPARSER_ACTION_STORE,
-  ARGPARSER_ACTION_STORE_CONST,
   ARGPARSER_ACTION_STORE_TRUE,
   ARGPARSER_ACTION_STORE_FALSE,
 }                               t_argparser_action;
+
+typedef struct s_argparser_group t_argparser_group;
 
 /*
 ** An argument parser.
 */
 typedef struct s_argparser      t_argparser;
 
+typedef struct                  s_argument_descr
+{
+  const char                    *name;
+  const char                    *variable_name;
+  t_argparser_action            action;
+  const char                    *help;
+}                               t_argument_descr;
+
+typedef struct                  s_argument_list t_argument_list;
+
+/*
+** If name is NULL, this structure represents an argument group.
+** If name is not NULL, this structure represents an argument.
+*/
 typedef struct                  s_argument
 {
+  t_argument_list               *group;
   const char                    *name;
   const char                    *value;
 }                               t_argument;
 
-typedef struct                  s_argument_list
+struct                          s_argument_list
 {
   t_argument                    argument;
   struct s_argument_list        *next;
-}                               t_argument_list;
+};
 
 /*
 ** error_message is NULL in case of success.
@@ -51,24 +67,27 @@ typedef struct                  s_argparser_result
 ** Returns NULL on error
 ** description: The description of the program
 */
-t_argparser             *argparser_new(const char *description);
+t_argparser     *argparser_new(const char *description);
 
-void                    argparser_delete(t_argparser *self);
+void            argparser_delete(t_argparser *self);
 
 /*
 ** Adds an argument to the parser.
 **
 ** action: An ARGPARSER_ACTION_*.
-** const_string: The stored string if the action is
-** ARGPARSER_ACTION_STORE_CONST. This argument is ignored if
-** the action is not ARGPARSER_ACTION_STORE_CONST.
-**
 ** Return 0 on success, -1 on error.
 */
-int                     argparser_add_argument(t_argparser *self,
-                                               t_argparser_action action,
-                                               const char *const_string,
-                                               const char *help);
+int             argparser_add_argument(t_argparser *self,
+                                       const t_argument_descr *arg_descr);
+
+t_argparser_group       *argparser_group_new(int repeat);
+void                    argparser_group_delete(t_argparser_group *group);
+
+int             argparser_group_add_argument(t_argparser_group *self,
+                                             const t_argument_descr *arg);
+
+int             argparser_add_group(t_argparser *self,
+                                    t_argparser_group *group);
 
 /*
 ** Parse the given command-line arguments.
