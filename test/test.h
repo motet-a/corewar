@@ -19,4 +19,6 @@
 # define FAIL() fail_impl(TEST_GET_POSITION())
 # define ASSERT(a) assert_impl(a, TEST_GET_POSITION())
 
+extern int g_failed_test_count;
+
 #endif /* TEST_H */

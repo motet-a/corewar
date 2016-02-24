@@ -12,12 +12,14 @@
 #include "libcw/print.h"
 #include "test.h"
 
+int g_failed_test_count;
+
 void            fail_impl(const char *position)
 {
   print_string_err(position);
   print_string_err(": Test failed");
   print_string_err("\n");
-  exit(1);
+  g_failed_test_count++;
 }
 
 void            assert_impl(int a, const char *position)
@@ -29,5 +31,7 @@ void            assert_impl(int a, const char *position)
 int             main()
 {
   ASSERT(0);
-  return (0);
+  ASSERT(0);
+  ASSERT(0);
+  return (g_failed_test_count != 0);
 }
