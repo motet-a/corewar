@@ -2,7 +2,7 @@
 
 The corewar assembler and VM.
 
-
+Build Status: [![Build Status](https://ci.antoine.network/job/Corewar/33/badge/icon)](https://ci.antoine.network/job/Corewar/33/)
 
 # Organization
 
