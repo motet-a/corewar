@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Feb 23 01:19:06 2016 Valentin Pichard
-** Last update Tue Feb 23 01:31:08 2016 Valentin Pichard
+** Last update Wed Feb 24 17:23:23 2016 Antoine Baudrand
 */
 
 #ifndef COREWAR_LIB_H_
@@ -26,6 +26,5 @@ int		check_string(char *str);
 int		my_strlen(char *str);
 int		my_getnbr_extend(int position, int len, char *str, int sign);
 int		my_getnbr(char *str);
-
 
 #endif /* !COREWAR_LIB_H_ */
