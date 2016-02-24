@@ -11,7 +11,25 @@
 #ifndef INSTR_H
 # define INSTR_H
 
-# define INSTR_MAX_ARGUMENT_COUNT       4
+/*
+** r1 <--> r16
+*/
+# define VM_REGISTER_COUNT      16
+
+/*
+** All the following sizes are in bytes.
+*/
+# define VM_REGISTER_SIZE               4
+# define VM_ADDRESS_SIZE                2
+
+# define VM_REGISTER_ARGUMENT_SIZE      1
+# define VM_DIRECT_ARGUMENT_SIZE        4
+# define VM_INDIRECT_ARGUMENT_SIZE      VM_ADRESS_SIZE
+
+/*
+** Do not change.
+*/
+# define VM_MAX_ARGUMENT_COUNT          4
 
 typedef int                             t_argument_type;
 
@@ -30,7 +48,7 @@ typedef struct          s_instr_info
   int                   has_argument_descriptor;
   int                   argument_count;
   int                   cycle_count;
-  t_argument_type       argument_types[INSTR_MAX_ARGUMENT_COUNT];
+  t_argument_type       argument_types[VM_MAX_ARGUMENT_COUNT];
 }                       t_instr_info;
 
 /*
@@ -44,5 +62,7 @@ const t_instr_info      *instr_info_get_from_name(const char *name);
 const t_instr_info      *instr_info_get_from_code(char code);
 
 void                    instr_info_print(const t_instr_info *self);
+
+int             instr_info_get_arguments_size(const t_instr_info *self);
 
 #endif /* INSTR_H */
