@@ -17,7 +17,7 @@
 ** Returns 0 on success, -1 on error.
 ** On success, string_pointer is incremented.
 */
-int     parse_and_read_uint_base(char **string_pointer,
+int     parse_and_read_uint_base(const char **string_pointer,
                                  unsigned long *result_pointer,
                                  int base);
 
@@ -27,13 +27,13 @@ int     parse_and_read_uint_base(char **string_pointer,
 ** Returns 0 on success, -1 on error.
 ** On success, string_pointer is incremented.
 */
-int     parse_and_read_int_base(char **string_pointer,
+int     parse_and_read_int_base(const char **string_pointer,
                                 long *result_pointer,
                                 int base);
 
-int     parse_and_read_uint(char **string_pointer,
+int     parse_and_read_uint(const char **string_pointer,
                             unsigned long *result_pointer);
-int     parse_and_read_int(char **string_pointer,
+int     parse_and_read_int(const char **string_pointer,
                            long *result_pointer);
 
 /*

@@ -10,11 +10,11 @@
 
 NAME		= test
 
-CFLAGS		+= -I..
+CFLAGS		+=
 
 LDFLAGS		= -L../libcw -lcw
 
-SOURCES		= test.c
+SOURCES		= test.c test_parse_int.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 

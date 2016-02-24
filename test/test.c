@@ -9,17 +9,17 @@
 */
 
 #include <stdlib.h>
-#include "libcw/print.h"
+#include "../libcw/print.h"
 #include "test.h"
 
-int g_failed_test_count;
+static t_test_stats     g_test_stats;
 
 void            fail_impl(const char *position)
 {
   print_string_err(position);
   print_string_err(": Test failed");
   print_string_err("\n");
-  g_failed_test_count++;
+  g_test_stats.failed_test_count++;
 }
 
 void            assert_impl(int a, const char *position)
@@ -30,8 +30,9 @@ void            assert_impl(int a, const char *position)
 
 int             main()
 {
-  ASSERT(0);
-  ASSERT(0);
-  ASSERT(0);
-  return (g_failed_test_count != 0);
+  g_test_stats.failed_test_count = 0;
+  g_test_stats.total_test_count = 0;
+  test_parse_int();
+  print_string("N tests, N failures\n"); /* TODO: */
+  return (g_test_stats.failed_test_count != 0);
 }
