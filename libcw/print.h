@@ -30,6 +30,11 @@ void            print_string_file(const char *string, int file);
 void            print_string(const char *string);
 
 /*
+** Prints a string to the error output.
+*/
+void            print_string_err(const char *string);
+
+/*
 ** Prints n times the character c to the given file.
 */
 void            print_n_chars_file(char c, int n, int file);

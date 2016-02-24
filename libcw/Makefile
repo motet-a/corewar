@@ -14,7 +14,7 @@ CFLAGS		+= -I..
 
 LDFLAGS		= -L.. -lcw
 
-SOURCES		= argparser.c
+SOURCES		= argparser.c print_string.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
