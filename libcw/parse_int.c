@@ -32,7 +32,6 @@ int     parse_int_base(const char *string,
   return (0);
 }
 
-
 int     parse_uint(const char *string, unsigned long *result_pointer)
 {
   return (parse_uint_base(string, result_pointer, 10));
