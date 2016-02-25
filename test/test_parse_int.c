@@ -44,9 +44,12 @@ static void     test_parse_and_read_int_base(void)
   const char    *string;
   long          n;
 
-  string = "-01324";
+  string = "";
+  ASSERT(parse_and_read_int_base(&string, &n, 10) == 1);
+  string = "-01234a";
   ASSERT(parse_and_read_int_base(&string, &n, 10) == 0);
   ASSERT(n == -01234);
+  ASSERT(*string == 'a');
   string = "+123";
   ASSERT(parse_and_read_int_base(&string, &n, 10) == -1);
   string = "--123";
@@ -57,8 +60,40 @@ static void     test_parse_and_read_int_base(void)
   ASSERT(n == -123);
 }
 
-void            test_parse_int(void)
+static void     test_parse_uint(void)
+{
+  unsigned long n;
+
+  ASSERT(parse_uint("", &n) == -1);
+  ASSERT(parse_uint("+123", &n) == -1);
+  ASSERT(parse_uint("-123", &n) == -1);
+  ASSERT(parse_uint("a", &n) == -1);
+  ASSERT(parse_uint("001234abcdlol", &n) == -1);
+  ASSERT(parse_uint("001234", &n) == 0);
+  ASSERT(n == 1234);
+}
+
+static void     test_parse_int(void)
+{
+  long          n;
+
+  ASSERT(parse_int("", &n) == -1);
+  ASSERT(parse_int("pichou nik ta mer", &n) == -1);
+  ASSERT(parse_int("123", &n) == 0);
+  ASSERT(n == 123);
+  ASSERT(parse_int("123a", &n) == -1);
+  ASSERT(parse_int("-123", &n) == 0);
+  ASSERT(n == -123);
+  ASSERT(parse_int("--123", &n) == 0);
+  ASSERT(n == 123);
+  ASSERT(parse_int("--123", &n) == 0);
+  ASSERT(n == 123);
+}
+
+void            test_suite_parse_int(void)
 {
   test_parse_and_read_uint_base();
   test_parse_and_read_int_base();
+  test_parse_uint();
+  test_parse_int();
 }
