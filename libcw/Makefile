@@ -18,7 +18,8 @@ SOURCES		= argparser.c \
 		char_type.c \
 		parse_int.c \
 		print_string.c \
-		print_int.c
+		print_int.c \
+		string_find_char.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
