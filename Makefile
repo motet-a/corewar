@@ -28,12 +28,12 @@ LIBCW_PATH		= libcw/$(LIBCW_NAME)
 all: $(LIBCW_PATH)
 
 $(LIBCW_PATH):
-	$(MAKE) -C libcw/ all && \
+	@$(MAKE) -C libcw/ all && \
 	 $(ECHO) $(GREEN) "libcw [OK]" $(END) || \
 	 $(ECHO) $(RED) "libcw [ERROR]" $(END)
 
 test: all
-	$(MAKE) -C test/ all && \
+	@$(MAKE) -C test/ all && \
 	 $(ECHO) $(GREEN) "unit tests [OK]" $(END) || \
 	 $(ECHO) $(RED) "unit tests [ERROR]" $(END)
 
