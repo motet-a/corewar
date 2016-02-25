@@ -27,7 +27,7 @@ const char      *string_find_no_case(const char *string, const char *needle)
 {
   while (*string)
     {
-      if (string_starts_with(string, needle))
+      if (string_starts_with_no_case(string, needle))
         return (string);
       string++;
     }
