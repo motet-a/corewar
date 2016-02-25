@@ -5,13 +5,13 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Wed Feb 24 20:11:34 2016 antoine
-** Last update Wed Feb 24 20:11:34 2016 antoine
+** Last update Thu Feb 25 15:07:47 2016 Jamy Bailly
 */
 
 #include <unistd.h>
 #include "print.h"
 
-void            print_string_file(const char *string, int file)
+void            print_string_file(const char *string, int file_descriptor)
 {
   while (*string) {
     write(file, string, 1);
