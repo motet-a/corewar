@@ -1,15 +1,15 @@
 /*
-** op.h
+** op.h for corewar in /home/antoine/corewar/files_in_subject
 **
-** Nicolas Sadirac
-** Tue Jul 13 18:53:48 1993
+** Made by Nicolas Sadirac
+** Login   <zeus@epitech.net>
+**
+** Started on  Thu Feb 25 22:29:40 1942 Nicolas Sadirac
+** Last update Thu Feb 25 22:32:15 2016 Antoine Baudrand
 */
-
 
 #ifndef _OP_H_
 # define _OP_H_
-
-
 
 #define MEM_SIZE                (6*1024)
 #define IDX_MOD                 512   /* modulo de l'index < */
@@ -32,7 +32,7 @@
 #define REG_NUMBER      16              /* r1 <--> rx */
 
 /*
- ** 
+ **
  */
 
 typedef char    args_type_t;
@@ -44,7 +44,7 @@ typedef char    args_type_t;
                                    dans r1 (4 octecs )) */
 #define T_LAB           8       /* LABEL */
 
-struct  op_s    
+struct  op_s
 {
    char         *mnemonique;
    char         nbr_args;
@@ -68,9 +68,7 @@ typedef struct op_s     op_t;
  ** op_tab
  */
 
-
 extern  op_t    op_tab[];
-
 
 /*
  ** header
@@ -81,16 +79,16 @@ extern  op_t    op_tab[];
 struct header_s
 {
    int  magic;
-#define COREWAR_EXEC_MAGIC      0xea83f3        /* why not */
-   char prog_name[PROG_NAME_LENGTH+1];
+#define COREWAR_EXEC_MAGIC      0xea83f3
+   char prog_name[PROG_NAME_LENGTH + 1];
    int  prog_size;
-   char comment[COMMENT_LENGTH+1];
+   char comment[COMMENT_LENGTH + 1];
 };
 
 typedef struct header_s header_t;
 
 /*
- ** live 
+ ** live
  */
 
 #define CYCLE_TO_DIE    1536    /* nombre de cycle pour etre d\'eclarer mort */
