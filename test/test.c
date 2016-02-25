@@ -32,7 +32,7 @@ int             main()
 {
   g_test_stats.failed_test_count = 0;
   g_test_stats.total_test_count = 0;
-  test_parse_int();
+  test_suite_parse_int();
   print_string("N tests, N failures\n"); /* TODO: */
   return (g_test_stats.failed_test_count != 0);
 }

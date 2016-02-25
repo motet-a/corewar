@@ -28,6 +28,6 @@ typedef struct          s_test_stats
   int                   total_test_count;
 }                       t_test_stats;
 
-void    test_parse_int(void);
+void    test_suite_parse_int(void);
 
 #endif /* TEST_H */
