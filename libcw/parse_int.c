@@ -9,21 +9,7 @@
 */
 
 #include "parse_int.h"
-
-static int      char_is_digit(char c)
-{
-  return (c >= '0' && c <= '9');
-}
-
-static int      char_is_uppercase(char c)
-{
-  return (c >= 'A' && c <= 'Z');
-}
-
-static int      char_is_lowercase(char c)
-{
-  return (c >= 'a' && c <= 'z');
-}
+#include "char_type.h"
 
 static int      char_to_digit_alpha(char c, int base)
 {
