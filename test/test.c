@@ -34,6 +34,7 @@ int             main()
   g_test_stats.failed_test_count = 0;
   g_test_stats.total_test_count = 0;
   test_suite_parse_int();
+  test_suite_string_find_char();
   print_int(g_test_stats.total_test_count);
   print_string(" tests, ");
   print_int(g_test_stats.failed_test_count);

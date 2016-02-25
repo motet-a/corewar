@@ -14,7 +14,7 @@ CFLAGS		+=
 
 LDFLAGS		= -L../libcw -lcw
 
-SOURCES		= test.c test_parse_int.c
+SOURCES		= test.c test_parse_int.c test_string_find_char.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
