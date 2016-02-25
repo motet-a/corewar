@@ -42,6 +42,12 @@ char            *string_duplicate(const char *source);
 char            *string_duplicate_n(const char *source, int n);
 
 /*
+** Returns 1 if the two strings contains the same characters.
+*/
+int             string_equals(const char *a, const char *b);
+int             string_equals_no_case(const char *a, const char *b);
+
+/*
 ** Like strchr().
 **
 ** Returns an pointer to the first occurrence of the character c

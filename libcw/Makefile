@@ -22,6 +22,7 @@ SOURCES		= argparser.c \
 		parse_and_read_int_base.c \
 		print_string.c \
 		print_int.c \
+		string_equals.c \
 		string_find_char.c \
 		string_find.c
 
