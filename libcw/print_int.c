@@ -5,7 +5,7 @@
 ** Login   <bailly_j@epitech.net>
 ** 
 ** Started on  Thu Feb 25 15:19:21 2016 Jamy Bailly
-** Last update Thu Feb 25 17:28:15 2016 Jamy Bailly
+** Last update Thu Feb 25 20:51:27 2016 Jamy Bailly
 */
 
 #include <unistd.h>
@@ -25,10 +25,11 @@ void	print_int_file(long n, int file_descriptor)
 {
   if (n < 0)
     {
-      write(1, "-", 1);
-      n = 0 - n;
+      write(file_descriptor, "-", 1);
+      print_uint_file((unsigned long) -n, file_descriptor);
     }
-  print_uint_file((unsigned long) n, file_descriptor);
+  else
+    print_uint_file((unsigned long) n, file_descriptor);
 }
 
 void	print_uint(unsigned long n)

@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 22 22:59:36 2016 antoine
-** Last update Mon Feb 22 22:59:36 2016 antoine
+** Last update Thu Feb 25 21:09:34 2016 Antoine Baudrand
 */
 
 #ifndef STR_H
@@ -50,7 +50,7 @@ char            *string_duplicate_n(const char *source, int n);
 const char      *string_find_char(const char *string, char c);
 
 /*
-** Like string_find_char(), but ignore the case of both arguments.
+** Like string_find_char(), but case insensitive.
 */
 const char      *string_find_char_no_case(const char *string, char c);
 
