@@ -30,5 +30,6 @@ typedef struct          s_test_stats
 
 void    test_suite_parse_int(void);
 void    test_suite_string_find_char(void);
+void    test_suite_string_find(void);
 
 #endif /* TEST_H */
