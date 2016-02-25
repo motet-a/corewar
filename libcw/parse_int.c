@@ -9,59 +9,36 @@
 */
 
 #include "parse_int.h"
-#include "char_type.h"
 
-static int      char_to_digit_alpha(char c, int base)
+int     parse_uint_base(const char *string,
+                        unsigned long *result_pointer,
+                        int base)
 {
-  int           digit;
-
-  if (char_is_uppercase(c))
-    digit = c - 'A';
-  else if (char_is_lowercase(c))
-    digit = c - 'a';
-  else
+  if (parse_and_read_uint_base(&string, result_pointer, base))
     return (-1);
-  digit += 10;
-  if (c < base)
-    return (digit);
-  else
+  if (*string)
     return (-1);
-}
-
-static int      char_to_digit(char c, int base)
-{
-  if (char_is_digit(c))
-    {
-      if (c < base)
-        return (c - '0');
-      else
-        return (-1);
-    }
-  if (base > 10)
-    {
-      base -= 10;
-      return (char_to_digit_alpha(c, base));
-    }
   return (0);
 }
 
-int             parse_and_read_uint_base(const char **string_pointer,
-                                         unsigned long *result_pointer,
-                                         int base)
+int     parse_int_base(const char *string,
+                       long *result_pointer,
+                       int base)
 {
-  int           digit;
-
-  *result_pointer = 0;
-  if (**string_pointer)
+  if (parse_and_read_int_base(&string, result_pointer, base))
     return (-1);
-  while (**string_pointer)
-    {
-      digit = char_to_digit(**string_pointer, base);
-      if (digit == -1)
-        break;
-      *result_pointer *= 10;
-      *result_pointer += digit;
-      (*string_pointer)++;
-    }
+  if (*string)
+    return (-1);
   return (0);
+}
+
+
+int     parse_uint(const char *string, unsigned long *result_pointer)
+{
+  return (parse_uint_base(string, result_pointer, 10));
+}
+
+int     parse_int(const char *string, long *result_pointer)
+{
+  return (parse_int_base(string, result_pointer, 10));
 }

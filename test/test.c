@@ -26,6 +26,7 @@ void            assert_impl(int a, const char *position)
 {
   if (!a)
     fail_impl(position);
+  g_test_stats.total_test_count++;
 }
 
 int             main()
@@ -33,6 +34,9 @@ int             main()
   g_test_stats.failed_test_count = 0;
   g_test_stats.total_test_count = 0;
   test_suite_parse_int();
-  print_string("N tests, N failures\n"); /* TODO: */
+  print_int(g_test_stats.total_test_count);
+  print_string(" tests, ");
+  print_int(g_test_stats.failed_test_count);
+  print_string(" failures\n");
   return (g_test_stats.failed_test_count != 0);
 }

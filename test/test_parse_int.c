@@ -45,10 +45,10 @@ static void     test_parse_and_read_int_base(void)
   long          n;
 
   string = "";
-  ASSERT(parse_and_read_int_base(&string, &n, 10) == 1);
+  ASSERT(parse_and_read_int_base(&string, &n, 10) == -1);
   string = "-01234a";
   ASSERT(parse_and_read_int_base(&string, &n, 10) == 0);
-  ASSERT(n == -01234);
+  ASSERT(n == -1234);
   ASSERT(*string == 'a');
   string = "+123";
   ASSERT(parse_and_read_int_base(&string, &n, 10) == -1);

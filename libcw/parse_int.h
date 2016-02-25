@@ -22,7 +22,9 @@ int     parse_and_read_uint_base(const char **string_pointer,
                                  int base);
 
 /*
-** Parses an integer.
+** Parses a signed integer.
+**
+** It can be preceded by one or more '-' signs.
 **
 ** Returns 0 on success, -1 on error.
 ** On success, string_pointer is incremented.
@@ -51,6 +53,8 @@ int     parse_uint_base(const char *string,
 /*
 ** Parses a long integer in a given base.
 **
+** It can be preceded by one or more '-' signs.
+**
 ** If the base is greater than 9, the character `a` is considered
 ** as the 10th digit, `b` is the 11th digit, etc. The case is ignored.
 ** Writes the parsed number at the given address on success.
@@ -70,6 +74,8 @@ int     parse_uint(const char *string, unsigned long *result_pointer);
 
 /*
 ** Parses a long integer.
+**
+** It can be preceded by one or more '-' signs.
 **
 ** Writes the parsed number at the given address on success.
 ** Returns 0 on success, -1 on error.
