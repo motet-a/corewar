@@ -27,7 +27,8 @@ static void     test_parse_and_read_uint_base(void)
   ASSERT(*string == 'a');
   ASSERT(n == 123);
   string = "012";
-  ASSERT(parse_and_read_uint_base(&string, &n, 2) == -1);
+  ASSERT(parse_and_read_uint_base(&string, &n, 2) == 0);
+  ASSERT(n == 1);
   string = "CafeBAbE";
   ASSERT(parse_and_read_uint_base(&string, &n, 16) == 0);
   ASSERT(!*string);
