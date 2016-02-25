@@ -5,7 +5,7 @@
 ## Login   <antoine@epitech.net>
 ##
 ## Started on  Tue Feb 23 06:33:08 2016 antoine
-## Last update Tue Feb 23 06:33:08 2016 antoine
+## Last update Thu Feb 25 17:12:45 2016 Jamy Bailly
 ##
 
 NAME		= $(LIBCW_NAME)
@@ -14,7 +14,7 @@ CFLAGS		+= -I..
 
 LDFLAGS		= -L.. -lcw
 
-SOURCES		= argparser.c print_string.c parse_int.c
+SOURCES		= argparser.c print_string.c print_int.c parse_int.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
