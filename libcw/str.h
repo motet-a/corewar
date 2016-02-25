@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 22 22:59:36 2016 antoine
-** Last update Thu Feb 25 21:09:34 2016 Antoine Baudrand
+** Last update Thu Feb 25 21:26:15 2016 Antoine Baudrand
 */
 
 #ifndef STR_H
@@ -60,7 +60,7 @@ const char      *string_find_char_no_case(const char *string, char c);
 const char      *string_find(const char *string, const char *needle);
 
 /*
-** Like string_find(), but ignore the case of both arguments.
+** Like string_find(), but case insensitive.
 */
 const char      *string_find_no_case(const char *string, const char *needle);
 
