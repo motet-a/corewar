@@ -12,7 +12,7 @@
 #include "test.h"
 #include "../libcw/str.h"
 
-void            test_suite_string_find(void)
+static void     test_string_find(void)
 {
   const char    *s;
 
@@ -26,4 +26,24 @@ void            test_suite_string_find(void)
   s = "bar";
   ASSERT(string_find(s, "ar") == s + 1);
   ASSERT(string_find("bar", "arlol") == NULL);
+  s = "bar";
+  ASSERT(string_find(s, "bar") == s);
+}
+
+static void     test_string_find_no_case(void)
+{
+  const char    *s;
+
+  s = "bar";
+  ASSERT(string_find_no_case(s, "bar") == s);
+  s = "bar";
+  ASSERT(string_find_no_case(s, "bAr") == s);
+  s = "BAR";
+  ASSERT(string_find_no_case(s, "BAR") == s);
+}
+
+void            test_suite_string_find(void)
+{
+  test_string_find();
+  test_string_find_no_case();
 }
