@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Wed Feb 24 20:11:34 2016 antoine
-** Last update Thu Feb 25 15:07:47 2016 Jamy Bailly
+** Last update Thu Feb 25 15:38:43 2016 Jamy Bailly
 */
 
 #include <unistd.h>
@@ -14,7 +14,7 @@
 void            print_string_file(const char *string, int file_descriptor)
 {
   while (*string) {
-    write(file, string, 1);
+    write(file_descriptor, string, 1);
     string++;
   }
 }
