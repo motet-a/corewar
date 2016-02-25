@@ -24,7 +24,8 @@ SOURCES		= argparser.c \
 		print_int.c \
 		string_equals.c \
 		string_find_char.c \
-		string_find.c
+		string_find.c \
+		string_starts_with.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
