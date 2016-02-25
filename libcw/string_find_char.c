@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include "str.h"
+#include "char_type.h"
 
 const char      *string_find_char(const char *string, char c)
 {
@@ -17,23 +18,19 @@ const char      *string_find_char(const char *string, char c)
     {
       if (*string == c)
 	return (string);
-      else
-	string += 1;
+      string++;
     }
   return (NULL);
 }
 
 const char      *string_find_char_no_case(const char *string, char c)
 {
-  const char	*res;
-
-  res = string_find_char(string, c);
-  if (res)
-    return (res);
-  else if (c >= 'a' && c <= 'z')
-    return (string_find_char(string, c - 32));
-  else if (c >= 'A' && c <= 'Z')
-    return (string_find_char(string, c + 32));
-  else
-    return (NULL);
+  c = char_to_lowercase(c);
+  while (*string)
+    {
+      if (char_to_lowercase(*string) == c)
+	return (string);
+      string++;
+    }
+  return (NULL);
 }

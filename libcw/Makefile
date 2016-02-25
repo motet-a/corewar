@@ -16,6 +16,7 @@ LDFLAGS		= -L.. -lcw
 
 SOURCES		= argparser.c \
 		char_type.c \
+		char_type_convert.c \
 		parse_int.c \
 		parse_and_read_int.c \
 		parse_and_read_int_base.c \
