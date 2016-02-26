@@ -5,7 +5,7 @@
 ## Login   <antoine@epitech.net>
 ##
 ## Started on  Tue Feb 23 06:33:08 2016 antoine
-## Last update Thu Feb 25 17:12:45 2016 Jamy Bailly
+## Last update Fri Feb 26 15:40:14 2016 Jamy Bailly
 ##
 
 NAME		= $(LIBCW_NAME)
@@ -23,6 +23,7 @@ SOURCES		= argparser.c \
 		parse_and_read_int_base.c \
 		print_string.c \
 		print_int.c \
+		print_char.c \
 		str.c \
 		string_equals.c \
 		string_find_char.c \
