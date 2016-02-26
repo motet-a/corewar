@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 22 22:59:36 2016 antoine
-** Last update Thu Feb 25 23:20:58 2016 Antoine Baudrand
+** Last update Fri Feb 26 16:40:57 2016 Jamy Bailly
 */
 
 #ifndef STR_H
@@ -20,6 +20,11 @@ int             string_get_length(const char *string);
 ** Like strcat().
 */
 void            string_concat(char *dest, const char *source);
+
+/*
+** Like strncat().
+*/
+void		string_concat_n(char *dest, const char *source, int n);
 
 /*
 ** Like string_concat(), but appends a character.

@@ -5,7 +5,7 @@
 ## Login   <antoine@epitech.net>
 ##
 ## Started on  Tue Feb 23 06:33:08 2016 antoine
-## Last update Fri Feb 26 15:40:14 2016 Jamy Bailly
+## Last update Fri Feb 26 16:33:29 2016 Jamy Bailly
 ##
 
 NAME		= $(LIBCW_NAME)
@@ -23,6 +23,7 @@ SOURCES		= char_type.c \
 		print_int.c \
 		print_char.c \
 		str.c \
+		string_concat.c \
 		string_equals.c \
 		string_find_char.c \
 		string_find.c \
