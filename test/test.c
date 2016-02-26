@@ -33,7 +33,6 @@ int             main()
 {
   g_test_stats.failed_test_count = 0;
   g_test_stats.total_test_count = 0;
-  test_suite_argparser();
   test_suite_parse_int();
   test_suite_string_find();
   test_suite_string_find_char();
