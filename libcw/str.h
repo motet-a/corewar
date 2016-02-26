@@ -71,7 +71,7 @@ const char      *string_find(const char *string, const char *needle);
 const char      *string_find_no_case(const char *string, const char *needle);
 
 /*
-** Check if string begin with begin
+** Check if string starts with begin
 */
 int             string_starts_with(const char *string, const char *begin);
 
@@ -82,7 +82,7 @@ int             string_starts_with_no_case(const char *string,
                                            const char *begin);
 
 /*
-** Check if string end with end
+** Check if string ends with end
 */
 int		string_ends_with(const char *string,
 				 const char *end);
@@ -91,6 +91,6 @@ int		string_ends_with(const char *string,
 ** Like string_ends_with(), but case insensitive
 */
 int		string_ends_with_no_case(const char *string,
-				 const char *end);
+                                         const char *end);
 
 #endif /* STR_H */
