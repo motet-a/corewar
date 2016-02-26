@@ -23,6 +23,7 @@ SOURCES		= char_type.c \
 		print_string.c \
 		print_int.c \
 		print_char.c \
+		source_file.c \
 		str.c \
 		string_equals.c \
 		string_find_char.c \
