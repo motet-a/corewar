@@ -26,7 +26,7 @@ int             string_get_length(const char *string)
 }
 
 /*
-** TODO: Rewrite this using string_concat()
+** TODO: Rewrite this using string_copy()
 */
 char            *string_duplicate(const char *source)
 {
@@ -46,7 +46,7 @@ char            *string_duplicate(const char *source)
 }
 
 /*
-** TODO: Rewrite this using string_concat()
+** TODO: Rewrite this using string_copy_n()
 */
 char            *string_duplicate_n(const char *source, int n)
 {
