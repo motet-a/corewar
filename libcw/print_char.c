@@ -5,8 +5,11 @@
 ** Login   <bailly_j@epitech.net>
 ** 
 ** Started on  Fri Feb 26 14:59:18 2016 Jamy Bailly
-** Last update Fri Feb 26 15:26:21 2016 Jamy Bailly
+** Last update Fri Feb 26 15:46:47 2016 Jamy Bailly
 */
+
+#include <unistd.h>
+#include "print.h"
 
 void	print_char_file(char c, int file_descriptor)
 {
