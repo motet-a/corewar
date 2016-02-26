@@ -14,9 +14,7 @@ CFLAGS		+= -I..
 
 LDFLAGS		= -L.. -lcw
 
-SOURCES		= argparser.c \
-		argparser_arg_list.c \
-		char_type.c \
+SOURCES		= char_type.c \
 		char_type_convert.c \
 		parse_int.c \
 		parse_and_read_int.c \
