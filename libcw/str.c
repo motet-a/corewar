@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.eu>
 **
 ** Started on  Thu Feb 25 16:14:18 2016 Valentin Pichard
-** Last update Thu Feb 25 16:47:02 2016 Valentin Pichard
+** Last update Fri Feb 26 16:36:40 2016 Jamy Bailly
 */
 
 #include <stdlib.h>
@@ -71,22 +71,4 @@ char            *string_duplicate_n(const char *source, int n)
     }
   dest[i] = 0;
   return (dest);
-}
-
-void            string_concat(char *dest, const char *source)
-{
-  int   i;
-  int   i2;
-
-  i = 0;
-  i2 = 0;
-  while (dest[i])
-    i++;
-  while (source[i])
-    {
-      dest[i + 1] = source[i2];
-      i++;
-      i2++;
-    }
-  dest[i] = 0;
 }
