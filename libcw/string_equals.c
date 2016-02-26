@@ -15,7 +15,7 @@ int             string_equals(const char *a, const char *b)
 {
   while (*a == *b)
     {
-      if (!a)
+      if (!*a)
         return (1);
       a++;
       b++;
@@ -27,7 +27,7 @@ int             string_equals_no_case(const char *a, const char *b)
 {
   while (char_to_lowercase(*a) == char_to_lowercase(*b))
     {
-      if (!a)
+      if (!*a)
         return (1);
       a++;
       b++;

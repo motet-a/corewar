@@ -23,7 +23,7 @@ t_descr_list    *argparser_descr_list_new(const t_descr *descr,
   return (list);
 }
 
-void                    argparser_descr_list_delete(t_descr_list *list)
+void            argparser_descr_list_delete(t_descr_list *list)
 {
   if (!list)
     return ;
@@ -31,8 +31,8 @@ void                    argparser_descr_list_delete(t_descr_list *list)
   free(list);
 }
 
-void                    argparser_descr_list_add(t_descr_list **list,
-                                                 const t_descr *arg_descr)
+void            argparser_descr_list_add(t_descr_list **list,
+                                         const t_descr *arg_descr)
 {
   *list = argparser_descr_list_new(arg_descr, *list);
 }

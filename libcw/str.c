@@ -25,6 +25,9 @@ int             string_get_length(const char *string)
   return (i);
 }
 
+/*
+** TODO: Rewrite this using string_concat()
+*/
 char            *string_duplicate(const char *source)
 {
   int	i;
@@ -36,13 +39,15 @@ char            *string_duplicate(const char *source)
   while (source[i])
     {
       dest[i] = source[i];
-
       i++;
     }
   dest[i] = 0;
   return (dest);
 }
 
+/*
+** TODO: Rewrite this using string_concat()
+*/
 char            *string_duplicate_n(const char *source, int n)
 {
   int	i;
@@ -76,29 +81,4 @@ void            string_concat(char *dest, const char *source)
       i2++;
     }
   dest[i] = 0;
-}
-
-const char      *string_find(const char *string, const char *needle)
-{
-  int	i;
-  int	i2;
-
-  i = 0;
-  i2 = 0;
-  while (string[i] != '\0' && i >= 0)
-    {
-      if (string[i] == needle[i2])
-	{
-	  i2++;
-	  if (needle[i2] == '\0')
-	    {
-	      i2 = i - i2 + 1;
-	      return (string + i2);
-	    }
-	}
-      else
-	i2 = 0;
-      i++;
-    }
-  return (0);
 }
