@@ -28,6 +28,7 @@ typedef struct          s_test_stats
   int                   total_test_count;
 }                       t_test_stats;
 
+void    test_suite_argparser(void);
 void    test_suite_parse_int(void);
 void    test_suite_string_find_char(void);
 void    test_suite_string_find(void);

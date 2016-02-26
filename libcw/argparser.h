@@ -23,6 +23,9 @@ typedef enum                    e_argparser_action
 */
 typedef struct s_argparser      t_argparser;
 
+/*
+** variable_name: The variable name to print in the usage.
+*/
 typedef struct                  s_argparser_arg_descr
 {
   const char                    *name;
@@ -31,27 +34,24 @@ typedef struct                  s_argparser_arg_descr
   const char                    *help;
 }                               t_argparser_arg_descr;
 
-typedef struct                  s_argparser_arg_list t_argparser_arg_list;
-
 typedef struct                  s_argparser_arg
 {
-  t_argparser_arg_list          *group;
   const char                    *name;
   const char                    *value;
 }                               t_argparser_arg;
 
-struct                          s_argparser_arg_list
+typedef struct                  s_argparser_arg_list
 {
-  t_argparser_arg               argument;
+  t_argparser_arg               arg;
   struct s_argparser_arg_list   *next;
-};
+}                               t_argparser_arg_list;
 
 /*
 ** error_message is NULL in case of success.
 */
 typedef struct                  s_argparser_result
 {
-  t_argparser_arg_list          *arguments;
+  t_argparser_arg_list          *args;
   char                          *error_message;
 }                               t_argparser_result;
 
@@ -61,9 +61,9 @@ typedef struct                  s_argparser_result
 ** Returns NULL on error
 ** description: The description of the program
 */
-t_argparser     *argparser_new(const char *description);
+t_argparser             *argparser_new(const char *description);
 
-void            argparser_delete(t_argparser *self);
+void                    argparser_delete(t_argparser *self);
 
 /*
 ** Adds an argument to the parser.
@@ -71,8 +71,8 @@ void            argparser_delete(t_argparser *self);
 ** action: An ARGPARSER_ACTION_*.
 ** Return 0 on success, -1 on error.
 */
-int             argparser_add_argument(t_argparser *self,
-                                       const t_argparser_arg_descr *arg);
+int                     argparser_add_arg(t_argparser *self,
+                                          const t_argparser_arg_descr *arg);
 
 /*
 ** Parse the given command-line arguments.
