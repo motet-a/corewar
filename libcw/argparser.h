@@ -18,27 +18,21 @@ typedef enum                    e_argparser_action
   ARGPARSER_ACTION_STORE_FALSE,
 }                               t_argparser_action;
 
-typedef struct s_argparser_group t_argparser_group;
-
 /*
 ** An argument parser.
 */
 typedef struct s_argparser      t_argparser;
 
-typedef struct                  s_argument_descr
+typedef struct                  s_argparser_arg_descr
 {
   const char                    *name;
   const char                    *variable_name;
   t_argparser_action            action;
   const char                    *help;
-}                               t_argument_descr;
+}                               t_argparser_arg_descr;
 
 typedef struct                  s_argparser_arg_list t_argparser_arg_list;
 
-/*
-** If name is NULL, this structure represents an argument group.
-** If name is not NULL, this structure represents an argument.
-*/
 typedef struct                  s_argparser_arg
 {
   t_argparser_arg_list          *group;
@@ -78,16 +72,7 @@ void            argparser_delete(t_argparser *self);
 ** Return 0 on success, -1 on error.
 */
 int             argparser_add_argument(t_argparser *self,
-                                       const t_argument_descr *arg_descr);
-
-t_argparser_group       *argparser_group_new(int repeat);
-void                    argparser_group_delete(t_argparser_group *group);
-
-int             argparser_group_add_argument(t_argparser_group *self,
-                                             const t_argument_descr *arg);
-
-int             argparser_add_group(t_argparser *self,
-                                    t_argparser_group *group);
+                                       const t_argparser_arg_descr *arg);
 
 /*
 ** Parse the given command-line arguments.
