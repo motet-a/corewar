@@ -12,18 +12,18 @@
 #include "argparser_private.h"
 #include "str.h"
 
-t_arg_descr_list        *argparser_descr_list_new(const t_arg_descr *descr,
-                                                  t_arg_descr_list *next)
+t_descr_list    *argparser_descr_list_new(const t_descr *descr,
+                                          t_descr_list *next)
 {
-  t_arg_descr_list      *list;
+  t_descr_list  *list;
 
-  list = malloc(sizeof(t_arg_descr_list));
+  list = malloc(sizeof(t_descr_list));
   list->arg_descr = *descr;
   list->next = next;
   return (list);
 }
 
-void                    argparser_descr_list_delete(t_arg_descr_list *list)
+void                    argparser_descr_list_delete(t_descr_list *list)
 {
   if (!list)
     return ;
@@ -31,8 +31,8 @@ void                    argparser_descr_list_delete(t_arg_descr_list *list)
   free(list);
 }
 
-void                    argparser_descr_list_add(t_arg_descr_list **list,
-                                                 const t_arg_descr *arg_descr)
+void                    argparser_descr_list_add(t_descr_list **list,
+                                                 const t_descr *arg_descr)
 {
   *list = argparser_descr_list_new(arg_descr, *list);
 }
@@ -56,7 +56,7 @@ void            argparser_delete(t_argparser *self)
 }
 
 int             argparser_add_arg(t_argparser *self,
-                                  const t_arg_descr *descr)
+                                  const t_descr *descr)
 {
   argparser_descr_list_add(&self->args, descr);
   return (0);
@@ -80,8 +80,8 @@ static t_result create_result(t_arg_list *args)
   return (result);
 }
 
-const t_arg_descr       *argparser_find_descr(const t_arg_descr_list *list,
-                                              const char *string)
+const t_descr   *argparser_find_descr(const t_descr_list *list,
+                                      const char *string)
 {
   if (!list)
     return (NULL);
@@ -100,7 +100,7 @@ char            *argparser_parse_arg(const t_argparser *self,
                                      const char *next_arg_string,
                                      t_arg *arg)
 {
-  const t_arg_descr     *descr;
+  const t_descr *descr;
 
   descr = argparser_find_descr(self->args, arg_string);
   if (!descr)
