@@ -36,13 +36,13 @@ char            *read_whole_file(int file_descriptor);
 ** line: 1-based line number
 ** column: 1-based column number
 */
-typedef struct  t_position
+typedef struct  s_position
 {
   t_source_file *source_file;
   int           index;
   int           line;
   int           column;
-}               s_position;
+}               t_position;
 
 void            position_print(int output_file_descriptor);
 

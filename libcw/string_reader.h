@@ -11,9 +11,18 @@
 #ifndef STRING_READER_H
 # define STRING_READER_H
 
+# include "position.h"
+
 typedef struct  s_string_reader
 {
-  const char    *string;
+  t_source_file *source_file;
+  t_position    *position;
 }               t_string_reader;
+
+char            string_reader_next(t_string_reader *reader);
+void            string_reader_skip_chars(t_string_reader *reader,
+                                         const char *chars_to_skip);
+void            string_reader_skip_whitespaces(t_string_reader *reader);
+void            string_reader_has_more(const t_string_reader *reader);
 
 #endif /* STRING_READER_H */
