@@ -8,9 +8,17 @@
 ** Last update Thu Feb 25 16:47:02 2016 Valentin Pichard
 */
 
+#include <stdlib.h>
 #include "str.h"
 
-#include <stdlib.h>
+void            string_set_n_chars(char *string, char c, int n)
+{
+  while (n--)
+    {
+      *string = c;
+      string++;
+    }
+}
 
 int             string_get_length(const char *string)
 {
