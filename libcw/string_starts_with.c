@@ -8,7 +8,7 @@
 ** Last update Thu Feb 25 23:13:09 2016 Antoine Baudrand
 */
 
-#include "str.h"
+#include "string.h"
 #include "char_type.h"
 
 int             string_starts_with(const char *string, const char *begin)

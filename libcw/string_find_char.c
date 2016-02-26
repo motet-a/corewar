@@ -9,7 +9,7 @@
 */
 
 #include <stdlib.h>
-#include "str.h"
+#include "string.h"
 #include "char_type.h"
 
 const char      *string_find_char(const char *string, char c)

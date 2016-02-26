@@ -9,7 +9,7 @@
 */
 
 #include <stdlib.h>
-#include "str.h"
+#include "string.h"
 
 void            string_set_n_chars(char *string, char c, int n)
 {

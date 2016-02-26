@@ -1,15 +1,15 @@
 /*
-** str.h for  in /home/antoine
+** string.h for  in /home/antoine
 **
 ** Made by antoine
 ** Login   <antoine@epitech.net>
 **
-** Started on  Mon Feb 22 22:59:36 2016 antoine
-** Last update Fri Feb 26 16:40:57 2016 Jamy Bailly
+** Started on  Fri Feb 26 17:52:52 2016 antoine
+** Last update Fri Feb 26 17:52:52 2016 antoine
 */
 
-#ifndef STR_H
-# define STR_H
+#ifndef STRING_H
+#define STRING_H
 
 void            string_set_n_chars(char *string, char c, int n);
 
@@ -100,4 +100,4 @@ int		string_ends_with(const char *string,
 int		string_ends_with_no_case(const char *string,
                                          const char *end);
 
-#endif /* STR_H */
+#endif /* STRING_H */

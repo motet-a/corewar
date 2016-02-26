@@ -1,15 +1,15 @@
 /*
 ** string_concat.c for libcw in /home/bailly_j/rendu/corewar/libcw
-** 
+**
 ** Made by Jamy Bailly
 ** Login   <bailly_j@epitech.net>
-** 
+**
 ** Started on  Fri Feb 26 16:02:33 2016 Jamy Bailly
 ** Last update Fri Feb 26 16:47:59 2016 Jamy Bailly
 */
 
 #include <sys/types.h>
-#include "str.h"
+#include "string.h"
 
 void		string_concat_char(char *dest, char source)
 {

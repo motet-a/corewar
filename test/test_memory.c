@@ -10,7 +10,7 @@
 
 #include "test.h"
 #include "../libcw/memory.h"
-#include "../libcw/str.h"
+#include "../libcw/string.h"
 
 static void     test_memory_read(void)
 {

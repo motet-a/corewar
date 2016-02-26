@@ -24,7 +24,7 @@ SOURCES		= char_type.c \
 		print_int.c \
 		print_char.c \
 		source_file.c \
-		str.c \
+		string.c \
 		string_concat.c \
 		string_equals.c \
 		string_find_char.c \

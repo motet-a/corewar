@@ -8,7 +8,7 @@
 ** Last update Thu Feb 25 22:34:55 2016 antoine
 */
 
-#include "str.h"
+#include "string.h"
 #include "char_type.h"
 
 int             string_equals(const char *a, const char *b)

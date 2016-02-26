@@ -10,7 +10,7 @@
 
 #include <stdlib.h>
 #include "test.h"
-#include "../libcw/str.h"
+#include "../libcw/string.h"
 
 static void     test_string_find(void)
 {

@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "position.h"
-#include "str.h"
+#include "string.h"
 
 /*
 ** From Whiskey :-)
