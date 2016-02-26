@@ -15,6 +15,7 @@ CFLAGS		+=
 LDFLAGS		= -L../libcw -lcw
 
 SOURCES		= test.c \
+		test_memory.c \
 		test_parse_int.c \
 		test_string_find.c \
 		test_string_find_char.c

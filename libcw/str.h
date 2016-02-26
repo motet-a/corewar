@@ -11,6 +11,8 @@
 #ifndef STR_H
 # define STR_H
 
+void            string_set_n_chars(char *string, char c, int n);
+
 /*
 ** Like strlen().
 */
