@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 22 22:59:36 2016 antoine
-** Last update Thu Feb 25 21:26:15 2016 Antoine Baudrand
+** Last update Thu Feb 25 23:20:58 2016 Antoine Baudrand
 */
 
 #ifndef STR_H
@@ -69,5 +69,28 @@ const char      *string_find(const char *string, const char *needle);
 ** Like string_find(), but case insensitive.
 */
 const char      *string_find_no_case(const char *string, const char *needle);
+
+/*
+** Check if string begin with begin
+*/
+int             string_starts_with(const char *string, const char *begin);
+
+/*
+** Like string_starts_with(), but case insensitive
+*/
+int             string_starts_with_no_case(const char *string,
+                                           const char *begin);
+
+/*
+** Check if string end with end
+*/
+int		string_ends_with(const char *string,
+				 const char *end);
+
+/*
+** Like string_ends_with(), but case insensitive
+*/
+int		string_ends_with_no_case(const char *string,
+				 const char *end);
 
 #endif /* STR_H */
