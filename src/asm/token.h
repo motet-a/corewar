@@ -70,9 +70,19 @@ typedef struct          s_token_list
   struct s_token_list   *next;
 }                       t_token_list;
 
+/*
+** Returns NULL on error.
+*/
 t_token_list    *token_list_new(t_token *token, t_token_list *next);
 void            token_list_add(t_token_list **list, t_token *token);
 void            token_list_free(t_token_list *list, int delete_tokens);
+
+/*
+** Returns a malloced string or NULL on error.
+** TODO
+*/
+char            *token_list_to_string(const t_token_list *list);
+
 void            token_list_print(const t_token_list *list, int output_file);
 
 #endif /* TOKEN_H */

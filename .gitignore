@@ -2,5 +2,5 @@
 *.o
 .DS_Store
 
-test
-asm
+./test
+./asm
