@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "../asm/token.h"
 #include "../libcw/string.h"
+#include "../libcw/print.h"
 #include "test.h"
 
 static void     test_token_type_to_string(void)
@@ -31,6 +32,26 @@ static void     init_dummy_position(t_position *position)
   position->line = 1;
 }
 
+static void     assert_token_equals(const char *expected,
+                                    const t_token *token)
+{
+  char          *string;
+  int           r;
+
+  string = token_to_string(token);
+  r = string_equals(expected, string);
+  ASSERT(r);
+  if (!r)
+    {
+      print_string("Expected ");
+      print_string(expected);
+      print_string(", got ");
+      print_string(string);
+      print_string("\n");
+    }
+  free(string);
+}
+
 static void     test_token(void)
 {
   t_token       *token;
@@ -40,6 +61,11 @@ static void     test_token(void)
   token = token_new(TOKEN_TYPE_INTEGER, &position);
   ASSERT(token != NULL);
   token->integer_value = 789;
+  assert_token_equals("{integer value: 789}", token);
+  token_delete(token);
+  token = token_new_string(TOKEN_TYPE_STRING, &position, "hello");
+  ASSERT(token != NULL);
+  assert_token_equals("{string value: hello}", token);
   token_delete(token);
 }
 

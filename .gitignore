@@ -3,5 +3,8 @@
 .DS_Store
 
 test
+!test/
 asm
+!asm/
 corewar
+!corewar/

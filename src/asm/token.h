@@ -26,6 +26,8 @@ typedef enum    e_token_type
 }               t_token_type;
 
 const char      *token_type_to_string(t_token_type type);
+int             token_type_has_string_value(t_token_type type);
+int             token_type_has_value(t_token_type type);
 
 /*
 ** string_value: For TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_STRING,
@@ -75,6 +77,9 @@ char            *token_to_string(const t_token *token);
 ** Prints the string returned by token_to_string().
 */
 void            token_print(const t_token *token, int output_file);
+
+int             token_has_value(const t_token *token);
+int             token_has_string_value(const t_token *token);
 
 typedef struct          s_token_list
 {

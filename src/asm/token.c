@@ -13,14 +13,6 @@
 #include "../libcw/string.h"
 #include "../libcw/print.h"
 
-static int      has_string_value(t_token_type type)
-{
-  return (type == TOKEN_TYPE_IDENTIFIER ||
-          type == TOKEN_TYPE_STRING ||
-          type == TOKEN_TYPE_DIRECTIVE ||
-          type == TOKEN_TYPE_LABEL);
-}
-
 t_token         *token_new(t_token_type type,
                            const t_position *position)
 {
@@ -53,28 +45,18 @@ t_token         *token_new_string(t_token_type type,
 
 void            token_delete(t_token *token)
 {
-  if (has_string_value(token->type))
+  if (token_type_has_string_value(token->type))
     free(token->string_value);
   free(token);
 }
 
-char            *token_to_string(const t_token *token)
-{
-  char          buffer[200];
-
-  string_concat(buffer, token_type_to_string(token->type));
-  return (string_duplicate(buffer));
-}
-
 void            token_print(const t_token *token, int file)
 {
-  print_string_file("type: ", file);
-  print_int_file(token->type, file);
-  print_string_file("\n", file);
-  if (has_string_value(token->type))
-    {
-      print_string_file("string_value: ", file);
-      print_string_file(token->string_value, file);
-      print_string_file("\n", file);
-    }
+  char          *string;
+
+  string = token_to_string(token);
+  if (!string)
+    print_string_file("token_to_string() error", file);
+  print_string_file(string, file);
+  free(string);
 }
