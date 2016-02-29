@@ -12,7 +12,7 @@ export CC		= cc
 
 export RM		= rm -f
 
-export CFLAGS		= -W -Wall -Wextra -std=c89 -g
+export CFLAGS		= -W -Wall -Wextra -std=c89 -g # -D NDEBUG
 
 export LIBCW_NAME	= libcw.a
 
