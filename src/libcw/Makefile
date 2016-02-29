@@ -26,6 +26,7 @@ SOURCES		= char_type.c \
 		source_file.c \
 		string.c \
 		string_concat.c \
+		string_copy.c \
 		string_equals.c \
 		string_find_char.c \
 		string_find.c \
