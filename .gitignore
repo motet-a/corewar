@@ -1,4 +1,6 @@
 *.a
 *.o
-test/test
 .DS_Store
+
+test
+asm
