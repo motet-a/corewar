@@ -27,7 +27,7 @@ export END		= "\033[0m"
 all:
 	@$(MAKE) -C src/ $@
 
-test: all
+test:
 	@$(MAKE) -C src/ build_test
 
 clean:

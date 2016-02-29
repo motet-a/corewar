@@ -20,31 +20,36 @@ echo_error	= $(ECHO) $(RED) $(1) "[ERROR]" $(END) "\n"
 
 all: build_asm build_vm
 
-build_asm: build_libcw
-	@$(MAKE) -C asm/ all && \
-		$(call echo_ok,"asm") || \
-		$(call echo_error,"asm")
-
 build_libcw:
 	@$(MAKE) -C libcw/ all && \
 		$(call echo_ok,"libcw.a") || \
 		$(call echo_error,"libcw.a")
 
-build_test:
+build_asm: build_libcw
+	@$(MAKE) -C asm/ all && \
+		$(call echo_ok,"asm") || \
+		$(call echo_error,"asm")
+
+build_vm: build_libcw
+	@$(MAKE) -C vm/ all && \
+		$(call echo_ok,"vm") || \
+		$(call echo_error,"vm")
+
+build_test: build_asm build_vm
 	@$(MAKE) -C test/ all && \
 		$(call echo_ok,"test") || \
 		$(call echo_error,"test")
 
-build_vm:
-
 clean:
 	@$(MAKE) -C libcw/ $@
 	@$(MAKE) -C asm/ $@
+	@$(MAKE) -C vm/ $@
 	@$(MAKE) -C test/ $@
 
 fclean:
 	@$(MAKE) -C libcw/ $@
 	@$(MAKE) -C asm/ $@
+	@$(MAKE) -C vm/ $@
 	@$(MAKE) -C test/ $@
 
 re: fclean all
