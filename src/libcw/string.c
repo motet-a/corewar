@@ -35,10 +35,8 @@ int             string_get_length(const char *string)
 
 char            *string_duplicate(const char *source)
 {
-  int	i;
   char	*dest;
 
-  i = 0;
   if ((dest = malloc(string_get_length(source) + 1)) == NULL)
     return (NULL);
   return (string_copy(dest, source));
@@ -46,10 +44,8 @@ char            *string_duplicate(const char *source)
 
 char            *string_duplicate_n(const char *source, int n)
 {
-  int	i;
   char	*dest;
 
-  i = 0;
   if ((dest = malloc(n + 1)) == NULL)
     return (NULL);
   return (string_copy_n(dest, source, n));
