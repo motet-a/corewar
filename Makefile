@@ -16,34 +16,25 @@ export CFLAGS		= -W -Wall -Wextra -std=c89 -g
 
 export LIBCW_NAME	= libcw.a
 
-ECHO			= /bin/echo -e
+export ECHO		= /bin/echo -e
 
-RED			= "\033[0;31m"
-GREEN			= "\033[0;32m"
-END			= "\033[0m"
+#export MAKE		+= --no-print-directory
 
-LIBCW_PATH		= libcw/$(LIBCW_NAME)
+export RED		= "\033[0;31m"
+export GREEN		= "\033[0;32m"
+export END		= "\033[0m"
 
-
-all: $(LIBCW_PATH)
-
-$(LIBCW_PATH):
-	@$(MAKE) -C libcw/ all && \
-	$(ECHO) $(GREEN) "libcw [OK]" $(END) || \
-	$(ECHO) $(RED) "libcw [ERROR]" $(END)
+all:
+	@$(MAKE) -C src/ $@
 
 test: all
-	@$(MAKE) -C test/ all && \
-	$(ECHO) $(GREEN) "unit tests [OK]" $(END) || \
-	$(ECHO) $(RED) "unit tests [ERROR]" $(END)
+	@$(MAKE) -C src/ build_test
 
 clean:
-	$(MAKE) -C test/ clean
-	$(MAKE) -C libcw/ clean
+	@$(MAKE) -C src/ $@
 
-fclean: clean
-	$(MAKE) -C test/ fclean
-	$(MAKE) -C libcw/ fclean
+fclean:
+	@$(MAKE) -C src/ $@
 
 re: fclean all
 
