@@ -24,6 +24,7 @@ typedef struct          s_cor_file_header
 /*
 ** Returns NULL on success
 ** Returns a string describing the issue on error
+** TODO
 */
 const char      *cor_file_header_init(t_cor_file_header *self,
                                       const char *name,
@@ -36,6 +37,7 @@ void            cor_file_header_free(t_cor_file_header *self);
 **
 ** Returns NULL on success
 ** Returns a string describing the issue on error
+** TODO
 */
 const char      *cor_file_header_write(const t_cor_file_header *self,
                                        int output_file);
@@ -45,32 +47,38 @@ const char      *cor_file_header_write(const t_cor_file_header *self,
 **
 ** Returns NULL on success
 ** Returns a string describing the issue on error
+** TODO
 */
 const char      *cor_file_header_read(t_cor_file_header *self,
                                       int input_file);
 
 /*
 ** Prints the header in a human-readable format for debugging purposes.
+** TODO
 */
 void            cor_file_header_print(const t_cor_file_header *self);
 
 /*
 ** Returns 0 on success and -1 on error.
+** TODO
 */
 int             cor_file_read_int_16(int input_file, int *result);
 
 /*
 ** Returns 0 on success and -1 on error.
+** TODO
 */
 int             cor_file_read_int_32(int input_file, long *result);
 
 /*
 ** Returns 0 on success and -1 on error.
+** TODO
 */
 int             cor_file_write_int_16(int input_file, int n);
 
 /*
 ** Returns 0 on success and -1 on error.
+** TODO
 */
 int             cor_file_write_int_32(int input_file, long n);
 
