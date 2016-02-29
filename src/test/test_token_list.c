@@ -10,7 +10,18 @@
 
 #include <stdlib.h>
 #include "../asm/token.h"
+#include "../libcw/string.h"
 #include "test.h"
+
+static void     test_token_type_to_string(void)
+{
+  ASSERT(string_equals("identifier",
+                       token_type_to_string(TOKEN_TYPE_IDENTIFIER)));
+  ASSERT(string_equals("comment",
+                       token_type_to_string(TOKEN_TYPE_COMMENT)));
+  ASSERT(string_equals("percent",
+                       token_type_to_string(TOKEN_TYPE_PERCENT)));
+}
 
 static void     init_dummy_position(t_position *position)
 {
@@ -35,4 +46,5 @@ static void     test_token(void)
 void    test_suite_token_list(void)
 {
   test_token();
+  test_token_type_to_string();
 }

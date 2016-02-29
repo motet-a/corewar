@@ -16,7 +16,7 @@ CFLAGS		+=
 
 LDFLAGS		= -L../libcw -lcw -L. -lasm
 
-SOURCES		= token.c token_list.c
+SOURCES		= token.c token_list.c token_type.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 

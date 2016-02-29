@@ -16,33 +16,32 @@ void		string_concat_char(char *dest, char source)
   size_t	dest_len;
 
   dest_len = string_get_length(dest);
-  dest[dest_len + 1] = source;
+  dest[dest_len] = source;
+  dest[dest_len + 1] = '\0';
 }
 
 void		string_concat(char *dest, const char *source)
 {
-  size_t	dest_len;
-  int		i;
-
-  dest_len = string_get_length(dest);
-  i = 0;
-  while (source[i] != '\0')
+  dest += string_get_length(dest);
+  while (*source != '\0')
     {
-      dest[dest_len + i] = source[i];
-      i++;
+      *dest = *source;
+      dest++;
+      source++;
     }
+  *dest = '\0';
 }
 
 void		string_concat_n(char *dest, const char *source, int n)
 {
-  size_t	dest_len;
   int		i;
 
-  dest_len = string_get_length(dest);
+  dest += string_get_length(dest);
   i = 0;
   while (source[i] != '\0' && i < n)
     {
-      dest[dest_len + i] = source[i];
+      dest[i] = source[i];
       i++;
     }
+  dest[i] = '\0';
 }

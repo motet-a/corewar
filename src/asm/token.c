@@ -58,6 +58,14 @@ void            token_delete(t_token *token)
   free(token);
 }
 
+char            *token_to_string(const t_token *token)
+{
+  char          buffer[200];
+
+  string_concat(buffer, token_type_to_string(token->type));
+  return (string_duplicate(buffer));
+}
+
 void            token_print(const t_token *token, int file)
 {
   print_string_file("type: ", file);

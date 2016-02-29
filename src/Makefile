@@ -18,24 +18,24 @@ echo_ok		= $(ECHO) $(GREEN) $(1) "[OK]" $(END) "\n"
 echo_error	= $(ECHO) $(RED) $(1) "[ERROR]" $(END) "\n"
 
 
-all: build_asm build_vm
+all: ../asm ../corewar
 
-build_libcw:
+libcw/libcw.a:
 	@$(MAKE) -C libcw/ all && \
 		$(call echo_ok,"libcw.a") || \
 		$(call echo_error,"libcw.a")
 
-build_asm: build_libcw
+../asm: libcw/libcw.a
 	@$(MAKE) -C asm/ all && \
 		$(call echo_ok,"asm") || \
 		$(call echo_error,"asm")
 
-build_vm: build_libcw
+../corewar: libcw/libcw.a
 	@$(MAKE) -C vm/ all && \
 		$(call echo_ok,"vm") || \
 		$(call echo_error,"vm")
 
-build_test: build_asm build_vm
+test: ../asm ../corewar libcw/libcw.a
 	@$(MAKE) -C test/ all && \
 		$(call echo_ok,"test") || \
 		$(call echo_error,"test")

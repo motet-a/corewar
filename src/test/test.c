@@ -29,15 +29,21 @@ void            assert_impl(int a, const char *position)
   g_test_stats.total_test_count++;
 }
 
+static void     run_suites(void)
+{
+  test_suite_memory();
+  test_suite_parse_int();
+  test_suite_string_concat();
+  test_suite_string_find();
+  test_suite_string_find_char();
+  test_suite_token_list();
+}
+
 int             main()
 {
   g_test_stats.failed_test_count = 0;
   g_test_stats.total_test_count = 0;
-  test_suite_memory();
-  test_suite_parse_int();
-  test_suite_string_find();
-  test_suite_string_find_char();
-  test_suite_token_list();
+  run_suites();
   print_int(g_test_stats.total_test_count);
   print_string(" tests, ");
   print_int(g_test_stats.failed_test_count);
