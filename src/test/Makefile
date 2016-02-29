@@ -8,7 +8,7 @@
 ## Last update Tue Feb 23 00:03:21 2016 antoine
 ##
 
-NAME		= test
+NAME		= ../../test
 
 CFLAGS		+=
 
