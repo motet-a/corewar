@@ -33,20 +33,6 @@ int             string_get_length(const char *string)
   return (i);
 }
 
-char            *string_copy(char *dest, const char *source)
-{
-  int	i;
-
-  i = 0;
-  while (source[i])
-    {
-      dest[i] = source[i];
-      i++;
-    }
-  dest[i] = 0;
-  return (dest);
- }
-
 char            *string_duplicate(const char *source)
 {
   int	i;
@@ -56,20 +42,6 @@ char            *string_duplicate(const char *source)
   if ((dest = malloc(string_get_length(source) + 1)) == NULL)
     return (NULL);
   return (string_copy(dest, source));
-}
-
-char            *string_copy_n(char *dest, const char *source, int n)
-{
-  int	i;
-
-  i = 0;
-  while (i != n)
-    {
-      dest[i] = source[i];
-      i++;
-    }
-  dest[i] = 0;
-  return (dest);
 }
 
 char            *string_duplicate_n(const char *source, int n)

@@ -18,3 +18,8 @@ machine source files are in the `vm` directory.
 
 The `libcw` directory contains shared stuff between the assembler and
 the VM.
+
+# Delivering
+
+In the Makefile, don't forget to remove the `-g` compiler option, and
+enable the `-D NDEBUG` option to disable the `assert` macro from `assert.h`.

@@ -14,23 +14,26 @@ LDFLAGS		= -L../libcw -lcw
 
 OBJECTS		= $(SOURCES:.c=.o)
 
+echo_ok		= $(ECHO) $(GREEN) $(1) "[OK]" $(END) "\n"
+echo_error	= $(ECHO) $(RED) $(1) "[ERROR]" $(END) "\n"
+
 
 all: build_asm build_vm
 
 build_asm: build_libcw
 	@$(MAKE) -C asm/ all && \
-		$(ECHO) $(GREEN) "asm [OK]" $(END) || \
-		$(ECHO) $(RED) "asm [ERROR]" $(END)
+		$(call echo_ok,"asm") || \
+		$(call echo_error,"asm")
 
 build_libcw:
 	@$(MAKE) -C libcw/ all && \
-		$(ECHO) $(GREEN) "libcw [OK]" $(END) || \
-		$(ECHO) $(RED) "libcw [ERROR]" $(END)
+		$(call echo_ok,"libcw.a") || \
+		$(call echo_error,"libcw.a")
 
 build_test:
 	@$(MAKE) -C test/ all && \
-		$(ECHO) $(GREEN) "test [OK]" $(END) || \
-		$(ECHO) $(RED) "test [ERROR]" $(END)
+		$(call echo_ok,"test") || \
+		$(call echo_error,"test")
 
 build_vm:
 

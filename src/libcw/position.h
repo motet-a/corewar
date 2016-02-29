@@ -17,11 +17,19 @@ typedef struct  s_source_file
   char          *content;
 }               t_source_file;
 
-/**
- * Returns 0 on success, -1 on open() error, -2 on read() error.
- */
+/*
+** Returns 0 on success, -1 on open() error, -2 on read() error.
+*/
 int             source_file_read(t_source_file *file,
                                  const char *file_name);
+
+/*
+** Creates a new unnamed file.
+** Its name will be "<unknown file>".
+*/
+void            source_file_init_unnamed(t_source_file *file,
+                                         const char *content);
+
 void            source_file_free(t_source_file *file);
 
 /*
@@ -43,6 +51,12 @@ typedef struct  s_position
   int           line;
   int           column;
 }               t_position;
+
+/*
+** Initialize a new position.
+** Character index 0, first line, first column.
+*/
+void            position_init(t_position *position);
 
 void            position_print(int output_file_descriptor);
 

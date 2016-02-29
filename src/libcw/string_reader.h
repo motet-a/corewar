@@ -19,6 +19,7 @@ typedef struct  s_string_reader
   t_position    *position;
 }               t_string_reader;
 
+char            string_reader_init(t_source_file *source_file);
 char            string_reader_next(t_string_reader *reader);
 void            string_reader_skip_chars(t_string_reader *reader,
                                          const char *chars_to_skip);
