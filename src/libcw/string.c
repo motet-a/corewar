@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.eu>
 **
 ** Started on  Thu Feb 25 16:14:18 2016 Valentin Pichard
-** Last update Mon Feb 29 15:06:13 2016 Valentin Pichard
+** Last update Mon Feb 29 16:56:34 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -55,13 +55,7 @@ char            *string_duplicate(const char *source)
   i = 0;
   if ((dest = malloc(string_get_length(source) + 1)) == NULL)
     return (NULL);
-  while (source[i])
-    {
-      dest[i] = source[i];
-      i++;
-    }
-  dest[i] = 0;
-  return (dest);
+  return (string_copy(dest, source));
 }
 
 char            *string_copy_n(char *dest, const char *source, int n)
@@ -86,11 +80,5 @@ char            *string_duplicate_n(const char *source, int n)
   i = 0;
   if ((dest = malloc(n + 1)) == NULL)
     return (NULL);
-  while (i != n)
-    {
-      dest[i] = source[i];
-      i++;
-    }
-  dest[i] = 0;
-  return (dest);
+  return (string_copy_n(dest, source, n));
 }
