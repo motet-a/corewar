@@ -12,13 +12,15 @@ NAME		= ../../test
 
 CFLAGS		+=
 
-LDFLAGS		= -L../libcw -lcw
+LDFLAGS		= -L../libcw -lcw \
+		  -L../asm -lasm
 
 SOURCES		= test.c \
 		test_memory.c \
 		test_parse_int.c \
 		test_string_find.c \
-		test_string_find_char.c
+		test_string_find_char.c \
+		test_token_list.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 

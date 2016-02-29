@@ -10,25 +10,37 @@
 
 NAME		= ../../asm
 
+LIBASM		= libasm.a
+
 CFLAGS		+=
 
-LDFLAGS		= -L../libcw -lcw
+LDFLAGS		= -L../libcw -lcw -L. -lasm
 
-SOURCES		= main.c token.c token_list.c
+SOURCES		= token.c token_list.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
+$(NAME): $(LIBASM) main.o
+	$(CC) -o $(NAME) main.o $(LDFLAGS)
+
+$(LIBASM): $(OBJECTS)
+	@echo "ar"
+	@ar rc $(LIBASM) $(OBJECTS)
+	@echo "ranlib"
+	@ranlib $(LIBASM)
 
 $(OBJECTS): $(SOURCES)
 	$(CC) -c $(SOURCES) $(CFLAGS)
 
+main.o: main.c
+	$(CC) -c main.c $(CFLAGS)
+
 clean:
-	@$(RM) $(OBJECTS)
+	@$(RM) $(OBJECTS) main.o
+	@$(RM) $(LIBASM)
 
 fclean: clean
 	@$(RM) $(NAME)

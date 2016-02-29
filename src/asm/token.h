@@ -36,7 +36,7 @@ typedef struct  s_token
   t_position    position;
   t_token_type  type;
   char          *string_value;
-  long          int_value;
+  long          integer_value;
 }               t_token;
 
 /*
@@ -47,7 +47,7 @@ typedef struct  s_token
 ** Returns NULL on error.
 */
 t_token         *token_new(t_token_type type,
-                           t_position position);
+                           const t_position *position);
 
 /*
 ** Creates a token of type TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_STRING,
@@ -57,7 +57,7 @@ t_token         *token_new(t_token_type type,
 ** Returns NULL on error.
 */
 t_token         *token_new_string(t_token_type type,
-                                  t_position position,
+                                  const t_position *position,
                                   const char *string);
 
 void            token_delete(t_token *token);

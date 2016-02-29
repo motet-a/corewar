@@ -56,7 +56,8 @@ typedef struct  s_position
 ** Initialize a new position.
 ** Character index 0, first line, first column.
 */
-void            position_init(t_position *position);
+void            position_init(t_position *position,
+                              t_source_file *source_file);
 
 void            position_print(int output_file_descriptor);
 

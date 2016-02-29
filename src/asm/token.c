@@ -22,7 +22,7 @@ static int      has_string_value(t_token_type type)
 }
 
 t_token         *token_new(t_token_type type,
-                           t_position position)
+                           const t_position *position)
 {
   t_token       *token;
 
@@ -30,12 +30,12 @@ t_token         *token_new(t_token_type type,
   if (!token)
     return (NULL);
   token->type = type;
-  token->position = position;
+  token->position = *position;
   return (token);
 }
 
 t_token         *token_new_string(t_token_type type,
-                                  t_position position,
+                                  const t_position *position,
                                   const char *string)
 {
   t_token       *token;

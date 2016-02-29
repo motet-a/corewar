@@ -37,6 +37,7 @@ int             main()
   test_suite_parse_int();
   test_suite_string_find();
   test_suite_string_find_char();
+  test_suite_token_list();
   print_int(g_test_stats.total_test_count);
   print_string(" tests, ");
   print_int(g_test_stats.failed_test_count);
