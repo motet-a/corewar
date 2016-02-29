@@ -14,7 +14,7 @@ CFLAGS		+=
 
 LDFLAGS		= -L../libcw -lcw
 
-SOURCES		= main.c
+SOURCES		= main.c token.c token_list.c
 
 OBJECTS		= $(SOURCES:.c=.o)
 
@@ -28,10 +28,10 @@ $(OBJECTS): $(SOURCES)
 	$(CC) -c $(SOURCES) $(CFLAGS)
 
 clean:
-	$(RM) $(OBJECTS)
+	@$(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

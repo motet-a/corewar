@@ -32,10 +32,10 @@ $(OBJECTS): $(SOURCES)
 	$(CC) -c $(SOURCES) $(CFLAGS)
 
 clean:
-	$(RM) $(OBJECTS)
+	@$(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

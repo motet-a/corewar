@@ -18,10 +18,10 @@ export LIBCW_NAME	= libcw.a
 
 export ECHO		= /bin/echo -e
 
-#export MAKE		+= --no-print-directory
+export MAKE		+= --no-print-directory
 
-export RED		= "\033[0;31m"
-export GREEN		= "\033[0;32m"
+export RED		= "\033[0;91m"
+export GREEN		= "\033[0;92m"
 export END		= "\033[0m"
 
 all:

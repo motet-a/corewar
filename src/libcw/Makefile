@@ -37,17 +37,19 @@ OBJECTS		= $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+	@echo "ar"
+	@ar rc $(NAME) $(OBJECTS)
+	@echo "ranlib"
+	@ranlib $(NAME)
 
 $(OBJECTS): $(SOURCES)
 	$(CC) -c $(SOURCES) $(CFLAGS)
 
 clean:
-	$(RM) $(OBJECTS)
+	@$(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
