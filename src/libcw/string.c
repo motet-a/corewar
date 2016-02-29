@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.eu>
 **
 ** Started on  Thu Feb 25 16:14:18 2016 Valentin Pichard
-** Last update Fri Feb 26 16:36:40 2016 Jamy Bailly
+** Last update Mon Feb 29 15:06:13 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -33,9 +33,20 @@ int             string_get_length(const char *string)
   return (i);
 }
 
-/*
-** TODO: Rewrite this using string_copy()
-*/
+char            *string_copy(char *dest, const char *source)
+{
+  int	i;
+
+  i = 0;
+  while (source[i])
+    {
+      dest[i] = source[i];
+      i++;
+    }
+  dest[i] = 0;
+  return (dest);
+ }
+
 char            *string_duplicate(const char *source)
 {
   int	i;
@@ -53,9 +64,20 @@ char            *string_duplicate(const char *source)
   return (dest);
 }
 
-/*
-** TODO: Rewrite this using string_copy_n()
-*/
+char            *string_copy_n(char *dest, const char *source, int n)
+{
+  int	i;
+
+  i = 0;
+  while (i != n)
+    {
+      dest[i] = source[i];
+      i++;
+    }
+  dest[i] = 0;
+  return (dest);
+}
+
 char            *string_duplicate_n(const char *source, int n)
 {
   int	i;

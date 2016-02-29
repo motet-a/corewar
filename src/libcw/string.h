@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Fri Feb 26 17:52:52 2016 antoine
-** Last update Fri Feb 26 17:52:52 2016 antoine
+** Last update Mon Feb 29 15:04:46 2016 Valentin Pichard
 */
 
 #ifndef STRING_H
@@ -33,8 +33,8 @@ void		string_concat_n(char *dest, const char *source, int n);
 */
 void            string_concat_char(char *dest, char source);
 
-void            string_copy(char *dest, const char *source);
-void            string_copy_n(char *dest, const char *source, int n);
+char            *string_copy(char *dest, const char *source);
+char            *string_copy_n(char *dest, const char *source, int n);
 
 /*
 ** Like strdup().
