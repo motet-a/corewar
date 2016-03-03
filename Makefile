@@ -8,33 +8,86 @@
 ## Last update Mon Feb 22 23:56:42 2016 antoine
 ##
 
-export CC		= cc
+include libcw.mk
 
-export RM		= rm -f
+include asm.mk
+include vm.mk
+include test.mk
 
-export CFLAGS		= -W -Wall -Wextra -std=c89 -g # -D NDEBUG
+DELIVERY	= false
 
-export LIBCW_NAME	= libcw.a
+CC		= cc
 
-export ECHO		= /bin/echo -e
+RM		= rm -f
 
-export MAKE		+= --no-print-directory
+CFLAGS		= -W -Wall -Wextra -std=c89
 
-export RED		= "\033[0;91m"
-export GREEN		= "\033[0;92m"
-export END		= "\033[0m"
+ifeq ($(DELIVERY),true)
+	CFLAGS	+= -D NDEBUG
+else
+	CFLAGS	+= -g
+endif
 
-all:
-	@$(MAKE) -C src/ $@
+LDFLAGS		=
 
-test:
-	@$(MAKE) -C src/ $@
+LIBCW_NAME	= libcw.a
+LIBCW		= src/libcw/$(LIBCW_NAME)
+
+LIBASM_NAME	= libasm.a
+LIBASM		= src/asm/$(LIBASM_NAME)
+
+LIBVM_NAME	= libvm.a
+LIBVM		= src/vm/$(LIBVM_NAME)
+
+ECHO		= /bin/echo -e
+
+RED		= "\033[0;91m"
+GREEN		= "\033[0;92m"
+END		= "\033[0m"
+
+echo_error	= $(ECHO) $(RED) $(1) "[ERROR]" $(END)
+
+
+all: test asm vm
+
+asm: src/asm/main.o $(LIBASM) $(LIBCW)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+vm: src/vm/main.o $(LIBVM) $(LIBCW)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+test: $(TEST_OBJECTS) $(LIBASM) $(LIBCW)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+$(LIBCW): $(LIBCW_OBJECTS)
+	ar rc $@ $^
+	ranlib $@
+
+$(LIBASM): $(ASM_OBJECTS)
+	ar rc $@ $^
+	ranlib $@
+
+$(LIBVM): $(VM_OBJECTS)
+	ar rc $@ $^
+	ranlib $@
+
+%.o: %.c
+	@$(CC) -c $< -o $@ $(CFLAGS) && \
+		$(ECHO) CC $< || \
+		$(call echo_error,$<)
 
 clean:
-	@$(MAKE) -C src/ $@
+	$(RM) $(LIBCW_OBJECTS) src/libcw/libcw.a
+	$(RM) $(ASM_OBJECTS) src/asm/libasm.a src/asm/main.o
+	$(RM) $(VM_OBJECTS) src/vm/libvm.a src/vm/main.o
+	$(RM) $(TEST_OBJECTS)
+	$(RM) $(LIBASM) $(LIBCW) $(LIBVM)
 
-fclean:
-	@$(MAKE) -C src/ $@
+fclean: clean
+	$(RM) test
+	$(RM) asm
+	$(RM) vm
+	$(RM) corewar
 
 re: fclean all
 

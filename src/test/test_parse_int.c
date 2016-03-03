@@ -86,8 +86,8 @@ static void     test_parse_int(void)
   ASSERT(n == -123);
   ASSERT(parse_int("--123", &n) == 0);
   ASSERT(n == 123);
-  ASSERT(parse_int("--123", &n) == 0);
-  ASSERT(n == 123);
+  ASSERT(parse_int("---123", &n) == 0);
+  ASSERT(n == -123);
 }
 
 void            test_suite_parse_int(void)
