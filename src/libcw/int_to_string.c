@@ -45,3 +45,10 @@ int             int_to_string_base(long integer,
     }
   return (uint_to_string_base(integer, buffer, max_size, base));
 }
+
+int             int_to_string(long integer,
+                              char *buffer,
+                              size_t max_size)
+{
+  return (int_to_string_base(integer, buffer, max_size, 10));
+}

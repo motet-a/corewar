@@ -29,7 +29,7 @@ char            *string_copy_n(char *dest, const char *source, int n)
   int	i;
 
   i = 0;
-  while (i != n)
+  while (source[i] && i < n)
     {
       dest[i] = source[i];
       i++;
