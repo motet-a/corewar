@@ -31,7 +31,6 @@ int             uint_to_string_base(unsigned long integer,
   return (0);
 }
 
-
 int             int_to_string_base(long integer,
                                    char *buffer,
                                    size_t max_size,
