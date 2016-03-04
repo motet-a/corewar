@@ -16,6 +16,9 @@ LDFLAGS		= -L.. -lcw
 
 SOURCES		= char_type.c \
 		char_type_convert.c \
+		int_to_malloced_string.c \
+		int_to_string.c \
+		int_to_string_get_length.c \
 		memory.c \
 		parse_int.c \
 		parse_and_read_int.c \

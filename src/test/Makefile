@@ -16,6 +16,7 @@ LDFLAGS		= -L../libcw -lcw \
 		  -L../asm -lasm
 
 SOURCES		= test.c \
+		test_int_to_string.c \
 		test_memory.c \
 		test_parse_int.c \
 		test_string_concat.c \
