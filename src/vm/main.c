@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Tue Mar  8 23:50:07 2016 Valentin Pichard
+** Last update Wed Mar  9 00:30:01 2016 Valentin Pichard
 */
 
 #include "../libcw/print.h"
@@ -13,6 +13,7 @@
 
 int     main(int argc, char **argv)
 {
-  print_usage(argv[0]);
+  if ((argc % 3) - 2 != 0)
+    print_usage(argv[0]);
   return (0);
 }
