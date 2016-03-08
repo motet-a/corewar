@@ -8,7 +8,9 @@
 ## Last update Thu Mar  3 09:59:21 2016 antoine
 ##
 
-ASM_SOURCES_NAMES	= token.c \
+ASM_SOURCES_NAMES	= \
+			syntax_error.c \
+			token.c \
 			token_has_value.c \
 			token_list.c \
 			token_to_string.c \
