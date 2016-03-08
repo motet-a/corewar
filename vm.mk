@@ -8,8 +8,8 @@
 ## Last update Tue Mar  8 23:58:44 2016 Valentin Pichard
 ##
 
-VM_SOURCES_NAMES	= main.c \
-										usage.c
+VM_SOURCES_NAMES	= \
+			usage.c
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			src/vm/$(file))
