@@ -27,11 +27,10 @@ int     char_is_lowercase(char c)
 
 int     char_is_letter(char c)
 {
-  return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+  return (char_is_lowercase(c) || char_is_uppercase(c));
 }
 
 int     char_is_alphanumeric(char c)
 {
-  return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-	  || (c >= '0' && c <= '9'));
+  return (char_is_letter(c) || char_is_digit(c));
 }
