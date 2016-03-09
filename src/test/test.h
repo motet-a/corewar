@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Wed Feb 24 20:01:52 2016 antoine
-** Last update Wed Feb 24 20:01:52 2016 antoine
+** Last update Wed Mar  9 11:14:01 2016 Valentin Pichard
 */
 
 #ifndef TEST_H
@@ -34,6 +34,7 @@ void    test_suite_string_concat(void);
 void    test_suite_string_find_char(void);
 void    test_suite_string_find(void);
 void    test_suite_token_list(void);
+void    test_string_type(void);
 void    test_suite_int_to_string(void);
 
 #endif /* TEST_H */
