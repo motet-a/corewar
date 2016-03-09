@@ -8,32 +8,37 @@
 ** Last update Wed Mar  9 01:30:11 2016 Valentin Pichard
 */
 
+#include <stddef.h>
 #include "string_type.h"
 #include "char_type.h"
 #include "string.h"
 
-char    *string_to_lowercase(const char *str)
+char            *string_to_lowercase(const char *source)
 {
-  char  *str_copy;
+  char          *copy;
+  size_t        i;
 
-  str_copy = string_duplicate(str);
-  while (*str_copy)
+  copy = string_duplicate(source);
+  i = 0;
+  while (source[i])
     {
-      char_to_lowercase(*str_copy);
-      str_copy++;
+      copy[i] = char_to_lowercase(source[i]);
+      i++;
     }
-  return (str_copy);
+  return (copy);
 }
 
-char    *string_to_uppercase(const char *str)
+char    *string_to_uppercase(const char *source)
 {
-  char  *str_copy;
+  char          *copy;
+  size_t        i;
 
-  str_copy = string_duplicate(str);
-  while (*str_copy)
+  copy = string_duplicate(source);
+  i = 0;
+  while (source[i])
     {
-      char_to_uppercase(*str_copy);
-      str_copy++;
+      copy[i] = char_to_uppercase(source[i]);
+      i++;
     }
-  return (str_copy);
+  return (copy);
 }
