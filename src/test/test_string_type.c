@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Wed Mar  9 11:11:00 2016 Valentin Pichard
-** Last update Wed Mar  9 11:23:05 2016 Valentin Pichard
+** Last update Wed Mar  9 19:15:19 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -58,10 +58,21 @@ static void     test_string_is_alphanumeric(void)
   ASSERT(string_is_alphanumeric("") == 0);
 }
 
+static void     test_string_is_letter(void)
+{
+  ASSERT(string_is_letter("aaaaa") == 1);
+  ASSERT(string_is_letter("a8aaaB") == 0);
+  ASSERT(string_is_letter(".zbehczi") == 0);
+  ASSERT(string_is_letter("a") == 1);
+  ASSERT(string_is_letter("") == 0);
+  ASSERT(string_is_letter("7") == 0);
+}
+
 void            test_suite_string_type(void)
 {
   test_string_is_digit();
   test_string_is_uppercase();
   test_string_is_lowercase();
   test_string_is_alphanumeric();
+  test_string_is_letter();
 }
