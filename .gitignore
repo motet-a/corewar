@@ -2,6 +2,10 @@
 *.o
 .DS_Store
 
+*~
+#*#
+*.swp
+
 /test
 /asm
 /corewar
