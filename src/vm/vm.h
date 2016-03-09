@@ -11,18 +11,19 @@
 #ifndef VM_H
 # define VM_H
 
+# include "../libcw/instr.h"
+
 # define CYCLE_TO_DIE	1536
 # define CYCLE_DELTA	4
 # define NBR_LIVE	2048
-# define REG_NUMBER	16
 
 void		print_usage(const char *filename);
 
-typedef struct		s_program
+typedef struct		s_vm
 {
 	unsigned	pc;
 	unsigned	carry;
-	unsigned	*registers[REG_NUMBER];
-}			t_program;
+	unsigned	*registers[VM_REGISTER_COUNT];
+}			t_vm;
 
 #endif /* VM_H */
