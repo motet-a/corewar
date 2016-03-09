@@ -38,6 +38,7 @@ static void     run_suites(void)
   test_suite_string_find_char();
   test_suite_int_to_string();
   test_suite_token_list();
+  test_suite_string_type();
 }
 
 int             main()

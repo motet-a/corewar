@@ -20,6 +20,7 @@ static void     test_string_is_uppercase(void)
   ASSERT(string_is_uppercase("aaaaa9") == 0);
   ASSERT(string_is_uppercase("aaaaB") == 0);
   ASSERT(string_is_uppercase("A") == 1);
+  ASSERT(string_is_uppercase("") == 0);
 }
 
 static void     test_string_is_lowercase(void)
@@ -30,6 +31,7 @@ static void     test_string_is_lowercase(void)
   ASSERT(string_is_uppercase("aaaaa9") == 0);
   ASSERT(string_is_uppercase("aaaaB") == 0);
   ASSERT(string_is_uppercase("a") == 1);
+  ASSERT(string_is_uppercase("") == 0);
 }
 
 static void     test_string_is_digit(void)
@@ -38,20 +40,28 @@ static void     test_string_is_digit(void)
   ASSERT(string_is_digit("aaaaa9") == 0);
   ASSERT(string_is_digit("567892") == 1);
   ASSERT(string_is_digit("8") == 1);
+  ASSERT(string_is_digit("") == 0);
 }
 
-static void     test_string_is_letter(void)
+static void     test_string_is_alphanumeric(void)
 {
   ASSERT(string_is_letter("A8aaa") == 0);
   ASSERT(string_is_letter("jzaHHUaha") == 1);
   ASSERT(string_is_letter("aoozko") == 1);
   ASSERT(string_is_letter("8ahha") == 0);
+  ASSERT(string_is_letter("") == 0);
+  ASSERT(string_is_alphanumeric("09") == 1);
+  ASSERT(string_is_alphanumeric("azAZ") == 1);
+  ASSERT(string_is_alphanumeric("09azAZ") == 1);
+  ASSERT(string_is_alphanumeric("./~`") == 0);
+  ASSERT(string_is_alphanumeric("09.azAZ") == 0);
+  ASSERT(string_is_alphanumeric("") == 0);
 }
 
-void            test_string_type(void)
+void            test_suite_string_type(void)
 {
   test_string_is_digit();
   test_string_is_uppercase();
   test_string_is_lowercase();
-  test_string_is_letter();
+  test_string_is_alphanumeric();
 }
