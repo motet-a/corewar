@@ -21,12 +21,11 @@ typedef struct          s_syntax_error
   char                  *message;
 }                       t_syntax_error;
 
-/* TODO */
 t_syntax_error          *syntax_error_new(const t_position *position,
                                           const char *message);
-/* TODO */
+
 void                    syntax_error_delete(t_syntax_error *syntax_error);
-/* TODO */
+
 void                    syntax_error_print(const t_syntax_error *error,
                                            int output_file);
 

@@ -17,6 +17,7 @@ LIBCW_SOURCES_NAMES = 	char_type.c \
 			parse_int.c \
 			parse_and_read_int.c \
 			parse_and_read_int_base.c \
+			position.c \
 			print_string.c \
 			print_int.c \
 			print_char.c \

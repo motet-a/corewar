@@ -59,6 +59,7 @@ typedef struct  s_position
 void            position_init(t_position *position,
                               t_source_file *source_file);
 
-void            position_print(int output_file_descriptor);
+void            position_print(const t_position *position,
+                               int output_file_descriptor);
 
 #endif /* POSITION_H */
