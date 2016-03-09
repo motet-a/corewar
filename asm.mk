@@ -9,6 +9,7 @@
 ##
 
 ASM_SOURCES_NAMES	= \
+			lexer.c \
 			syntax_error.c \
 			token.c \
 			token_has_value.c \

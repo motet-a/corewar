@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Thu Feb 25 20:45:17 2016 antoine
-** Last update Thu Feb 25 20:45:17 2016 antoine
+** Last update Wed Mar  9 01:33:17 2016 Valentin Pichard
 */
 
 #include "char_type.h"
@@ -23,4 +23,14 @@ int     char_is_uppercase(char c)
 int     char_is_lowercase(char c)
 {
   return (c >= 'a' && c <= 'z');
+}
+
+int     char_is_letter(char c)
+{
+  return (char_is_lowercase(c) || char_is_uppercase(c));
+}
+
+int     char_is_alphanumeric(char c)
+{
+  return (char_is_letter(c) || char_is_digit(c));
 }

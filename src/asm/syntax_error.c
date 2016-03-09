@@ -40,6 +40,8 @@ void                    syntax_error_delete(t_syntax_error *syntax_error)
 void                    syntax_error_print(const t_syntax_error *error,
                                            int output_file)
 {
+  position_print(&error->position, output_file);
+  print_string_file(": ", output_file);
   print_string_file(error->message, output_file);
   print_string_file("\n", output_file);
 }
