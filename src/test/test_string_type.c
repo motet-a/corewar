@@ -25,12 +25,12 @@ static void     test_string_is_uppercase(void)
 
 static void     test_string_is_lowercase(void)
 {
-  ASSERT(string_is_uppercase("aaaaa") == 1);
-  ASSERT(string_is_uppercase("aAaaa") == 0);
-  ASSERT(string_is_uppercase("ZERTYUIKB") == 0);
-  ASSERT(string_is_uppercase("aaaaa9") == 0);
-  ASSERT(string_is_uppercase("aaaaB") == 0);
-  ASSERT(string_is_uppercase("a") == 1);
+  ASSERT(string_is_lowercase("aaaaa") == 1);
+  ASSERT(string_is_lowercase("aAaaa") == 0);
+  ASSERT(string_is_lowercase("ZERTYUIKB") == 0);
+  ASSERT(string_is_lowercase("aaaaa9") == 0);
+  ASSERT(string_is_lowercase("aaaaB") == 0);
+  ASSERT(string_is_lowercase("a") == 1);
   ASSERT(string_is_uppercase("") == 0);
 }
 
