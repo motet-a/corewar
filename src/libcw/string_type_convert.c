@@ -14,8 +14,9 @@
 
 char    *string_to_lowercase(const char *str)
 {
-  char *str_copy = string_duplicate(str);
+  char  *str_copy;
 
+  str_copy = string_duplicate(str);
   while (*str_copy)
     {
       char_to_lowercase(*str_copy);
@@ -26,8 +27,9 @@ char    *string_to_lowercase(const char *str)
 
 char    *string_to_uppercase(const char *str)
 {
-  char *str_copy = string_duplicate(str);
+  char  *str_copy;
 
+  str_copy = string_duplicate(str);
   while (*str_copy)
     {
       char_to_uppercase(*str_copy);

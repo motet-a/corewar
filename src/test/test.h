@@ -35,6 +35,7 @@ void    test_suite_string_find_char(void);
 void    test_suite_string_find(void);
 void    test_suite_token_list(void);
 void    test_suite_string_type(void);
+void    test_suite_string_type_convert(void);
 void    test_suite_int_to_string(void);
 
 #endif /* TEST_H */
