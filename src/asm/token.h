@@ -20,7 +20,8 @@ typedef enum    e_token_type
   TOKEN_TYPE_STRING,
   TOKEN_TYPE_DIRECTIVE,
   TOKEN_TYPE_COMMENT,
-  TOKEN_TYPE_LABEL,
+  TOKEN_TYPE_LABEL_DEF,
+  TOKEN_TYPE_LABEL_REF,
   TOKEN_TYPE_COMMA,
   TOKEN_TYPE_PERCENT,
 }               t_token_type;
@@ -31,7 +32,7 @@ int             token_type_has_value(t_token_type type);
 
 /*
 ** string_value: For TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_STRING,
-** TOKEN_TYPE_DIRECTIVE or TOKEN_TYPE_LABEL.
+** TOKEN_TYPE_DIRECTIVE, TOKEN_TYPE_LABEL_DEF or TOKEN_TYPE_LABEL_REF.
 **
 ** int_value: For TOKEN_TYPE_INTEGER
 */

@@ -21,6 +21,7 @@ LIBCW_SOURCES_NAMES = 	char_type.c \
 			print_string.c \
 			print_int.c \
 			print_char.c \
+			position.c \
 			source_file.c \
 			string.c \
 			string_concat.c \

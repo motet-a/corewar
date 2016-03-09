@@ -31,12 +31,12 @@ void                    syntax_error_print(const t_syntax_error *error,
 
 typedef struct          s_lexer_result
 {
-  t_syntax_error        syntax_error;
+  t_syntax_error        *error;
+  t_token_list          *tokens;
 }                       t_lexer_result;
 
-/* TODO */
 t_lexer_result          lex_from_string(const char *string);
-/* TODO */
+
 t_lexer_result          lex(t_string_reader *string_reader);
 
 #endif /* LEXER_H */
