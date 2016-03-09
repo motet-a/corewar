@@ -25,24 +25,6 @@ static void             get_functions(t_lexer_function *functions)
   functions[0] = NULL;
 }
 
-static t_lexer_result   create_token_list_result(t_token_list *tokens)
-{
-  t_lexer_result        r;
-
-  r.tokens = tokens;
-  r.error = NULL;
-  return (r);
-}
-
-static t_lexer_result   create_error_lexer_result(t_syntax_error *error)
-{
-  t_lexer_result        r;
-
-  r.tokens = NULL;
-  r.error = error;
-  return (r);
-}
-
 t_result                lex_token_function(t_string_reader *reader,
                                            t_lexer_function function)
 {
@@ -85,6 +67,8 @@ t_lexer_result          lex(t_string_reader *reader)
       if (!has_more(reader))
         break;
       result = lex_token(reader);
+      if (result.error)
+        return (lexer_result_create_error(result.error));
     }
-  return (create_token_list_result(tokens));
+  return (lexer_result_create_tokens(tokens));
 }

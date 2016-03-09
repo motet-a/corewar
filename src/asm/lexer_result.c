@@ -11,6 +11,24 @@
 #include <stdlib.h>
 #include "lexer_private.h"
 
+static t_lexer_result   lexer_result_create_tokens(t_token_list *tokens)
+{
+  t_lexer_result        r;
+
+  r.tokens = tokens;
+  r.error = NULL;
+  return (r);
+}
+
+static t_lexer_result   lexer_result_create_error(t_syntax_error *error)
+{
+  t_lexer_result        r;
+
+  r.tokens = NULL;
+  r.error = error;
+  return (r);
+}
+
 static t_result create_error_result(const char *message,
                                     const t_position *position)
 {
