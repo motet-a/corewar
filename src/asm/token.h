@@ -15,7 +15,7 @@
 
 typedef enum    e_token_type
 {
-  TOKEN_TYPE_IDENTIFIER,
+  TOKEN_TYPE_INSTRUCTION,
   TOKEN_TYPE_INTEGER,
   TOKEN_TYPE_STRING,
   TOKEN_TYPE_DIRECTIVE,
@@ -24,6 +24,7 @@ typedef enum    e_token_type
   TOKEN_TYPE_LABEL_REF,
   TOKEN_TYPE_COMMA,
   TOKEN_TYPE_PERCENT,
+  TOKEN_TYPE_NEW_LINE,
 }               t_token_type;
 
 const char      *token_type_to_string(t_token_type type);
@@ -31,7 +32,7 @@ int             token_type_has_string_value(t_token_type type);
 int             token_type_has_value(t_token_type type);
 
 /*
-** string_value: For TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_STRING,
+** string_value: For TOKEN_TYPE_INSTRUCTION, TOKEN_TYPE_STRING,
 ** TOKEN_TYPE_DIRECTIVE, TOKEN_TYPE_LABEL_DEF or TOKEN_TYPE_LABEL_REF.
 **
 ** int_value: For TOKEN_TYPE_INTEGER
@@ -55,8 +56,8 @@ t_token         *token_new(t_token_type type,
                            const t_position *position);
 
 /*
-** Creates a token of type TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_STRING,
-** TOKEN_TYPE_DIRECTIVE or TOKEN_TYPE_LABEL.
+** Creates a token of type TOKEN_TYPE_INSTRUCTION, TOKEN_TYPE_STRING,
+** TOKEN_TYPE_DIRECTIVE, TOKEN_TYPE_LABEL_DEF or TOKEN_TYPE_LABEL_REF.
 **
 ** The returned token must be freed with token_delete().
 ** Returns NULL on error.

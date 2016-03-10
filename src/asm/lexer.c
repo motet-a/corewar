@@ -11,6 +11,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include "lexer_result.c"
+#include "lex_instruction.c"
 
 t_lexer_result          lex_from_string(const char *string)
 {
@@ -22,15 +23,17 @@ t_lexer_result          lex_from_string(const char *string)
 
 static void             get_functions(t_lexer_function *functions)
 {
+  functions[0] = &lex_instruction;
   functions[0] = NULL;
 }
 
-t_result                lex_token_function(t_string_reader *reader,
+static t_result         lex_token_function(t_string_reader *reader,
                                            t_lexer_function function)
 {
   t_position            begin;
   t_result              result;
 
+  assert(has_more(reader));
   begin = reader->position;
   result = function(reader);
   assert(begin.index == reader->position.index);
@@ -47,7 +50,7 @@ t_result                lex_token(t_string_reader *reader)
   function = functions[0];
   while (function)
     {
-      result = lex_token(reader);
+      result = lex_token_function(reader, function);
       if (result.error || result.token)
         return (result);
       function++;
