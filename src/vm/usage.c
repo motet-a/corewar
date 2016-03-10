@@ -15,6 +15,6 @@ void		print_usage(const char *filename)
 {
   print_string("Usage : ");
   print_string(filename);
-  print_string(" [-dump nbr_cycle] [[-n prog_number]"
-	       " [-a load_address] prog_name] ...");
+  print_string(" [-dump nbr_cycle] "
+               "[[-n prog_number] [-a load_address] prog_name] ...\n");
 }
