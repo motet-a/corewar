@@ -27,7 +27,7 @@ static void     test_token_type_to_string(void)
 
 static void     init_dummy_position(t_position *position)
 {
-  position->source_file = NULL;
+  position->file = NULL;
   position->index = 0;
   position->column = 1;
   position->line = 1;
@@ -80,4 +80,5 @@ void            test_suite_token_list(void)
   test_token();
   test_token_type_to_string();
   test_list();
+
 }

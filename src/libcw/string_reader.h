@@ -15,7 +15,7 @@
 
 typedef struct  s_string_reader
 {
-  t_source_file *source_file;
+  t_source_file *file;
   t_position    position;
 }               t_string_reader;
 
@@ -24,9 +24,8 @@ int             string_reader_init_from_string(t_string_reader *reader,
 int             string_reader_init(t_string_reader *reader,
                                    t_source_file *source_file);
 char            string_reader_next(t_string_reader *reader);
-void            string_reader_skip_chars(t_string_reader *reader,
-                                         const char *chars_to_skip);
-void            string_reader_skip_whitespaces(t_string_reader *reader);
+void            string_reader_skip(t_string_reader *reader,
+                                   const char *chars_to_skip);
 int             string_reader_has_more(const t_string_reader *reader);
 
 #endif /* STRING_READER_H */

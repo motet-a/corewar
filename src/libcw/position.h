@@ -46,7 +46,7 @@ char            *read_whole_file(int file_descriptor);
 */
 typedef struct  s_position
 {
-  t_source_file *source_file;
+  t_source_file *file;
   int           index;
   int           line;
   int           column;

@@ -34,12 +34,14 @@ void    assert_token_equals(const char *expected, const t_token *token);
 void    assert_tokens_equals(const char *expected,
                              const t_token_list *tokens);
 
+void    test_suite_token_list(void);
+void    test_suite_lexer(void);
+
 void    test_suite_memory(void);
 void    test_suite_parse_int(void);
 void    test_suite_string_concat(void);
 void    test_suite_string_find_char(void);
 void    test_suite_string_find(void);
-void    test_suite_token_list(void);
 void    test_suite_string_type(void);
 void    test_suite_string_type_convert(void);
 void    test_suite_int_to_string(void);

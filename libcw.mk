@@ -29,6 +29,7 @@ LIBCW_SOURCES_NAMES = 	char_type.c \
 			string_equals.c \
 			string_find_char.c \
 			string_find.c \
+			string_reader.c \
 			string_starts_with.c \
 			string_type.c \
 			string_type_convert.c

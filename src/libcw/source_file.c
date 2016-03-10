@@ -62,6 +62,13 @@ int             source_file_read(t_source_file *file,
   return (0);
 }
 
+void            source_file_init_unnamed(t_source_file *file,
+                                         const char *content)
+{
+  file->name = "<unknown file>";
+  file->content = string_duplicate(content);
+}
+
 void            source_file_free(t_source_file *file)
 {
   free(file->content);

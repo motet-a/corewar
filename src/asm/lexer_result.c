@@ -70,7 +70,7 @@ static t_result create_string_token_result(const t_position *begin,
   assert(token_type_has_string_value(type));
   length = (int)reader->position.index - (int)begin->index;
   assert(length > 0);
-  string = string_duplicate_n(reader->source_file->content, length);
+  string = string_duplicate_n(reader->file->content, length);
   token = token_new_string(type, begin, string);
   return (create_token_result_2(token));
 }
