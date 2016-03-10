@@ -17,6 +17,7 @@ TEST_SOURCES_NAMES	= test.c \
 			test_string_find_char.c \
 			test_string_type.c \
 			test_string_type_convert.c \
+			test_token.c \
 			test_token_list.c
 
 

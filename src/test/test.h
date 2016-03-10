@@ -11,6 +11,8 @@
 #ifndef TEST_H
 # define TEST_H
 
+# include "../asm/token.h"
+
 # define STRINGIFY_(s)          #s
 # define STRINGIFY(s)           STRINGIFY_(s)
 
@@ -27,6 +29,10 @@ typedef struct          s_test_stats
   int                   failed_test_count;
   int                   total_test_count;
 }                       t_test_stats;
+
+void    assert_token_equals(const char *expected, const t_token *token);
+void    assert_tokens_equals(const char *expected,
+                             const t_token_list *tokens);
 
 void    test_suite_memory(void);
 void    test_suite_parse_int(void);

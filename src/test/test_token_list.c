@@ -9,7 +9,6 @@
 */
 
 #include <stdlib.h>
-#include "../asm/token.h"
 #include "../libcw/string.h"
 #include "../libcw/print.h"
 #include "test.h"
@@ -34,26 +33,6 @@ static void     init_dummy_position(t_position *position)
   position->line = 1;
 }
 
-static void     assert_token_equals(const char *expected,
-                                    const t_token *token)
-{
-  char          *string;
-  int           r;
-
-  string = token_to_string(token);
-  r = string_equals(expected, string);
-  ASSERT(r);
-  if (!r)
-    {
-      print_string("Expected ");
-      print_string(expected);
-      print_string(", got ");
-      print_string(string);
-      print_string("\n");
-    }
-  free(string);
-}
-
 static void     test_token(void)
 {
   t_token       *token;
@@ -71,8 +50,34 @@ static void     test_token(void)
   token_delete(token);
 }
 
-void    test_suite_token_list(void)
+static void     test_list(void)
+{
+  t_token       *token;
+  t_token_list  *tokens;
+  t_position    position;
+
+  tokens = NULL;
+  init_dummy_position(&position);
+  token = token_new(TOKEN_TYPE_INTEGER, &position);
+  token->integer_value = 789;
+  token_list_add(&tokens, token);
+  token = token_new_string(TOKEN_TYPE_STRING, &position, "hello");
+  token_list_add(&tokens, token);
+  token = token_new_string(TOKEN_TYPE_INSTRUCTION, &position, "world");
+  token_list_add(&tokens, token);
+  token = token_new(TOKEN_TYPE_COMMA, &position);
+  token_list_add(&tokens, token);
+  assert_tokens_equals("{integer value: 789}"
+                       "{string value: hello}"
+                       "{instruction value: world}"
+                       "{comma}",
+                       tokens);
+  token_list_delete(tokens, 1);
+}
+
+void            test_suite_token_list(void)
 {
   test_token();
   test_token_type_to_string();
+  test_list();
 }
