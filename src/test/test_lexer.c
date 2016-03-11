@@ -13,6 +13,18 @@
 #include "../asm/lexer.h"
 #include "../libcw/string.h"
 
+static void             test_lex_2(void)
+{
+  t_lexer_result        r;
+
+  r = lex_from_string("babar le roi des elephants 123 viens au bde gro ~");
+  ASSERT(string_equals("Unexpected '~'", r.error->message));
+  syntax_error_delete(r.error);
+  r = lex_from_string("on va mettre la psy trance a fond sur lcaisson gro:");
+  ASSERT(string_equals("Expected a label name", r.error->message));
+  syntax_error_delete(r.error);
+}
+
 static void             test_lex(void)
 {
   t_lexer_result        r;
@@ -36,6 +48,7 @@ static void             test_lex(void)
   r = lex_from_string("~");
   ASSERT(string_equals("Unexpected '~'", r.error->message));
   syntax_error_delete(r.error);
+
 }
 
 static void             test_lex_label(void)
@@ -65,6 +78,7 @@ static void             test_lex_int(void)
 void            test_suite_lexer(void)
 {
   test_lex();
+  test_lex_2();
   test_lex_label();
   test_lex_int();
 }

@@ -101,9 +101,15 @@ t_lexer_result          lex(t_string_reader *reader)
         break;
       result = lex_token(reader);
       if (result.error)
-        return (lexer_result_create_error(result.error));
+        {
+          token_list_delete(tokens, 1);
+          return (lexer_result_create_error(result.error));
+        }
       if (!result.token)
-        return (create_new_unexpected_error(reader));
+        {
+          token_list_delete(tokens, 1);
+          return (create_new_unexpected_error(reader));
+        }
       token_list_add(&tokens, result.token);
     }
   return (lexer_result_create_tokens(tokens));
