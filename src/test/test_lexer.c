@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "test.h"
 #include "../asm/lexer.h"
+#include "../libcw/string.h"
 
 static void             test_lex(void)
 {
@@ -19,7 +20,7 @@ static void             test_lex(void)
   r = lex_from_string("");
   ASSERT(r.error == NULL);
   ASSERT(r.tokens == NULL);
-  r = lex_from_string("level down gagnera");
+  r = lex_from_string("level down \tgagnera  \t");
   ASSERT(r.error == NULL);
   ASSERT(r.tokens != NULL);
   assert_tokens_equals("{instruction value: level}"
@@ -27,6 +28,14 @@ static void             test_lex(void)
                        "{instruction value: gagnera}",
                        r.tokens);
   token_list_delete(r.tokens, 1);
+  r = lex_from_string("\n");
+  ASSERT(r.error == NULL);
+  ASSERT(r.tokens != NULL);
+  assert_tokens_equals("{new line}", r.tokens);
+  token_list_delete(r.tokens, 1);
+  r = lex_from_string("~");
+  ASSERT(string_equals("Unexpected '~'", r.error->message));
+  syntax_error_delete(r.error);
 }
 
 void            test_suite_lexer(void)

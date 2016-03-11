@@ -39,6 +39,7 @@ void    assert_tokens_equals(const char *expected,
   int           r;
 
   string = token_list_to_string(tokens);
+  ASSERT(string != NULL);
   r = string_equals(expected, string);
   ASSERT(r);
   if (!r)

@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "lexer_result.c"
 #include "lex_instruction.c"
+#include "lex_new_line.c"
 
 t_lexer_result          lex_from_string(const char *string)
 {
@@ -28,8 +29,9 @@ t_lexer_result          lex_from_string(const char *string)
 
 static void             get_functions(t_lexer_function *functions)
 {
-  functions[0] = &lex_instruction;
-  functions[1] = NULL;
+  functions[0] = lex_instruction;
+  functions[1] = lex_new_line;
+  functions[2] = NULL;
 }
 
 static t_result         lex_token_function(t_string_reader *reader,
@@ -50,19 +52,35 @@ static t_result         lex_token_function(t_string_reader *reader,
 t_result                lex_token(t_string_reader *reader)
 {
   t_lexer_function      functions[9];
-  t_lexer_function      function;
   t_result              result;
+  size_t                i;
 
   get_functions(functions);
-  function = functions[0];
-  while (function)
+  i = 0;
+  while (functions[i])
     {
-      result = lex_token_function(reader, function);
+      result = lex_token_function(reader, functions[i]);
       if (result.error || result.token)
         return (result);
-      function++;
+      i++;
     }
   return (create_null_result());
+}
+
+static t_lexer_result   create_new_unexpected_error(t_string_reader *reader)
+{
+  char                  c;
+  char                  message[40];
+  t_syntax_error        *e;
+
+  if (has_more(reader))
+    c = next(reader);
+  else
+    c = reader->file->content[reader->position.index - 1];
+  string_copy(message, "Unexpected '?'");
+  message[12] = c;
+  e = syntax_error_new(&reader->position, message);
+  return (lexer_result_create_error(e));
 }
 
 t_lexer_result          lex(t_string_reader *reader)
@@ -80,6 +98,8 @@ t_lexer_result          lex(t_string_reader *reader)
       result = lex_token(reader);
       if (result.error)
         return (lexer_result_create_error(result.error));
+      if (!result.token)
+        return (create_new_unexpected_error(reader));
       token_list_add(&tokens, result.token);
     }
   return (lexer_result_create_tokens(tokens));

@@ -39,7 +39,8 @@ const char      *token_type_to_string(t_token_type type)
                   "integer\0string\0"
                   "directive\0comment\0"
                   "label definition\0label reference\0"
-                  "comma\0percent\0\0");
+                  "comma\0percent\0"
+                  "new line\0\0");
   while (*types_string)
     {
       if (!type)
