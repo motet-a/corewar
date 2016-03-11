@@ -31,3 +31,19 @@ static t_lexer_result   lexer_result_create_error(t_syntax_error *error)
   r.error = error;
   return (r);
 }
+
+static t_lexer_result   create_new_unexpected_error(t_string_reader *reader)
+{
+  char                  c;
+  char                  message[40];
+  t_syntax_error        *e;
+
+  if (has_more(reader))
+    c = next(reader);
+  else
+    c = reader->file->content[reader->position.index - 1];
+  string_copy(message, "Unexpected '?'");
+  message[12] = c;
+  e = syntax_error_new(&reader->position, message);
+  return (lexer_result_create_error(e));
+}
