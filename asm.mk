@@ -14,6 +14,7 @@ ASM_SOURCES_NAMES	= \
 			token.c \
 			token_has_value.c \
 			token_list.c \
+			token_list_to_string.c \
 			token_to_string.c \
 			token_type.c
 
