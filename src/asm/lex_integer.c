@@ -19,9 +19,9 @@ static t_result         lex_integer_2(const char *string,
   t_token               *token;
   long                  n;
 
-  token = token_new(TOKEN_TYPE_INTEGER, begin);
   if (parse_int(string, &n))
     return (create_error_result("Invalid integer", begin));
+  token = token_new(TOKEN_TYPE_INTEGER, begin);
   token->integer_value = n;
   return (create_token_result_2(token));
 }

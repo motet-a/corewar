@@ -57,6 +57,9 @@ static void             test_lex_int(void)
   r = lex_from_string("0z");
   assert_tokens_equals("{integer value: 0}{instruction value: z}", r.tokens);
   token_list_delete(r.tokens, 1);
+  r = lex_from_string("9999999999999999999999999999999999999999999999999");
+  ASSERT(string_equals("Invalid integer", r.error->message));
+  syntax_error_delete(r.error);
 }
 
 void            test_suite_lexer(void)

@@ -42,6 +42,21 @@ static int      char_to_digit(char c, int base)
   return (-1);
 }
 
+int             mul_and_add(unsigned long *result, int base, int digit)
+{
+  unsigned long r;
+
+  r = *result;
+  *result *= base;
+  if (*result / base != r)
+    return (-1);
+  r = *result;
+  *result += digit;
+  if (*result - digit != r)
+    return (-1);
+  return (0);
+}
+
 int             parse_and_read_uint_base(const char **string_pointer,
                                          unsigned long *result_pointer,
                                          int base)
@@ -55,11 +70,9 @@ int             parse_and_read_uint_base(const char **string_pointer,
     {
       digit = char_to_digit(**string_pointer, base);
       if (digit == -1)
-        {
-          break;
-        }
-      *result_pointer *= base;
-      *result_pointer += digit;
+        break;
+      if (mul_and_add(result_pointer, base, digit))
+        return (-1);
       (*string_pointer)++;
     }
   if (begin == *string_pointer)
