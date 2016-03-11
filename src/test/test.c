@@ -29,30 +29,6 @@ void            assert_impl(int a, const char *position)
   g_test_stats.total_test_count++;
 }
 
-static void     run_vm_suites(void)
-{
-  /* TODO: Put a lot of amazing tests right here */
-}
-
-static void     run_asm_suites(void)
-{
-  test_suite_token_list();
-  test_suite_lexer();
-}
-
-static void     run_libcw_suites(void)
-{
-  test_suite_memory();
-  test_suite_parse_int();
-  test_suite_string_concat();
-  test_suite_string_find();
-  test_suite_string_find_char();
-  test_suite_int_to_string();
-  test_suite_string_type();
-  test_suite_string_type_convert();
-
-}
-
 int             main()
 {
   g_test_stats.failed_test_count = 0;

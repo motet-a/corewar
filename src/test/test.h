@@ -34,6 +34,10 @@ void    assert_token_equals(const char *expected, const t_token *token);
 void    assert_tokens_equals(const char *expected,
                              const t_token_list *tokens);
 
+void    run_vm_suites(void);
+void    run_asm_suites(void);
+void    run_libcw_suites(void);
+
 void    test_suite_token_list(void);
 void    test_suite_lexer(void);
 

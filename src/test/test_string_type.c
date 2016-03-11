@@ -45,6 +45,10 @@ static void     test_string_is_digit(void)
 
 static void     test_string_is_alphanumeric(void)
 {
+  ASSERT(string_is_letter("aaaaa") == 1);
+  ASSERT(string_is_letter(".zbehczi") == 0);
+  ASSERT(string_is_letter("a") == 1);
+  ASSERT(string_is_letter("7") == 0);
   ASSERT(string_is_letter("A8aaa") == 0);
   ASSERT(string_is_letter("jzaHHUaha") == 1);
   ASSERT(string_is_letter("aoozko") == 1);
@@ -58,21 +62,10 @@ static void     test_string_is_alphanumeric(void)
   ASSERT(string_is_alphanumeric("") == 0);
 }
 
-static void     test_string_is_letter(void)
-{
-  ASSERT(string_is_letter("aaaaa") == 1);
-  ASSERT(string_is_letter("a8aaaB") == 0);
-  ASSERT(string_is_letter(".zbehczi") == 0);
-  ASSERT(string_is_letter("a") == 1);
-  ASSERT(string_is_letter("") == 0);
-  ASSERT(string_is_letter("7") == 0);
-}
-
 void            test_suite_string_type(void)
 {
   test_string_is_digit();
   test_string_is_uppercase();
   test_string_is_lowercase();
   test_string_is_alphanumeric();
-  test_string_is_letter();
 }
