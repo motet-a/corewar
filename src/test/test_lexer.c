@@ -38,7 +38,20 @@ static void             test_lex(void)
   syntax_error_delete(r.error);
 }
 
+static void             test_lex_label(void)
+{
+  t_lexer_result        r;
+
+  r = lex_from_string(":");
+  ASSERT(string_equals("Expected a label name", r.error->message));
+  syntax_error_delete(r.error);
+  r = lex_from_string(":123soleil");
+  assert_tokens_equals("{label reference value: 123soleil}", r.tokens);
+  token_list_delete(r.tokens, 1);
+}
+
 void            test_suite_lexer(void)
 {
   test_lex();
+  test_lex_label();
 }
