@@ -14,6 +14,7 @@
 #include "lex_instruction.c"
 #include "lex_new_line.c"
 #include "lex_label_ref.c"
+#include "lex_integer.c"
 
 t_lexer_result          lex_from_string(const char *string)
 {
@@ -33,7 +34,8 @@ static void             get_functions(t_lexer_function *functions)
   functions[0] = lex_instruction;
   functions[1] = lex_new_line;
   functions[2] = lex_label_ref;
-  functions[3] = NULL;
+  functions[3] = lex_integer;
+  functions[4] = NULL;
 }
 
 static t_result         lex_token_function(t_string_reader *reader,

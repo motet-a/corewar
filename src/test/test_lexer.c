@@ -50,8 +50,18 @@ static void             test_lex_label(void)
   token_list_delete(r.tokens, 1);
 }
 
+static void             test_lex_int(void)
+{
+  t_lexer_result        r;
+
+  r = lex_from_string("0z");
+  assert_tokens_equals("{integer value: 0}{instruction value: z}", r.tokens);
+  token_list_delete(r.tokens, 1);
+}
+
 void            test_suite_lexer(void)
 {
   test_lex();
   test_lex_label();
+  test_lex_int();
 }
