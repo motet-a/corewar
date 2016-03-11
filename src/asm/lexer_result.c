@@ -66,12 +66,15 @@ static t_result create_string_token_result(const t_position *begin,
   t_token       *token;
   char          *string;
   int           length;
+  int           begin_index;
 
-  assert(token_type_has_string_value(type));
-  length = (int)reader->position.index - (int)begin->index;
+  assert(token_type_has_string_value(type));;
+  begin_index = (int)begin->index;
+  length = (int)reader->position.index - begin_index;
   assert(length > 0);
-  string = string_duplicate_n(reader->file->content, length);
+  string = string_duplicate_n(reader->file->content + begin_index, length);
   token = token_new_string(type, begin, string);
+  free(string);
   return (create_token_result_2(token));
 }
 

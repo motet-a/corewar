@@ -19,6 +19,14 @@ static void             test_lex(void)
   r = lex_from_string("");
   ASSERT(r.error == NULL);
   ASSERT(r.tokens == NULL);
+  r = lex_from_string("level down gagnera");
+  ASSERT(r.error == NULL);
+  ASSERT(r.tokens != NULL);
+  assert_tokens_equals("{instruction value: level}"
+                       "{instruction value: down}"
+                       "{instruction value: gagnera}",
+                       r.tokens);
+  token_list_delete(r.tokens, 1);
 }
 
 void            test_suite_lexer(void)

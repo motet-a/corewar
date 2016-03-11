@@ -41,6 +41,8 @@ static t_result         lex_token_function(t_string_reader *reader,
   assert(has_more(reader));
   begin = reader->position;
   result = function(reader);
+  if (result.token)
+    return (result);
   assert(begin.index == reader->position.index);
   return (result);
 }
@@ -78,6 +80,7 @@ t_lexer_result          lex(t_string_reader *reader)
       result = lex_token(reader);
       if (result.error)
         return (lexer_result_create_error(result.error));
+      token_list_add(&tokens, result.token);
     }
   return (lexer_result_create_tokens(tokens));
 }
