@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "lexer_private.h"
 #include "lexer_result_2.c"
+#include "lexer_result_3.c"
 #include "../libcw/string.h"
 
 static t_lexer_result   lexer_result_create_tokens(t_token_list *tokens)
