@@ -5,14 +5,15 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Fri Mar 11 14:18:14 2016 antoine
-** Last update Fri Mar 11 14:18:14 2016 antoine
+** Last update Wed Mar 16 13:37:46 2016 Valentin Pichard
 */
 
 #include "test.h"
 
+/* TODO: Put a lot of amazing tests right here */
 void    run_vm_suites(void)
 {
-  /* TODO: Put a lot of amazing tests right here */
+  return ;
 }
 
 void    run_asm_suites(void)
