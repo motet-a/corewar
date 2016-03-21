@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Mon Mar 21 23:43:43 2016 Valentin Pichard
-** Last update Mon Mar 21 23:44:11 2016 Valentin Pichard
+** Last update Mon Mar 21 23:58:43 2016 Valentin Pichard
 */
 
 #ifndef OPTION_H
@@ -13,8 +13,7 @@
 
 typedef struct          s_option
 {
-  const char            *short_name;
-  const char            *long_name;
+  const char            *name;
   int                   has_value;
 }                       t_option;
 
@@ -42,5 +41,6 @@ t_option_result		parse_arg(int argc,
 				  char **argv,
 				  int *arg_index,
 				  const t_option *options);
+void            	vm_init_options(t_option *options);
 
 #endif /* OPTION_H */

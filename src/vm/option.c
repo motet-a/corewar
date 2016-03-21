@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Mon Mar 21 23:46:40 2016 Valentin Pichard
-** Last update Mon Mar 21 23:46:56 2016 Valentin Pichard
+** Last update Mon Mar 21 23:56:00 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -15,7 +15,7 @@
 static const t_option   *find_option(const t_option *options,
                                      const char *name)
 {
-  while (options->short_name || options->long_name)
+  while (options->name)
     {
       if (option_is_named(options, name))
         return (options);
