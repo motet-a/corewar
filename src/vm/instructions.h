@@ -1,11 +1,11 @@
 /*
 ** instructions.h for vm in /home/antoine/corewar/src/vm
-** 
+**
 ** Made by Antoine Baudrand
 ** Login   <baudra_a@epitech.net>
-** 
+**
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update mar. mars 22 00:01:25 2016 Antoine Baudrand
+** Last update Tue Mar 22 00:12:36 2016 Valentin Pichard
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -13,7 +13,7 @@
 
 #include "vm.h"
 
-void	live(t_process *process)
+void	live(t_process *process);
 void	ld(t_process *process);
 void	st(t_process *process);
 void	add(t_process *process);
