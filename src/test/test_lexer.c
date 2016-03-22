@@ -20,8 +20,9 @@ static void             test_lex_2(void)
   r = lex_from_string("babar le roi des elephants 123 viens au bde gro ~");
   ASSERT(string_equals("Unexpected '~'", r.error->message));
   syntax_error_delete(r.error);
-  r = lex_from_string("on va mettre la psy trance a fond sur lcaisson gro:");
-  ASSERT(string_equals("Expected a label name", r.error->message));
+  r = lex_from_string("lol:lol");
+  ASSERT(string_equals("Expected a space after label name",
+                       r.error->message));
   syntax_error_delete(r.error);
 }
 
@@ -61,14 +62,19 @@ static void             test_lex_label(void)
   r = lex_from_string(":123soleil");
   assert_tokens_equals("{label reference value: 123soleil}", r.tokens);
   token_list_delete(r.tokens, 1);
+  r = lex_from_string("123soleil:");
+  assert_tokens_equals("{label definition value: 123soleil}", r.tokens);
+  token_list_delete(r.tokens, 1);
 }
 
 static void             test_lex_int(void)
 {
   t_lexer_result        r;
 
-  r = lex_from_string("0z");
-  assert_tokens_equals("{integer value: 0}{instruction value: z}", r.tokens);
+  r = lex_from_string("0 z 0z");
+  assert_tokens_equals("{integer value: 0}"
+                       "{instruction value: z}"
+                       "{instruction value: 0z}", r.tokens);
   token_list_delete(r.tokens, 1);
   r = lex_from_string("9999999999999999999999999999999999999999999999999");
   ASSERT(string_equals("Invalid integer", r.error->message));

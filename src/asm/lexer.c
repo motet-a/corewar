@@ -31,10 +31,10 @@ t_lexer_result          lex_from_string(const char *string)
 
 static void             get_functions(t_lexer_function *functions)
 {
-  functions[0] = lex_instruction;
-  functions[1] = lex_new_line;
-  functions[2] = lex_label_ref;
-  functions[3] = lex_integer;
+  functions[0] = lex_new_line;
+  functions[1] = lex_label_ref;
+  functions[2] = lex_integer;
+  functions[3] = lex_instruction;
   functions[4] = NULL;
 }
 

@@ -38,6 +38,11 @@ static t_result         lex_integer_end(t_string_reader *reader,
     {
       previous = reader->position;
       c = next(reader);
+      if (char_is_letter(c))
+        {
+          reader->position = *begin;
+          return (create_null_result());
+        }
       if (!char_is_digit(c))
         {
           reader->position = previous;
