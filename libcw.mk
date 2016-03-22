@@ -10,6 +10,7 @@
 
 LIBCW_SOURCES_NAMES = 	char_type.c \
 			char_type_convert.c \
+			cor_file.c \
 			int_to_malloced_string.c \
 			int_to_string.c \
 			int_to_string_get_length.c \

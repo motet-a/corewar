@@ -24,7 +24,6 @@ typedef struct          s_cor_file_header
 /*
 ** Returns NULL on success
 ** Returns a string describing the issue on error
-** TODO
 */
 const char      *cor_file_header_init(t_cor_file_header *self,
                                       const char *name,
@@ -54,7 +53,6 @@ const char      *cor_file_header_read(t_cor_file_header *self,
 
 /*
 ** Prints the header in a human-readable format for debugging purposes.
-** TODO
 */
 void            cor_file_header_print(const t_cor_file_header *self);
 
