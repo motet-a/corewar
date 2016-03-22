@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Tue Mar 22 12:08:59 2016 Jamy Bailly
+** Last update Tue Mar 22 12:17:54 2016 Jamy Bailly
 */
 
 #ifndef VM_H
@@ -17,7 +17,7 @@
 # define CYCLE_TO_DIE           1536
 # define CYCLE_DELTA            4
 # define LIVE_CALL_COUNT        2048
-# define MEM_SIZE               (6*1024)
+# define MEMORY_SIZE            (6*1024)
 
 void		print_usage(const char *filename);
 
