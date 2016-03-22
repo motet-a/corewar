@@ -25,7 +25,7 @@ int             token_type_has_value(t_token_type type)
   return (token_type_has_string_value(type) || type == TOKEN_TYPE_INTEGER);
 }
 
-void            skip_word(const char **string_pointer)
+static void     skip_word(const char **string_pointer)
 {
   while (**string_pointer)
     (*string_pointer)++;

@@ -9,7 +9,7 @@
 */
 
 #ifndef STRING_H
-#define STRING_H
+# define STRING_H
 
 /*
 ** Sets the `n` firsts chars of the given string to the character `c`.
