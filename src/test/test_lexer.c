@@ -20,7 +20,6 @@ static void             test_lex_2(void)
   r = lex_from_string("babar le roi des elephants 123 viens au bde gro ~");
   ASSERT(string_equals("Unexpected '~'", r.error->message));
   syntax_error_delete(r.error);
-
 }
 
 static void             test_lex(void)
