@@ -20,6 +20,8 @@ static t_result         lex_label_def_2(t_string_reader *reader,
   char                  c;
   t_token               *token;
 
+  if (reader->position.index == begin->index)
+    return (create_error_result("Expected a label name", &end));
   end = reader->position;
   if (has_more(reader))
     {
@@ -28,8 +30,7 @@ static t_result         lex_label_def_2(t_string_reader *reader,
         return (create_error_result("Expected a space after label name",
                                     &end));
     }
-  if (reader->position.index == begin->index)
-    return (create_error_result("Expected a label name", &end));
+  reader->position = end;
   token = token_new_string(TOKEN_TYPE_LABEL_DEF, begin, string);
   return (create_token_result_2(token));
 }
