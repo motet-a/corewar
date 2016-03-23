@@ -1,20 +1,17 @@
 /*
-** cor_file_private.h for  in /home/antoine
+** cor_file_private.h for libcw in /home/antoine/corewar/src/libcw
 **
 ** Made by antoine
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Tue Feb 23 09:04:07 2016 antoine
-** Last update Tue Feb 23 09:04:07 2016 antoine
+** Last update mer. mars 23 21:14:00 2016 Antoine Baudrand
 */
 
 #ifndef COR_FILE_PRIVATE_H
 # define COR_FILE_PRIVATE_H
 
 # include "cor_file.h"
-
-# define NAME_LENGTH           128
-# define COMMENT_LENGTH        2048
 
 # define NO_MEMORY_ERROR "cannot allocate memory"
 # define READ_ERROR "read error"
