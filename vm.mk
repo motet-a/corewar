@@ -12,7 +12,8 @@ VM_SOURCES_NAMES	= \
 			usage.c \
 			option_extend.c \
 			option.c \
-			vm_init_options.c
+			vm_init_options.c \
+			vm_memory.c
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			src/vm/$(file))
