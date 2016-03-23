@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Tue Mar 22 12:17:54 2016 Jamy Bailly
+** Last update Wed Mar 23 23:33:36 2016 Jamy Bailly
 */
 
 #ifndef VM_H
@@ -18,6 +18,18 @@
 # define CYCLE_DELTA            4
 # define LIVE_CALL_COUNT        2048
 # define MEMORY_SIZE            (6*1024)
+
+/*
+** Malloc and initialize the memory of the VM
+**
+** Returns 0 on success, -1 on error.
+*/
+int		create_memory(char *memory);
+
+/*
+** free the memory of the VM
+*/
+void		free_memory(char *memory);
 
 void		print_usage(const char *filename);
 
