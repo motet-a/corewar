@@ -13,8 +13,9 @@
 
 # include "cor_file.h"
 
-# define NAME_LENGTH           128
-# define COMMENT_LENGTH        2048
+# define MAGIC_NUMBER   0xea83f3
+# define NAME_LENGTH    128
+# define COMMENT_LENGTH 2048
 
 # define NO_MEMORY_ERROR "cannot allocate memory"
 # define READ_ERROR "read error"

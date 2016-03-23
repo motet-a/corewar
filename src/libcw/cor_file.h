@@ -34,12 +34,11 @@ void            cor_file_header_free(t_cor_file_header *self);
 /*
 ** Writes a header to a binary file.
 **
-** Returns NULL on success
-** Returns a string describing the issue on error
+** Returns 0 on success, -1 on error
 ** TODO
 */
-const char      *cor_file_header_write(const t_cor_file_header *self,
-                                       int output_file);
+int             cor_file_header_write(const t_cor_file_header *self,
+                                      int output_file);
 
 /*
 ** Reads a header from a binary file.
@@ -72,12 +71,12 @@ int             cor_file_read_int_32(int input_file, long *result);
 ** Returns 0 on success and -1 on error.
 ** TODO
 */
-int             cor_file_write_int_16(int input_file, int n);
+int             cor_file_write_int_16(int output_file, int n);
 
 /*
 ** Returns 0 on success and -1 on error.
 ** TODO
 */
-int             cor_file_write_int_32(int input_file, long n);
+int             cor_file_write_int_32(int output_file, long n);
 
 #endif /* COR_FILE_H */
