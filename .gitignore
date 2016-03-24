@@ -6,7 +6,6 @@
 #*#
 *.swp
 
-/test
-/asm
-/corewar
-/vm
+/test/test
+/asm/asm
+/corewar/corewar

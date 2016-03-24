@@ -19,6 +19,6 @@ ASM_SOURCES_NAMES	= \
 			token_type.c
 
 ASM_SOURCES		= $(foreach file,$(ASM_SOURCES_NAMES), \
-			src/asm/$(file))
+			asm/$(file))
 
 ASM_OBJECTS		= $(ASM_SOURCES:.c=.o)

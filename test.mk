@@ -24,6 +24,6 @@ TEST_SOURCES_NAMES	= test.c \
 
 
 TEST_SOURCES		= $(foreach file,$(TEST_SOURCES_NAMES), \
-			src/test/$(file))
+			test/$(file))
 
 TEST_OBJECTS		= $(TEST_SOURCES:.c=.o)

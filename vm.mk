@@ -16,6 +16,6 @@ VM_SOURCES_NAMES	= \
 			vm_memory.c
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
-			src/vm/$(file))
+			corewar/$(file))
 
 VM_OBJECTS		= $(VM_SOURCES:.c=.o)

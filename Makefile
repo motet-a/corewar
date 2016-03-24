@@ -31,13 +31,13 @@ endif
 LDFLAGS		=
 
 LIBCW_NAME	= libcw.a
-LIBCW		= src/libcw/$(LIBCW_NAME)
+LIBCW		= libcw/$(LIBCW_NAME)
 
 LIBASM_NAME	= libasm.a
-LIBASM		= src/asm/$(LIBASM_NAME)
+LIBASM		= asm/$(LIBASM_NAME)
 
 LIBVM_NAME	= libvm.a
-LIBVM		= src/vm/$(LIBVM_NAME)
+LIBVM		= corewar/$(LIBVM_NAME)
 
 ECHO		= /bin/echo -e
 
@@ -48,15 +48,15 @@ END		= "\033[0m"
 echo_error	= $(ECHO) $(RED) $(1) "[ERROR]" $(END)
 
 
-all: test asm vm
+all: test/test asm/asm corewar/corewar
 
-asm: src/asm/main.o $(LIBASM) $(LIBCW)
+asm/asm: asm/main.o $(LIBASM) $(LIBCW)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-vm: src/vm/main.o $(LIBVM) $(LIBCW)
+corewar/corewar: corewar/main.o $(LIBVM) $(LIBCW)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-test: $(TEST_OBJECTS) $(LIBASM) $(LIBCW)
+test/test: $(TEST_OBJECTS) $(LIBASM) $(LIBCW)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 $(LIBCW): $(LIBCW_OBJECTS)
@@ -77,17 +77,16 @@ $(LIBVM): $(VM_OBJECTS)
 		$(call echo_error,$<)
 
 clean:
-	$(RM) $(LIBCW_OBJECTS) src/libcw/libcw.a
-	$(RM) $(ASM_OBJECTS) src/asm/libasm.a src/asm/main.o
-	$(RM) $(VM_OBJECTS) src/vm/libvm.a src/vm/main.o
+	$(RM) $(LIBCW_OBJECTS)
+	$(RM) $(ASM_OBJECTS) src/asm/main.o
+	$(RM) $(VM_OBJECTS) src/corewar/main.o
 	$(RM) $(TEST_OBJECTS)
 	$(RM) $(LIBASM) $(LIBCW) $(LIBVM)
 
 fclean: clean
-	$(RM) test
-	$(RM) asm
-	$(RM) vm
-	$(RM) corewar
+	$(RM) test/test
+	$(RM) asm/asm
+	$(RM) corewar/corewar
 
 re: fclean all
 

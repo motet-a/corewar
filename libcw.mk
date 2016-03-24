@@ -36,6 +36,6 @@ LIBCW_SOURCES_NAMES = 	char_type.c \
 			string_type_convert.c
 
 LIBCW_SOURCES		= $(foreach file,$(LIBCW_SOURCES_NAMES), \
-			src/libcw/$(file))
+			libcw/$(file))
 
 LIBCW_OBJECTS		= $(LIBCW_SOURCES:.c=.o)
