@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Thu Mar 24 22:50:58 2016 Jamy Bailly
+** Last update Thu Mar 24 23:07:50 2016 Jamy Bailly
 */
 
 #ifndef VM_H
@@ -63,7 +63,6 @@ typedef struct  s_vm
 ** Initializes the VM
 **
 ** Returns a t_vm* on success, NULL on error.
-** TODO
 */
 t_vm	*vm_new(int program_count);
 
