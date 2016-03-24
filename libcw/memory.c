@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Fri Feb 26 16:04:03 2016 antoine
-** Last update Fri Feb 26 16:04:03 2016 antoine
+** Last update Thu Mar 24 17:27:20 2016 Valentin Pichard
 */
 
 #include "memory.h"
@@ -17,10 +17,7 @@ int     memory_read_int_16(const char *memory)
 
 long    memory_read_int_32(const char *memory)
 {
-  return (memory[3] +
-          (memory[2] << 8) +
-          (memory[1] << 16) +
-          (memory[0] << 24));
+  return (memory[3] + (memory[2] << 8) + (memory[1] << 16) + (memory[0] << 24));
 }
 
 void    memory_write_int_16(char *memory, int n)

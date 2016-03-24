@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Tue Mar 22 10:16:16 2016 antoine
-** Last update Tue Mar 22 10:16:16 2016 antoine
+** Last update Thu Mar 24 17:43:10 2016 Valentin Pichard
 */
 
 #include <unistd.h>
@@ -31,61 +31,7 @@ const char      *cor_file_header_init(t_cor_file_header *self,
   return (NULL);
 }
 
-void            cor_file_header_free(t_cor_file_header *self)
-{
-  free(self->name);
-  free(self->comment);
-}
-
-static int      write_string(const char *string,
-                             size_t max_length,
-                             int output)
-{
-  size_t        sl;
-
-  sl = string_get_length(string);
-  if (write(output, string, sl) != (ssize_t)sl)
-    return (-1);
-  while (sl < max_length)
-    {
-      if (write(output, "", 1) != 1)
-        return (-1);
-      sl++;
-    }
-  return (0);
-}
-
-int             cor_file_header_write(const t_cor_file_header *self,
-                                      int output_file)
-{
-  if (cor_file_write_int_32(output_file, MAGIC_NUMBER))
-    return (-1);
-  if (write_string(self->name, NAME_LENGTH, output_file))
-    return (-1);
-  if (cor_file_write_int_32(output_file, self->program_size))
-    return (-1);
-  if (write_string(self->comment, COMMENT_LENGTH, output_file))
-    return (-1);
-  return (0);
-}
-
-char            *read_string(size_t length, int input_file)
-{
-  char          *string;
-
-  string = malloc(length + 1);
-  if (!string)
-    return (NULL);
-  if (write(input_file, string, length) <= 0)
-    {
-      free(string);
-      return (NULL);
-    }
-  string[length] = '\0';
-  return (string);
-}
-
-static int      read_magic_number(int input_file)
+int      	read_magic_number(int input_file)
 {
   long          n;
 
@@ -93,29 +39,6 @@ static int      read_magic_number(int input_file)
     return (-1);
   if (n != MAGIC_NUMBER)
     return (-1);
-  return (0);
-}
-
-int             cor_file_header_read(t_cor_file_header *self,
-                                     int input_file)
-{
-  long          n;
-
-  if (read_magic_number(input_file))
-    return (-1);
-  if (!(self->name = read_string(NAME_LENGTH, input_file)))
-    return (-1);
-  if (cor_file_read_int_32(input_file, &n))
-    {
-      free(self->name);
-      return (-1);
-    }
-  self->program_size = n;
-  if (!(self->comment = read_string(COMMENT_LENGTH, input_file)))
-    {
-      free(self->name);
-      return (-1);
-    }
   return (0);
 }
 
