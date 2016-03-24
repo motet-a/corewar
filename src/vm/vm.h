@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update jeu. mars 24 12:52:15 2016 Antoine Baudrand
+** Last update jeu. mars 24 13:12:12 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -20,7 +20,6 @@
 # define LIVE_CALL_COUNT        2048
 # define MEMORY_SIZE            (6 * 1024)
 # define IDX_MOD                512
-
 
 void		print_usage(const char *filename);
 
