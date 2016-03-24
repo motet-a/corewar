@@ -8,7 +8,6 @@
 ** Last update Thu Mar 24 17:43:10 2016 Valentin Pichard
 */
 
-#include <unistd.h>
 #include <stdlib.h>
 #include "cor_file_private.h"
 #include "string.h"
@@ -31,15 +30,10 @@ const char      *cor_file_header_init(t_cor_file_header *self,
   return (NULL);
 }
 
-int      	read_magic_number(int input_file)
+void            cor_file_header_free(t_cor_file_header *self)
 {
-  long          n;
-
-  if (cor_file_read_int_32(input_file, &n))
-    return (-1);
-  if (n != MAGIC_NUMBER)
-    return (-1);
-  return (0);
+  free(self->name);
+  free(self->comment);
 }
 
 void            cor_file_header_print(const t_cor_file_header *self)

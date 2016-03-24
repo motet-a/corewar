@@ -25,6 +25,4 @@
 # define COMMENT_TOO_LONG_ERROR "comment to long"
 # define BAD_MAGIC_NUMBER_ERROR "bad magic number"
 
-int      	read_magic_number(int input_file);
-
 #endif /* COR_FILE_PRIVATE_H */
