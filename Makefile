@@ -78,8 +78,8 @@ $(LIBVM): $(VM_OBJECTS)
 
 clean:
 	$(RM) $(LIBCW_OBJECTS)
-	$(RM) $(ASM_OBJECTS) src/asm/main.o
-	$(RM) $(VM_OBJECTS) src/corewar/main.o
+	$(RM) $(ASM_OBJECTS) asm/main.o
+	$(RM) $(VM_OBJECTS) corewar/main.o
 	$(RM) $(TEST_OBJECTS)
 	$(RM) $(LIBASM) $(LIBCW) $(LIBVM)
 
