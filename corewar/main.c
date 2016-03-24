@@ -9,6 +9,7 @@
 */
 
 #include "../libcw/print.h"
+#include "../libcw/instr.h"
 #include "vm.h"
 #include <stdio.h>
 #include "options.h"
@@ -34,11 +35,20 @@ static int              parse_options(int argc,
   return (0);
 }
 
+static void             print_instructions(void)
+{
+  t_instr_info          instructions[32];
+
+  instr_info_get_list(instructions);
+  instr_info_print_list(instructions);
+}
+
 int			main(int argc, char **argv)
 {
   const char		*program_name;
   t_option		options[32];
 
+  print_instructions();
   vm_init_options(options);
   program_name = argv[0];
   if (parse_options(argc - 1, argv + 1, options))

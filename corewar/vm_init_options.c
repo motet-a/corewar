@@ -8,6 +8,7 @@
 ** Last update Thu Mar 24 00:15:47 2016 Valentin Pichard
 */
 
+#include <stdlib.h>
 #include "options.h"
 
 void            vm_init_options(t_option *options)
@@ -21,4 +22,5 @@ void            vm_init_options(t_option *options)
   options[i++].has_value = 1;
   options[i].name = "a";
   options[i++].has_value = 1;
+  options[i].name = NULL;
 }
