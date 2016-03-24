@@ -5,12 +5,13 @@
 ## Login   <antoine@epitech.net>
 ##
 ## Started on  Wed Mar  2 21:35:00 2016 antoine
-## Last update Wed Mar  9 02:10:28 2016 Valentin Pichard
+## Last update Thu Mar 24 17:46:00 2016 Valentin Pichard
 ##
 
 LIBCW_SOURCES_NAMES = 	char_type.c \
 			char_type_convert.c \
 			cor_file.c \
+			cor_file_extend.c \
 			int_to_malloced_string.c \
 			int_to_string.c \
 			int_to_string_get_length.c \
