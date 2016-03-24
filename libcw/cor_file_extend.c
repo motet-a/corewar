@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Thu Mar 24 17:28:07 2016 Valentin Pichard
-** Last update Thu Mar 24 17:46:33 2016 Valentin Pichard
+** Last update Thu Mar 24 17:51:33 2016 Valentin Pichard
 */
 
 #include <unistd.h>
@@ -20,7 +20,7 @@ void            cor_file_header_free(t_cor_file_header *self)
   free(self->comment);
 }
 
-const int      	write_string(const char *string,
+int      	write_string(const char *string,
                              size_t max_length,
                              int output)
 {
