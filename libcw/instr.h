@@ -54,15 +54,23 @@ typedef struct          s_instr_info
 /*
 ** Returns an instruction or NULL
 */
-const t_instr_info      *instr_info_get_from_name(const char *name);
+const t_instr_info      *instr_info_get_from_name(const t_instr_info *list,
+                                                  const char *name);
 
 /*
 ** Returns an instruction or NULL
 */
-const t_instr_info      *instr_info_get_from_code(char code);
+const t_instr_info      *instr_info_get_from_code(const t_instr_info *list,
+                                                  char code);
+
+int                     instr_info_get_count(const t_instr_info *list);
 
 void                    instr_info_print(const t_instr_info *self);
 
+void                    instr_info_print_list(const t_instr_info *list);
+
 int             instr_info_get_arguments_size(const t_instr_info *self);
+
+void            instr_info_get_list(t_instr_info *list);
 
 #endif /* INSTR_H */
