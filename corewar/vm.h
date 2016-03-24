@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update jeu. mars 24 17:55:04 2016 Antoine Baudrand
+** Last update Thu Mar 24 22:50:58 2016 Jamy Bailly
 */
 
 #ifndef VM_H
@@ -20,6 +20,7 @@
 # define LIVE_CALL_COUNT        2048
 # define MEMORY_SIZE            (6 * 1024)
 # define IDX_MOD                512
+# define NBR_LIVE		2048
 
 void		print_usage(const char *filename);
 
@@ -50,11 +51,13 @@ typedef	struct		s_program
 typedef struct  s_vm
 {
   int		cycle;
+  int		cycle_to_die;
+  int		live_count;
   int		program_count;
   t_program	*programs;
   t_process     *processes;
   char          *memory;
-}              t_vm;
+}		t_vm;
 
 /*
 ** Initializes the VM
@@ -67,7 +70,6 @@ t_vm	*vm_new(int program_count);
 /*
 ** Allocates and initializes the memory of the VM
 ** Returns 0 on success, -1 on error.
-** TODO
 */
 int    vm_init_memory(char *memory);
 
