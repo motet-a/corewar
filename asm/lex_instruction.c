@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Thu Mar 10 10:00:06 2016 antoine
-** Last update Thu Mar 10 10:00:06 2016 antoine
+** Last update Thu Mar 24 17:13:03 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -27,8 +27,7 @@ static t_result         lex_label_def_2(t_string_reader *reader,
     {
       c = next(reader);
       if (c != ' ' && c != '\n' && c != '\t')
-        return (create_error_result("Expected a space after label name",
-                                    &end));
+        return (create_error_result("Expected a space after label name", &end));
     }
   reader->position = end;
   token = token_new_string(TOKEN_TYPE_LABEL_DEF, begin, string);
