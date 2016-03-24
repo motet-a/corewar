@@ -5,11 +5,12 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Tue Mar 22 00:10:31 2016 Valentin Pichard
+** Last update Thu Mar 24 00:16:43 2016 Valentin Pichard
 */
 
 #include "../libcw/print.h"
 #include "vm.h"
+#include <stdio.h>
 #include "options.h"
 
 static int              parse_options(int argc,
@@ -33,9 +34,17 @@ static int              parse_options(int argc,
   return (0);
 }
 
-int	main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-  if ((argc % 3) - 2 != 0)
-    print_usage(argv[0]);
+  const char		*program_name;
+  t_option		options[6];
+
+  vm_init_options(options);
+  program_name = argv[0];
+  if (parse_options(argc - 1, argv + 1, options))
+    {
+      print_usage(program_name);
+      return (2);
+    }
   return (0);
 }
