@@ -1,17 +1,17 @@
 /*
-** vm_memory.c for corewar in /home/bailly_j/rendu/corewar/src/vm
+** vm_memory.c for vm in /home/antoine/corewar/src/vm
 **
 ** Made by Jamy Bailly
 ** Login   <bailly_j@epitech.net>
 **
 ** Started on  Wed Mar 23 23:41:31 2016 Jamy Bailly
-** Last update Wed Mar 23 23:48:28 2016 Jamy Bailly
+** Last update jeu. mars 24 13:39:51 2016 Antoine Baudrand
 */
 
 #include <stdlib.h>
 #include "vm.h"
 
-int	create_memory(char *memory)
+int	vm_init_memory(char *memory)
 {
   int	i;
 
@@ -24,9 +24,4 @@ int	create_memory(char *memory)
       i++;
     }
   return (0);
-}
-
-void	free_memory(char *memory)
-{
-  free(memory);
 }
