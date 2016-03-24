@@ -1,11 +1,11 @@
 /*
-** vm.h for vm in /home/antoine/corewar/src/vm
+** vm.h for corewar in /home/antoine/corewar/corewar
 **
 ** Made by Valentin Pichard
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update jeu. mars 24 13:41:53 2016 Antoine Baudrand
+** Last update jeu. mars 24 17:55:04 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -44,6 +44,7 @@ typedef	struct		s_program
   char			*comment;
   int			live_id;
   int			last_live_cycle;
+  int			alive;
 }			t_program;
 
 typedef struct  s_vm
@@ -59,26 +60,46 @@ typedef struct  s_vm
 ** Initializes the VM
 **
 ** Returns a t_vm* on success, NULL on error.
+** TODO
 */
 t_vm	*vm_new(int program_count);
 
 /*
 ** Allocates and initializes the memory of the VM
 ** Returns 0 on success, -1 on error.
+** TODO
 */
 int    vm_init_memory(char *memory);
 
 /*
 ** Frees all the VM including memory, programs, and processes
+** TODO
 */
 void	vm_free(t_vm *);
 
 /*
 ** Loads a program and creates a process from its header
 ** and a file descriptor on the first byte of the program
+** TODO
 */
 void	vm_load_program(t_vm *, const t_cor_file_header *, int fd);
 
+/*
+** Run the vm, run cycles
+** TODO
+*/
+void	vm_run(t_vm *);
+
+/*
+** Run a machine cycle
+** TODO
+*/
 void	vm_cycle(t_vm *);
+
+/*
+** Check alive programs
+** TODO
+*/
+int	vm_check_alive(t_vm *);
 
 #endif /* VM_H */
