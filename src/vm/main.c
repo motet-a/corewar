@@ -37,7 +37,7 @@ static int              parse_options(int argc,
 int			main(int argc, char **argv)
 {
   const char		*program_name;
-  t_option		options[6];
+  t_option		options[32];
 
   vm_init_options(options);
   program_name = argv[0];
