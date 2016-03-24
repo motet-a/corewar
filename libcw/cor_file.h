@@ -54,25 +54,21 @@ void            cor_file_header_print(const t_cor_file_header *self);
 
 /*
 ** Returns 0 on success and -1 on error.
-** TODO
 */
 int             cor_file_read_int_16(int input_file, int *result);
 
 /*
 ** Returns 0 on success and -1 on error.
-** TODO
 */
 int             cor_file_read_int_32(int input_file, long *result);
 
 /*
 ** Returns 0 on success and -1 on error.
-** TODO
 */
 int             cor_file_write_int_16(int output_file, int n);
 
 /*
 ** Returns 0 on success and -1 on error.
-** TODO
 */
 int             cor_file_write_int_32(int output_file, long n);
 
