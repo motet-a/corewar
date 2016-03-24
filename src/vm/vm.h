@@ -49,35 +49,35 @@ typedef	struct		s_program
 typedef struct  s_vm
 {
   int		cycle;
-  int		number_of_programs;
-  t_program	**programs;
+  int		program_count;
+  t_program	*programs;
   t_process     *processes;
   char          *memory;
 }              t_vm;
 
 /*
-** Initialize the VM
+** Initializes the VM
 **
 ** Returns a t_vm* on success, NULL on error.
 */
-t_vm	*vm_new(int number_of_programs);
+t_vm	*vm_new(int program_count);
 
 /*
-** Malloc and initialize the memory of the VM
+** Allocates and initializes the memory of the VM
 ** Returns 0 on success, -1 on error.
 */
 int    vm_init_memory(char *memory);
 
 /*
-** Free all the vm including memory, programs, and processes
+** Frees all the VM including memory, programs, and processes
 */
 void	vm_free(t_vm *);
 
 /*
-** Load a program and create process from its header
+** Loads a program and creates a process from its header
 ** and a file descriptor on the first byte of the program
 */
-void	vm_load_program(t_vm *, t_cor_file_header *, int fd);
+void	vm_load_program(t_vm *, const t_cor_file_header *, int fd);
 
 void	vm_cycle(t_vm *);
 
