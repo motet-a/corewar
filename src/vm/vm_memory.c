@@ -15,12 +15,12 @@ int	vm_init_memory(char *memory)
 {
   int	i;
 
-  i = 0;
   if ((memory = malloc(sizeof(char) * MEMORY_SIZE)) == NULL)
     return (-1);
+  i = 0;
   while (i < MEMORY_SIZE)
     {
-      i[memory] = 0;
+      memory[i] = 0;
       i++;
     }
   return (0);
