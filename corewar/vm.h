@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Thu Mar 24 23:07:50 2016 Jamy Bailly
+** Last update Thu Mar 24 23:39:17 2016 Jamy Bailly
 */
 
 #ifndef VM_H
@@ -74,7 +74,6 @@ int    vm_init_memory(char *memory);
 
 /*
 ** Frees all the VM including memory, programs, and processes
-** TODO
 */
 void	vm_free(t_vm *);
 
