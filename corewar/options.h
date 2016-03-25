@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Mon Mar 21 23:43:43 2016 Valentin Pichard
-** Last update Mon Mar 21 23:58:43 2016 Valentin Pichard
+** Last update Fri Mar 25 01:52:42 2016 Valentin Pichard
 */
 
 #ifndef OPTION_H
@@ -41,6 +41,6 @@ t_option_result		parse_arg(int argc,
 				  char **argv,
 				  int *arg_index,
 				  const t_option *options);
-void            	vm_init_options(t_option *options);
+void            	init_vm_options(t_option *options);
 
 #endif /* OPTION_H */

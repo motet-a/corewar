@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Thu Mar 24 23:39:17 2016 Jamy Bailly
+** Last update Fri Mar 25 01:52:17 2016 Valentin Pichard
 */
 
 #ifndef VM_H
@@ -64,13 +64,13 @@ typedef struct  s_vm
 **
 ** Returns a t_vm* on success, NULL on error.
 */
-t_vm	*vm_new(int program_count);
+t_vm	*init_new_vm(int program_count);
 
 /*
 ** Allocates and initializes the memory of the VM
 ** Returns 0 on success, -1 on error.
 */
-int    vm_init_memory(char *memory);
+int    init_vm_memory(char *memory);
 
 /*
 ** Frees all the VM including memory, programs, and processes
