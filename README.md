@@ -14,7 +14,7 @@ This project is divided in two parts:
 * The virtual machine, which runs `.cor` files.
 
 The assembler source files are in the `asm` directory, and the virtual
-machine source files are in the `vm` directory.
+machine source files are in the `corewar` directory.
 
 The `libcw` directory contains shared stuff between the assembler and
 the VM.
