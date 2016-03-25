@@ -11,13 +11,17 @@
 #include <stdlib.h>
 #include "token.h"
 #include "../libcw/string.h"
+#include "../libcw/print.h"
 
-void            token_list_print(const t_token_list *list, int output_file)
+void            token_list_print(const t_token_list *list,
+                                 const char *separator,
+                                 int output_file)
 {
   if (!list)
     return ;
   token_print(list->token, output_file);
-  token_list_print(list->next, output_file);
+  print_string_file(separator, output_file);
+  token_list_print(list->next, separator, output_file);
 }
 
 char            *token_list_to_string(const t_token_list *list)

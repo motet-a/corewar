@@ -106,6 +106,8 @@ char            *token_list_to_string(const t_token_list *list);
 /*
 ** Prints the string returned by token_to_string().
 */
-void            token_list_print(const t_token_list *list, int output_file);
+void            token_list_print(const t_token_list *list,
+                                 const char *separator,
+                                 int output_file);
 
 #endif /* TOKEN_H */

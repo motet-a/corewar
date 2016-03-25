@@ -43,6 +43,11 @@ int                     compile(t_source_file *file)
       syntax_error_delete(result.error);
       return (-1);
     }
+  else
+    {
+      token_list_print(result.tokens, "\n", STDOUT_FILENO);
+      token_list_delete(result.tokens, 1);
+    }
   return (0);
 }
 
