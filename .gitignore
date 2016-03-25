@@ -5,6 +5,7 @@
 *~
 #*#
 *.swp
+*.swo
 
 /test/test
 /asm/asm
