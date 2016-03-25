@@ -62,7 +62,7 @@ static t_result         lex_integer(t_string_reader *reader)
 
   begin = reader->position;
   c = next(reader);
-  if (char_is_digit(c))
+  if (char_is_digit(c) || c == '-')
     return (lex_integer_end(reader, &begin));
   reader->position = begin;
   return (create_null_result());
