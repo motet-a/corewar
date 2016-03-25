@@ -22,7 +22,7 @@ char            *read_whole_file(int file_descriptor)
   size_t        block_size;
   char          *string;
   size_t        length;
-  size_t        read_char_count;
+  ssize_t        read_char_count;
 
   string = NULL;
   length = 0;
@@ -30,14 +30,15 @@ char            *read_whole_file(int file_descriptor)
   while ((string = realloc(string, length + block_size + 1)) != NULL)
     {
       read_char_count = read(file_descriptor, string + length, block_size);
+      if (read_char_count > -1)
+        string[read_char_count] = '\0';
       length += read_char_count;
-      string[length] = '\0';
-      if (string_get_length(string) != (int)length)
+      if (read_char_count == -1 || string_get_length(string) != (int)length)
         {
           free(string);
           return (NULL);
         }
-      if (read_char_count != block_size)
+      if (read_char_count != (ssize_t)block_size)
         break;
     }
   return (string);
