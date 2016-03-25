@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include "asm.h"
+#include "../libcw/string.h"
 
 static t_token          *try_to_read_token(t_token_list **list_pointer,
                                            t_token_type type)
@@ -43,13 +44,49 @@ static t_syntax_error   *parse_label_def(t_program *program,
   return (NULL);
 }
 
+static t_syntax_error   *parse_directive(t_program *program,
+                                         t_token_list **list_pointer,
+                                         int *ok)
+{
+  t_token               *directive;
+  t_token               *string;
+  int                   type;
+
+  *ok = 0;
+  directive = try_to_read_token(list_pointer, TOKEN_TYPE_DIRECTIVE);
+  if (!directive)
+    return (NULL);
+  if (string_equals(directive->string_value, "name"))
+    type = 0;
+  else if (string_equals(directive->string_value, "comment"))
+    type = 1;
+  else
+    return (syntax_error_new(&directive->position, "Invalid directive"));
+  string = try_to_read_token(list_pointer, TOKEN_TYPE_STRING);
+  if (!string)
+    return (syntax_error_new(&directive->position, "Expected a string"));
+  printf("directive %s\n", directive->string_value);
+  *ok = 1;
+  return (NULL);
+}
+
+static t_syntax_error   *parse_instr(t_program *program,
+                                     t_token_list **list_pointer)
+{
+
+}
+
 t_syntax_error          *parse_line(t_program *program,
                                     t_token_list **list_pointer)
 {
   t_syntax_error        *error;
   t_token               *last;
   t_token               *token;
+  int                   ok;
 
+  error = parse_directive(program, list_pointer, &ok);
+  if (error || ok)
+    return (error);
   last = NULL;
   error = parse_label_def(program, list_pointer, &last);
   if (error)
@@ -62,7 +99,7 @@ t_syntax_error          *parse_line(t_program *program,
     }
   if (!*list_pointer)
     return (NULL);
-  if (try_to_read_token(list_pointer, TOKEN_TYPE_NEW_LINE))
+  if (!try_to_read_token(list_pointer, TOKEN_TYPE_NEW_LINE))
     return (syntax_error_new(&last->position, "Expected end of line"));
   return (NULL);
 }

@@ -22,7 +22,10 @@ t_syntax_error          *program_parse(t_program *program,
     {
       error = parse_line(program, &tokens);
       if (error)
-        return (error);
+        {
+          program_free(program);
+          return (error);
+        }
     }
   return (NULL);
 }

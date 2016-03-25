@@ -29,7 +29,7 @@ void                    label_list_delete(t_label_list *list)
     return ;
   label_list_delete(list->next);
   label_free(&list->label);
-  free(list->next);
+  free(list);
 }
 
 void                    label_list_add(t_label_list **list,
