@@ -17,7 +17,7 @@ void            position_init(t_position *position,
   position->file = source_file;
   position->index = 0;
   position->line = 1;
-  position->column = 1;
+  position->column = 0;
 }
 
 void            position_print(const t_position *position, int file)

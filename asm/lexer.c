@@ -17,6 +17,7 @@
 #include "lex_integer.c"
 #include "lex_comment.c"
 #include "lex_directive.c"
+#include "lex_string.c"
 
 t_lexer_result          lex_from_string(const char *string)
 {
@@ -39,7 +40,8 @@ static void             get_functions(t_lexer_function *functions)
   functions[3] = lex_integer;
   functions[4] = lex_instruction;
   functions[5] = lex_directive;
-  functions[6] = NULL;
+  functions[6] = lex_string;
+  functions[7] = NULL;
 }
 
 static t_result         lex_token_function(t_string_reader *reader,

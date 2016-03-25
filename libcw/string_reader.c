@@ -39,6 +39,15 @@ char            string_reader_next(t_string_reader *reader)
 
   assert(string_reader_has_more(reader));
   c = reader->file->content[reader->position.index];
+  if (c == '\n')
+    {
+      reader->position.line++;
+      reader->position.column = 0;
+    }
+  else
+    {
+      reader->position.column++;
+    }
   reader->position.index++;
   return (c);
 }
