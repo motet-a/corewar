@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Thu Mar 24 00:16:43 2016 Valentin Pichard
+** Last update Fri Mar 25 01:46:34 2016 Valentin Pichard
 */
 
 #include "../libcw/print.h"
@@ -51,7 +51,7 @@ int			main(int argc, char **argv)
   print_instructions();
   vm_init_options(options);
   program_name = argv[0];
-  if (parse_options(argc - 1, argv + 1, options))
+  if (parse_options(argc - 1, argv + 1, options) || argv[1] == NULL)
     {
       print_usage(program_name);
       return (2);
