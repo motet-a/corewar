@@ -43,7 +43,12 @@ typedef struct          s_label
 {
   char                  *name;
   const t_instr         *instr;
+  t_position            position;
 }                       t_label;
+
+void                    label_init(t_label *label, t_token *label_token);
+void                    label_free(t_label *label);
+void                    label_print(const t_label *label);
 
 typedef struct          s_label_list
 {
@@ -51,6 +56,10 @@ typedef struct          s_label_list
   struct s_label_list   *next;
 }                       t_label_list;
 
+t_label_list            *label_list_new(const t_label *label);
+void                    label_list_delete(t_label_list *list);
+void                    label_list_add(t_label_list **list,
+                                       t_token *label_token);
 t_label_list            *label_list_get_last(t_label_list *labels);
 
 typedef struct  s_program
@@ -59,7 +68,7 @@ typedef struct  s_program
   t_instr_list  *intructions;
 }               t_program;
 
-t_syntax_error  *parse_line(t_program *program, const t_token_list *tokens);
+t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);
 
 t_syntax_error  *program_parse(t_program *program,
                                const t_token_list *tokens);
