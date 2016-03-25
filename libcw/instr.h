@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Tue Feb 23 10:25:13 2016 antoine
-** Last update Tue Feb 23 10:25:13 2016 antoine
+** Last update Thu Mar 24 23:30:33 2016 Valentin Pichard
 */
 
 #ifndef INSTR_H
@@ -49,6 +49,7 @@ typedef struct          s_instr_info
   int                   argument_count;
   int                   cycle_count;
   t_argument_type       argument_types[VM_MAX_ARGUMENT_COUNT];
+  const char            *comment;
 }                       t_instr_info;
 
 /*
