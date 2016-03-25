@@ -14,6 +14,7 @@
 #include "../libcw/print.h"
 #include "../libcw/position.h"
 #include "asm.h"
+#include "lexer.h"
 
 static void     print_help(const char *program_name, int output_file)
 {
@@ -25,38 +26,40 @@ static void     print_help(const char *program_name, int output_file)
   print_string_file(" FILE\n", f);
 }
 
-int             compile(int source_file, const char *path)
+int                     compile(t_source_file *file)
 {
-  char          *source;
+  t_lexer_result        result;
+  t_string_reader       reader;
 
-  source = read_whole_file(source_file);
-  if (!source)
+  if (string_reader_init(&reader, file))
     {
-      print_string_err("Can't read ");
-      print_string_err(path);
-      print_string_err("\n");
+      print_string_err("string_reader_init(): Internal error\n");
       return (-1);
     }
-  free(source);
+  result = lex(&reader);
+  if (result.error)
+    {
+      syntax_error_print(result.error, STDERR_FILENO);
+      syntax_error_delete(result.error);
+      return (-1);
+    }
   return (0);
 }
 
-
-static int      open_and_compile(const char *source_file_path)
+static int      read_and_compile(const char *source_file_path)
 {
-  int           file;
+  t_source_file file;
   int           r;
 
-  file = open(source_file_path, O_RDONLY);
-  if (file == -1)
+  if (source_file_read(&file, source_file_path))
     {
-      print_string_err("Can't open ");
+      print_string_err("Can't read ");
       print_string_err(source_file_path);
       print_string_err("\n");
       return (-1);
     }
-  r = compile(file, source_file_path);
-  close(file);
+  r = compile(&file);
+  source_file_free(&file);
   return (r);
 }
 
@@ -66,5 +69,5 @@ int             main(int argc, char **argv)
     print_help(argv[0], STDERR_FILENO);
     return (1);
   }
-  return (open_and_compile(argv[1]));
+  return (read_and_compile(argv[1]));
 }
