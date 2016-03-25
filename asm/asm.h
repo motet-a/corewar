@@ -62,16 +62,17 @@ void                    label_list_add(t_label_list **list,
                                        t_token *label_token);
 t_label_list            *label_list_get_last(t_label_list *labels);
 
+void                    label_list_print(const t_label_list *labels);
+
 typedef struct  s_program
 {
   t_label_list  *labels;
-  t_instr_list  *intructions;
+  t_instr_list  *instructions;
 }               t_program;
 
 t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);
 
-t_syntax_error  *program_parse(t_program *program,
-                               const t_token_list *tokens);
+t_syntax_error  *program_parse(t_program *program, t_token_list *tokens);
 void            program_free(t_program *program);
 void            program_print(const t_program *program);
 void            program_write(const t_program *program, int output_file);

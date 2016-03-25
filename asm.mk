@@ -14,6 +14,7 @@ ASM_SOURCES_NAMES	= \
 			label.c \
 			label_list.c \
 			lexer.c \
+			program.c \
 			syntax_error.c \
 			token.c \
 			token_has_value.c \
