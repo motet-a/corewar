@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Thu Mar 24 21:29:46 2016 antoine
-** Last update Fri Mar 25 01:32:24 2016 Valentin Pichard
+** Last update Fri Mar 25 01:38:35 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -116,6 +116,7 @@ static void     init_and(t_instr_info *i)
   i->argument_count = 3;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
   i->code = 6;
   i->cycle_count = 6;
   i->has_argument_descriptor = 1;
@@ -128,6 +129,7 @@ static void     init_or(t_instr_info *i)
   i->argument_count = 3;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
   i->code = 7;
   i->cycle_count = 6;
   i->has_argument_descriptor = 1;
@@ -140,6 +142,7 @@ static void     init_xor(t_instr_info *i)
   i->argument_count = 3;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
   i->code = 8;
   i->cycle_count = 6;
   i->has_argument_descriptor = 1;
@@ -163,6 +166,7 @@ static void     init_ldi(t_instr_info *i)
   i->argument_count = 3;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
   i->code = 10;
   i->cycle_count = 25;
   i->has_argument_descriptor = 1;
@@ -175,6 +179,7 @@ static void     init_sti(t_instr_info *i)
   i->argument_count = 3;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
   i->code = 11;
   i->cycle_count = 25;
   i->has_argument_descriptor = 1;
@@ -198,7 +203,7 @@ static void     init_lld(t_instr_info *i)
   i->argument_count = 2;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->code = 12;
+  i->code = 13;
   i->cycle_count = 10;
   i->has_argument_descriptor = 1;
   i->comment = "long load";
@@ -210,6 +215,7 @@ static void     init_lldi(t_instr_info *i)
   i->argument_count = 3;
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
   i->code = 14;
   i->cycle_count = 50;
   i->has_argument_descriptor = 1;
