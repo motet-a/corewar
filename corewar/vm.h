@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update ven. mars 25 23:56:29 2016 Antoine Baudrand
+** Last update ven. mars 25 23:58:47 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -93,7 +93,7 @@ void	vm_load_program(t_vm *, const t_cor_file_header *, int fd);
 /*
 ** TODO
 */
-void	vm_create_process(t_vm *, pc);
+void	vm_create_process(t_vm *, int pc);
 
 /*
 ** TODO
