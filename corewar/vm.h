@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Fri Mar 25 01:52:17 2016 Valentin Pichard
+** Last update ven. mars 25 23:54:53 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -24,6 +24,15 @@
 
 void		print_usage(const char *filename);
 
+typedef	struct		s_program
+{
+  char			*name;
+  char			*comment;
+  int			live_id;
+  int			last_live_cycle;
+  int			alive;
+}			t_program;
+
 /*
 ** instruction: The current instruction.
 ** remaining_cycles: The remaining cycle count of the execution
@@ -36,17 +45,9 @@ typedef struct  	s_process
   int           	*registers[VM_REGISTER_COUNT];
   char          	instruction;
   int           	remaining_cycles;
+  t_program		*program;
   struct s_process	*next;
 }               	t_process;
-
-typedef	struct		s_program
-{
-  char			*name;
-  char			*comment;
-  int			live_id;
-  int			last_live_cycle;
-  int			alive;
-}			t_program;
 
 typedef struct  s_vm
 {
@@ -78,11 +79,26 @@ int    init_vm_memory(char *memory);
 void	vm_free(t_vm *);
 
 /*
+** Open a prgram and load it using vm_load_program
+*/
+int	vm_open_program(t_vm *, char *file);
+
+/*
 ** Loads a program and creates a process from its header
 ** and a file descriptor on the first byte of the program
 ** TODO
 */
 void	vm_load_program(t_vm *, const t_cor_file_header *, int fd);
+
+/*
+** TODO
+*/
+void	vm_create_process(t_vm *, pc);
+
+/*
+** TODO
+*/
+void	vm_kill_process(t_process *process, t_process *process_before);
 
 /*
 ** Run the vm, run cycles
