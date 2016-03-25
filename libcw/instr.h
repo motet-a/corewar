@@ -74,4 +74,12 @@ int             instr_info_get_arguments_size(const t_instr_info *self);
 
 void            instr_info_get_list(t_instr_info *list);
 
+/*
+** Used by instr_info_get_list()
+*/
+t_instr_info    *instr_info_get_list_0(t_instr_info *list);
+t_instr_info    *instr_info_get_list_1(t_instr_info *list);
+t_instr_info    *instr_info_get_list_2(t_instr_info *list);
+t_instr_info    *instr_info_get_list_3(t_instr_info *list);
+
 #endif /* INSTR_H */

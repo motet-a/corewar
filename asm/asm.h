@@ -12,6 +12,7 @@
 # define ASM_H
 
 # include "../libcw/instr.h"
+# include "lexer.h"
 
 typedef struct          s_instr
 {
@@ -23,6 +24,12 @@ typedef struct          s_instr_list
   t_instr               instr;
   struct s_instr_list   *next;
 }                       t_instr_list;
+
+t_instr_list            *instr_list_new(const t_instr *instr,
+                                        t_instr_list *next);
+void                    instr_list_add(t_instr_list **list_pointer,
+                                       const t_instr *instr);
+void                    instr_list_delete(t_instr_list *list);
 
 /*
 ** If instr is NULL, the label points to the end of the program
@@ -45,8 +52,10 @@ typedef struct  s_program
   t_instr_list  *intructions;
 }               t_program;
 
-void            t_program_free(t_program *program);
-void            t_program_print(const t_program *program);
-void            t_program_write(const t_program *program, int output_file);
+t_syntax_error  program_parse(t_program *program,
+                              const t_token_list *tokens);
+void            program_free(t_program *program);
+void            program_print(const t_program *program);
+void            program_write(const t_program *program, int output_file);
 
 #endif /* ASM_H */

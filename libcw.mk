@@ -14,6 +14,10 @@ LIBCW_SOURCES_NAMES = 	char_type.c \
 			cor_file_read.c \
 			cor_file_write.c \
 			instr.c \
+			instr_0.c \
+			instr_1.c \
+			instr_2.c \
+			instr_3.c \
 			int_to_malloced_string.c \
 			int_to_string.c \
 			int_to_string_get_length.c \

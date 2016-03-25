@@ -26,7 +26,7 @@ static void     print_help(const char *program_name, int output_file)
   print_string_file(" FILE\n", f);
 }
 
-int                     compile(t_source_file *file)
+int                     lex_and_compile(t_source_file *file)
 {
   t_lexer_result        result;
   t_string_reader       reader;
@@ -63,7 +63,7 @@ static int      read_and_compile(const char *source_file_path)
       print_string_err("\n");
       return (-1);
     }
-  r = compile(&file);
+  r = lex_and_compile(&file);
   source_file_free(&file);
   return (r);
 }
