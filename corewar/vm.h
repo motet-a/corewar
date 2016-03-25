@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Fri Mar 25 01:52:17 2016 Valentin Pichard
+** Last update Fri Mar 25 17:34:18 2016 Valentin Pichard
 */
 
 #ifndef VM_H
@@ -100,6 +100,6 @@ void	vm_cycle(t_vm *);
 ** Check alive programs
 ** TODO
 */
-int	vm_check_alive(t_vm *);
+void	vm_check_alive(t_vm *);
 
 #endif /* VM_H */
