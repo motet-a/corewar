@@ -37,5 +37,7 @@ static t_result         create_string_token_result(const t_position *begin,
 static t_result         create_null_result(void);
 
 static t_result         lex_instruction(t_string_reader *reader);
+static char             *get_string(const t_position *begin,
+                                    t_string_reader *reader);
 
 #endif /* LEXER_PRIVATE_H */
