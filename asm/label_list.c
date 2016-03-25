@@ -56,3 +56,11 @@ t_label_list            *label_list_get_last(t_label_list *labels)
     return (NULL);
   return (label_list_get_last(labels->next));
 }
+
+void                    label_list_print(const t_label_list *labels)
+{
+  if (!labels)
+    return ;
+  label_print(&labels->label);
+  label_list_print(labels->next);
+}

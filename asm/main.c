@@ -26,6 +26,24 @@ static void     print_help(const char *program_name, int output_file)
   print_string_file(" FILE\n", f);
 }
 
+int                     compile(t_token_list *tokens)
+{
+  t_syntax_error        *error;
+  t_program             program;
+
+  token_list_print(tokens, "\n", STDOUT_FILENO);
+  error = program_parse(&program, tokens);
+  token_list_delete(tokens, 1);
+  if (error)
+    {
+      syntax_error_print(error, STDERR_FILENO);
+      syntax_error_delete(error);
+      return (-1);
+    }
+  program_free(&program);
+  return (0);
+}
+
 int                     lex_and_compile(t_source_file *file)
 {
   t_lexer_result        result;
@@ -43,12 +61,7 @@ int                     lex_and_compile(t_source_file *file)
       syntax_error_delete(result.error);
       return (-1);
     }
-  else
-    {
-      token_list_print(result.tokens, "\n", STDOUT_FILENO);
-      token_list_delete(result.tokens, 1);
-    }
-  return (0);
+  return (compile(result.tokens));
 }
 
 static int      read_and_compile(const char *source_file_path)
