@@ -35,3 +35,13 @@ void                    argument_free(t_argument *arg)
 {
   free(arg->label);
 }
+
+int                     argument_get_size(const t_argument *arg)
+{
+  if (arg->type == ARGUMENT_TYPE_REGISTER)
+    return (VM_REGISTER_ARGUMENT_SIZE);
+  else if (arg->type == ARGUMENT_TYPE_DIRECT)
+    return (VM_DIRECT_ARGUMENT_SIZE);
+  else
+    return (VM_INDIRECT_ARGUMENT_SIZE);
+}

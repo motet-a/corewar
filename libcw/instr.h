@@ -23,8 +23,8 @@
 # define VM_ADDRESS_SIZE                2
 
 # define VM_REGISTER_ARGUMENT_SIZE      1
-# define VM_DIRECT_ARGUMENT_SIZE        4
-# define VM_INDIRECT_ARGUMENT_SIZE      VM_ADRESS_SIZE
+# define VM_DIRECT_ARGUMENT_SIZE        VM_REGISTER_SIZE
+# define VM_INDIRECT_ARGUMENT_SIZE      VM_ADDRESS_SIZE
 
 /*
 ** Do not change.
@@ -69,8 +69,6 @@ int                     instr_info_get_count(const t_instr_info *list);
 void                    instr_info_print(const t_instr_info *self);
 
 void                    instr_info_print_list(const t_instr_info *list);
-
-int             instr_info_get_arguments_size(const t_instr_info *self);
 
 void            instr_info_get_list(t_instr_info *list);
 
