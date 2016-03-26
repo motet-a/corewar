@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sat Mar 26 04:14:21 2016 Jamy Bailly
+** Last update Sat Mar 26 04:23:57 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -16,6 +16,7 @@
 typedef struct	s_instruction
 {
   t_process	*process;
+  int		params_count;
   int		type_params[4];
   int		value[4];
   char		*memory;
