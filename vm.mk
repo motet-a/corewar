@@ -21,6 +21,7 @@ VM_SOURCES_NAMES	= \
 			vm_instr_ld.c \
 			vm_instr_add_sub.c \
 			vm_instr_and_or.c \
+			vm_instr_zjmp.c \
 			vm_instr_aff.c \
 			vm_cycle.c \
 
