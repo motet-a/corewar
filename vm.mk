@@ -14,6 +14,7 @@ VM_SOURCES_NAMES	= \
 			option.c \
 			vm_initialize.c \
 			vm_free.c \
+			vm_intsr_find_type_value.c \
 			vm_intsr_ld.c \
 			vm_intsr_add_sub.c \
 			vm_intsr_aff.c \
