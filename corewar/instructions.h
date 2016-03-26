@@ -5,22 +5,23 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sat Mar 26 06:24:57 2016 Jamy Bailly
+** Last update Sat Mar 26 07:03:10 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
 # define INSTRUCTIONS_H_
 
 #include "vm.h"
+#include "../libcw/instr.h"
 
-typedef struct	s_instruction
+typedef struct		s_instruction
 {
-  t_process	*processes;
-  int		params_count;
-  int		type_params[4];
-  int		value[4];
-  char		*memory;
-}		t_instruction;
+  t_process		*processes;
+  int			params_count;
+  t_argument_type	type_params[4];
+  int			value[4];
+  char			*memory;
+}			t_instruction;
 
 #include "vm.h"
 
