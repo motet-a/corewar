@@ -101,6 +101,10 @@ t_syntax_error  *parse_arg(t_argument *arg,
                            t_token_list **list_pointer,
                            const t_token *previous);
 
+
+t_syntax_error  *parse_instr(t_program *program,
+                             t_token_list **list_pointer);
+
 t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);
 
 t_syntax_error  *program_parse(t_program *program, t_token_list *tokens);
