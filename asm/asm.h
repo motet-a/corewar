@@ -78,6 +78,8 @@ void                    label_list_print(const t_label_list *labels);
 
 typedef struct  s_program
 {
+  char          *name;
+  char          *comment;
   t_label_list  *labels;
   t_instr_list  *instructions;
   t_instr_info  instr_infos[32];
@@ -86,6 +88,7 @@ typedef struct  s_program
 t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);
 
 t_syntax_error  *program_parse(t_program *program, t_token_list *tokens);
+void            program_add_instr(t_program *program, const t_instr *instr);
 void            program_free(t_program *program);
 void            program_print(const t_program *program);
 void            program_write(const t_program *program, int output_file);

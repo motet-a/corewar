@@ -210,7 +210,7 @@ static t_syntax_error   *parse_instr_2(t_program *program,
   error = parse_instr(program->instr_infos, &instruction, list_pointer);
   if (error || !instruction.info)
     return (error);
-  instr_list_add(&program->instructions, &instruction);
+  program_add_instr(program, &instruction);
   return (NULL);
 }
 

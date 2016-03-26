@@ -46,4 +46,21 @@ void            program_print(const t_program *program)
   instr_list_print(program->instructions);
 }
 
-void            program_write(const t_program *program, int output_file);
+void            program_write(const t_program *program, int output_file)
+{
+}
+
+void            program_add_instr(t_program *program, const t_instr *instr)
+{
+  t_label_list  *labels;
+
+  instr_list_add(&program->instructions, instr);
+  instr = &instr_list_get_last(program->instructions)->instr;
+  labels = program->labels;
+  while (labels)
+    {
+      if (!labels->label.instr)
+        labels->label.instr = instr;
+      labels = labels->next;
+    }
+}
