@@ -40,9 +40,12 @@ void                    argument_free(t_argument *arg)
 
 int                     argument_get_size(const t_argument *arg)
 {
-  if (arg->type == ARGUMENT_TYPE_REGISTER)
+  char                  descr;
+
+  descr = argument_get_descr(arg);
+  if (descr == 1)
     return (VM_REGISTER_ARGUMENT_SIZE);
-  else if (arg->type == ARGUMENT_TYPE_DIRECT)
+  else if (descr == 2)
     return (VM_DIRECT_ARGUMENT_SIZE);
   else
     return (VM_INDIRECT_ARGUMENT_SIZE);
@@ -68,9 +71,9 @@ int                     argument_write(const t_argument *arg,
   if (size == 1)
     buffer[0] = arg->value;
   else if (size == 2)
-    memory_write_int_16(buffer, size);
+    memory_write_int_16(buffer, arg->value);
   else
-    memory_write_int_32(buffer, size);
+    memory_write_int_32(buffer, arg->value);
   if (write(output_file, buffer, size) != size)
     return (-1);
   return 0;

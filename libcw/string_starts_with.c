@@ -31,3 +31,18 @@ int             string_starts_with_no_case(const char *string,
     }
   return (!*begin);
 }
+
+int             string_ends_with(const char *string, const char *end)
+{
+  int           string_i;
+  int           end_i;
+
+  string_i = string_get_length(string);
+  end_i = string_get_length(end);
+  while (--string_i && --end_i)
+    {
+      if (string[string_i] != end[end_i])
+        return (0);
+    }
+  return (end_i == 0);
+}

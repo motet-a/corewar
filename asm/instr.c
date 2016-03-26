@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 #include "../libcw/string.h"
+#include "../libcw/memory.h"
 #include "../libcw/print.h"
 #include "asm.h"
 
@@ -59,11 +60,24 @@ static int      get_args_size_special(const t_instr *instr)
   return (-1);
 }
 
+static int      get_sti_size(const t_instr *instr)
+{
+  int           size;
+
+  size = 2;
+  size += argument_get_size(instr->arguments);
+  size += (instr->arguments[1].type == ARGUMENT_TYPE_REGISTER) ? 1 : 2;
+  size += (instr->arguments[2].type == ARGUMENT_TYPE_REGISTER) ? 1 : 2;
+  return (size);
+}
+
 int             instr_get_size(const t_instr *instr)
 {
   int           size;
   int           i;
 
+  if (string_equals(instr->info->name, "sti"))
+    return (get_sti_size(instr));
   size = 1;
   if (!instr->info->has_argument_descriptor)
     return (size + get_args_size_special(instr));
@@ -88,6 +102,37 @@ unsigned char   instr_get_arg_descr(const t_instr *instr)
   return (descr);
 }
 
+static int      write_sti_arg(const t_argument *arg, int output_file)
+{
+  char          buffer[2];
+
+  if (arg->type == ARGUMENT_TYPE_REGISTER)
+    return (write(output_file, &arg->value, 1) == 1 ? 0 : -1);
+  else
+    {
+      memory_write_int_16(buffer, arg->value);
+      return (write(output_file, buffer, 2) == 2 ? 0 : -1);
+    }
+}
+
+static int      write_sti(const t_instr *instr, int output_file)
+{
+  if (argument_write(instr->arguments + 0, output_file))
+    return (-1);
+  if (write_sti_arg(instr->arguments + 1, output_file))
+    return (-1);
+  if (write_sti_arg(instr->arguments + 2, output_file))
+    return (-1);
+  return (0);
+}
+
+static int      write_zjmp(const t_instr *instr, int output_file)
+{
+  if (write_sti_arg(instr->arguments, output_file))
+    return (-1);
+  return (0);
+}
+
 int             instr_write(const t_instr *instr, int output_file)
 {
   int           i;
@@ -98,9 +143,13 @@ int             instr_write(const t_instr *instr, int output_file)
   if (instr->info->has_argument_descriptor)
     {
       descr = instr_get_arg_descr(instr);
-      if (write(output_file, &instr->info->code, 1) != 1)
+      if (write(output_file, &descr, 1) != 1)
         return (-1);
     }
+  if (string_equals(instr->info->name, "sti"))
+    return (write_sti(instr, output_file));
+  if (string_equals(instr->info->name, "zjmp"))
+    return (write_zjmp(instr, output_file));
   i = -1;
   while (++i < instr->info->argument_count)
     if (argument_write(instr->arguments + i, output_file))

@@ -8,11 +8,14 @@
 ** Last update Mon Feb 29 13:09:21 2016 Antoine Baudrand
 */
 
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "../libcw/print.h"
 #include "../libcw/position.h"
+#include "../libcw/string.h"
 #include "asm.h"
 #include "lexer.h"
 
@@ -26,7 +29,33 @@ static void     print_help(const char *program_name, int output_file)
   print_string_file(" FILE\n", f);
 }
 
-int                     compile(t_token_list *tokens)
+int             write_program(const t_program *program,
+                              const char *output_path)
+{
+  int           file;
+  mode_t        mode;
+
+  mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+  file = open(output_path, O_WRONLY | O_CREAT | O_TRUNC, mode);
+  if (file == -1)
+    {
+      print_string_err("Can't open \"");
+      print_string_err(output_path);
+      print_string_err("\"\n");
+      return (-1);
+    }
+  if (program_write(program, file) == -1)
+    {
+      close(file);
+      print_string_err("Error w\n");
+      return (-1);
+    }
+  close(file);
+  return (0);
+}
+
+static int              compile(t_token_list *tokens,
+                                const char *output_path)
 {
   t_syntax_error        *error;
   t_program             program;
@@ -41,11 +70,13 @@ int                     compile(t_token_list *tokens)
       return (-1);
     }
   program_print(&program);
+  write_program(&program, output_path);
   program_free(&program);
   return (0);
 }
 
-int                     lex_and_compile(t_source_file *file)
+int                     lex_and_compile(t_source_file *file,
+                                        const char *output_path)
 {
   t_lexer_result        result;
   t_string_reader       reader;
@@ -62,23 +93,48 @@ int                     lex_and_compile(t_source_file *file)
       syntax_error_delete(result.error);
       return (-1);
     }
-  return (compile(result.tokens));
+  return (compile(result.tokens, output_path));
+}
+
+static char             *get_output_path(const char *input)
+{
+  char                  *s;
+
+  s = malloc(string_get_length(input) + 4);
+  if (!s)
+    return (NULL);
+  s[0] = '\0';
+  if (string_ends_with(input, ".s"))
+    string_copy_n(s, input, string_get_length(input) - 2);
+  else
+    string_copy(s, input);
+  string_concat(s, ".cor");
+  return (s);
 }
 
 static int      read_and_compile(const char *source_file_path)
 {
   t_source_file file;
   int           r;
+  char          *output_path;
 
+  output_path = get_output_path(source_file_path);
+  if (!output_path)
+    {
+      print_string_err("Can't perform malloc()\n");
+      return (-1);
+    }
   if (source_file_read(&file, source_file_path))
     {
       print_string_err("Can't read ");
       print_string_err(source_file_path);
       print_string_err("\n");
+      free(output_path);
       return (-1);
     }
-  r = lex_and_compile(&file);
+  r = lex_and_compile(&file, output_path);
   source_file_free(&file);
+  free(output_path);
   return (r);
 }
 
