@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update sam. mars 26 12:16:49 2016 Antoine Baudrand
+** Last update sam. mars 26 13:06:40 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -79,16 +79,9 @@ int    init_vm_memory(char *memory);
 void	vm_free(t_vm *);
 
 /*
-** Open a prgram and load it using vm_load_program
+** Return 0 on success
 */
-int	vm_open_program(t_vm *, char *file);
-
-/*
-** Loads a program and creates a process from its header
-** and a file descriptor on the first byte of the program
-** TODO
-*/
-void	vm_load_program(t_vm *, const t_cor_file_header *, int fd);
+int	vm_load_program(t_vm *, const char *file, int index);
 
 /*
 ** TODO
