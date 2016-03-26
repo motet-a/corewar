@@ -25,6 +25,8 @@ void                    argument_free(t_argument *arg);
 void                    argument_print(const t_argument *arg);
 int                     argument_get_size(const t_argument *arg);
 char                    argument_get_descr(const t_argument *arg);
+int                     argument_write(const t_argument *arg,
+                                       int output_file);
 
 typedef struct          s_instr
 {
@@ -36,6 +38,7 @@ void                    instr_free(t_instr *arg);
 void                    instr_print(const t_instr *instr);
 int                     instr_get_size(const t_instr *instr);
 unsigned char           instr_get_arg_descr(const t_instr *instr);
+int                     instr_write(const t_instr *instr, int output_file);
 
 typedef struct          s_instr_list
 {
@@ -95,6 +98,6 @@ t_syntax_error  *program_parse(t_program *program, t_token_list *tokens);
 void            program_add_instr(t_program *program, const t_instr *instr);
 void            program_free(t_program *program);
 void            program_print(const t_program *program);
-void            program_write(const t_program *program, int output_file);
+int             program_write(const t_program *program, int output_file);
 
 #endif /* ASM_H */

@@ -8,7 +8,9 @@
 ** Last update Fri Mar 25 16:59:22 2016 antoine
 */
 
+#include <unistd.h>
 #include <stdlib.h>
+#include "../libcw/memory.h"
 #include "../libcw/print.h"
 #include "asm.h"
 
@@ -54,4 +56,22 @@ char                    argument_get_descr(const t_argument *arg)
     return (2);
   else
     return (3);
+}
+
+int                     argument_write(const t_argument *arg,
+                                       int output_file)
+{
+  char                  buffer[4];
+  int                   size;
+
+  size = argument_get_size(arg);
+  if (size == 1)
+    buffer[0] = arg->value;
+  else if (size == 2)
+    memory_write_int_16(buffer, size);
+  else
+    memory_write_int_32(buffer, size);
+  if (write(output_file, buffer, size) != size)
+    return (-1);
+  return 0;
 }

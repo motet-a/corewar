@@ -46,8 +46,18 @@ void            program_print(const t_program *program)
   instr_list_print(program->instructions);
 }
 
-void            program_write(const t_program *program, int output_file)
+int             program_write(const t_program *program, int output_file)
 {
+  t_instr_list  *instructions;
+
+  instructions = program->instructions;
+  while (instructions)
+    {
+      if (instr_write(&instructions->instr, output_file))
+        return (-1);
+      instructions = instructions->next;
+    }
+  return (0);
 }
 
 void            program_add_instr(t_program *program, const t_instr *instr)

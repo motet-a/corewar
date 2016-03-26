@@ -8,6 +8,7 @@
 ** Last update Fri Mar 25 15:07:26 2016 antoine
 */
 
+#include <unistd.h>
 #include "../libcw/string.h"
 #include "../libcw/print.h"
 #include "asm.h"
@@ -83,4 +84,24 @@ unsigned char   instr_get_arg_descr(const t_instr *instr)
       descr |= argument_get_descr(instr->arguments + i) << (3 - i) * 2;
     }
   return (descr);
+}
+
+int             instr_write(const t_instr *instr, int output_file)
+{
+  int           i;
+  char          descr;
+
+  if (write(output_file, &instr->info->code, 1) != 1)
+    return (-1);
+  if (instr->info->has_argument_descriptor)
+    {
+      descr = instr_get_arg_descr(instr);
+      if (write(output_file, &instr->info->code, 1) != 1)
+        return (-1);
+    }
+  i = -1;
+  while (++i < instr->info->argument_count)
+    if (argument_write(instr->arguments + i, output_file))
+      return (-1);
+  return (0);
 }
