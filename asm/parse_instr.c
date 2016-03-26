@@ -58,10 +58,10 @@ static t_syntax_error   *parse_instr_2(const t_instr_info *infos,
   const t_instr_info    *info;
   t_syntax_error        *error;
 
-
   instr_token = try_to_read_token(list_pointer, TOKEN_TYPE_INSTRUCTION);
   if (!instr_token)
     return (NULL);
+  instruction->position = instr_token->position;
   info = instr_info_get_from_name(infos, instr_token->string_value);
   if (!info)
     return (syntax_error_new(&instr_token->position, "Unknown instruction"));

@@ -26,6 +26,8 @@ void            instr_print(const t_instr *instr)
 {
   int           i;
 
+  position_print(&instr->position, STDOUT_FILENO);
+  print_string("\t");
   print_int(instr_get_size(instr));
   print_string("\t");
   print_int(instr_get_arg_descr(instr));

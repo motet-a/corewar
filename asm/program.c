@@ -31,6 +31,12 @@ t_syntax_error          *program_parse(t_program *program,
           return (error);
         }
     }
+  error = program_link_labels(program);
+  if (error)
+    {
+      program_free(program);
+      return (error);
+    }
   return (NULL);
 }
 
