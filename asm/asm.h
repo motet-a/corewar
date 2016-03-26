@@ -32,6 +32,7 @@ typedef struct          s_instr
 {
   const t_instr_info    *info;
   t_argument            arguments[VM_MAX_ARGUMENT_COUNT];
+  t_position            position;
 }                       t_instr;
 
 void                    instr_free(t_instr *arg);
@@ -63,6 +64,7 @@ typedef struct          s_label
   char                  *name;
   const t_instr         *instr;
   t_position            position;
+  int                   offset;
 }                       t_label;
 
 void                    label_init(t_label *label, t_token *label_token);
@@ -95,9 +97,15 @@ typedef struct  s_program
 t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);
 
 t_syntax_error  *program_parse(t_program *program, t_token_list *tokens);
+int             program_get_instr_offset(const t_program *program,
+                                         const t_instr *instr);
+t_syntax_error  *program_link_labels(const t_program *program);
 void            program_add_instr(t_program *program, const t_instr *instr);
 void            program_free(t_program *program);
 void            program_print(const t_program *program);
 int             program_write(const t_program *program, int output_file);
+int             program_get_size(const t_program *program);
+t_label         *program_get_label(const t_program *program,
+                                   const char *name);
 
 #endif /* ASM_H */
