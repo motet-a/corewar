@@ -14,9 +14,19 @@
 # include "../libcw/instr.h"
 # include "lexer.h"
 
+typedef struct          s_argument
+{
+  t_argument_type       type;
+  const char            *label;
+  long                  value;
+}                       t_argument;
+
+void                    argument_print(const t_argument *arg);
+
 typedef struct          s_instr
 {
   const t_instr_info    *info;
+  t_argument            arguments[VM_MAX_ARGUMENT_COUNT];
 }                       t_instr;
 
 void                    instr_print(const t_instr *instr);

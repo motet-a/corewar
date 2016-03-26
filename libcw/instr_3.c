@@ -42,7 +42,7 @@ static void     init_lfork(t_instr_info *i)
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->code = 15;
   i->cycle_count = 1000;
-  i->has_argument_descriptor = 1;
+  i->has_argument_descriptor = 0;
   i->comment = "long fork";
 }
 

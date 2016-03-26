@@ -53,7 +53,7 @@ t_label_list            *label_list_get_last(t_label_list *labels)
   if (!labels)
     return (NULL);
   if (!labels->next)
-    return (NULL);
+    return (labels);
   return (label_list_get_last(labels->next));
 }
 

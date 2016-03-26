@@ -17,7 +17,7 @@ static void     init_zjmp(t_instr_info *i)
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->code = 9;
   i->cycle_count = 20;
-  i->has_argument_descriptor = 1;
+  i->has_argument_descriptor = 0;
   i->comment = "jump if zero";
 }
 
@@ -54,7 +54,7 @@ static void     init_fork(t_instr_info *i)
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->code = 12;
   i->cycle_count = 800;
-  i->has_argument_descriptor = 1;
+  i->has_argument_descriptor = 0;
   i->comment = "fork";
 }
 

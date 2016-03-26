@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "instr.h"
 #include "print.h"
+#include "string.h"
 
 void                    instr_info_print(const t_instr_info *self)
 {
@@ -56,4 +57,16 @@ void            instr_info_get_list(t_instr_info *list)
   list = instr_info_get_list_2(list);
   list = instr_info_get_list_3(list);
   list->name = NULL;
+}
+
+const t_instr_info      *instr_info_get_from_name(const t_instr_info *list,
+                                                  const char *name)
+{
+  while (list->name)
+    {
+      if (string_equals(name, list->name))
+        return (list);
+      list++;
+    }
+  return (NULL);
 }

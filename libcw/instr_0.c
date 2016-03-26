@@ -17,7 +17,7 @@ static void     init_live(t_instr_info *i)
   i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
   i->code = 1;
   i->cycle_count = 10;
-  i->has_argument_descriptor = 1;
+  i->has_argument_descriptor = 0;
   i->comment = "alive";
 }
 
