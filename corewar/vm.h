@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update sam. mars 26 13:47:30 2016 Antoine Baudrand
+** Last update sam. mars 26 18:50:32 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -17,7 +17,6 @@
 
 # define CYCLE_TO_DIE           1536
 # define CYCLE_DELTA            4
-# define LIVE_CALL_COUNT        2048
 # define MEMORY_SIZE            (6 * 1024)
 # define IDX_MOD                512
 # define NBR_LIVE		2048
@@ -98,9 +97,9 @@ void	vm_run(t_vm *);
 
 /*
 ** Run a machine cycle
-** TODO
+** Return 0 if there is no processes
 */
-void	vm_cycle(t_vm *);
+int	vm_cycle(t_vm *);
 
 /*
 ** Check alive programs
