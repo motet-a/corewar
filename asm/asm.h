@@ -24,6 +24,7 @@ typedef struct          s_argument
 void                    argument_free(t_argument *arg);
 void                    argument_print(const t_argument *arg);
 int                     argument_get_size(const t_argument *arg);
+char                    argument_get_descr(const t_argument *arg);
 
 typedef struct          s_instr
 {
@@ -34,6 +35,7 @@ typedef struct          s_instr
 void                    instr_free(t_instr *arg);
 void                    instr_print(const t_instr *instr);
 int                     instr_get_size(const t_instr *instr);
+unsigned char           instr_get_arg_descr(const t_instr *instr);
 
 typedef struct          s_instr_list
 {

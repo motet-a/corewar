@@ -27,6 +27,8 @@ void            instr_print(const t_instr *instr)
 
   print_int(instr_get_size(instr));
   print_string("\t");
+  print_int(instr_get_arg_descr(instr));
+  print_string("\t");
   print_string(instr->info->name);
   print_string(" ");
   i = -1;
@@ -67,4 +69,18 @@ int             instr_get_size(const t_instr *instr)
   while (++i < instr->info->argument_count)
     size += argument_get_size(instr->arguments + i);
   return (size);
+}
+
+unsigned char   instr_get_arg_descr(const t_instr *instr)
+{
+  int           i;
+  unsigned char descr;
+
+  descr = 0;
+  i = -1;
+  while (++i < instr->info->argument_count)
+    {
+      descr |= argument_get_descr(instr->arguments + i) << (3 - i) * 2;
+    }
+  return (descr);
 }

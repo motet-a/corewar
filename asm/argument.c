@@ -45,3 +45,13 @@ int                     argument_get_size(const t_argument *arg)
   else
     return (VM_INDIRECT_ARGUMENT_SIZE);
 }
+
+char                    argument_get_descr(const t_argument *arg)
+{
+  if (arg->type == ARGUMENT_TYPE_REGISTER)
+    return (1);
+  else if (arg->type == ARGUMENT_TYPE_DIRECT)
+    return (2);
+  else
+    return (3);
+}
