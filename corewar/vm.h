@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Sat Mar 26 05:29:53 2016 Jamy Bailly
+** Last update sam. mars 26 12:16:49 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -42,7 +42,7 @@ typedef struct  	s_process
 {
   int           	pc;
   int           	carry;
-  int           	*registers[VM_REGISTER_COUNT];
+  int           	registers[VM_REGISTER_COUNT];
   char          	instruction;
   int           	remaining_cycles;
   t_program		*program;
@@ -93,7 +93,7 @@ void	vm_load_program(t_vm *, const t_cor_file_header *, int fd);
 /*
 ** TODO
 */
-void	vm_create_process(t_vm *, int pc);
+void	vm_create_process(t_vm *, int pc, t_program *);
 
 /*
 ** TODO
