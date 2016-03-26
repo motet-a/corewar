@@ -17,10 +17,11 @@
 typedef struct          s_argument
 {
   t_argument_type       type;
-  const char            *label;
+  char                  *label;
   long                  value;
 }                       t_argument;
 
+void                    argument_free(t_argument *arg);
 void                    argument_print(const t_argument *arg);
 
 typedef struct          s_instr
@@ -29,6 +30,7 @@ typedef struct          s_instr
   t_argument            arguments[VM_MAX_ARGUMENT_COUNT];
 }                       t_instr;
 
+void                    instr_free(t_instr *arg);
 void                    instr_print(const t_instr *instr);
 
 typedef struct          s_instr_list
@@ -78,6 +80,7 @@ typedef struct  s_program
 {
   t_label_list  *labels;
   t_instr_list  *instructions;
+  t_instr_info  instr_infos[32];
 }               t_program;
 
 t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);

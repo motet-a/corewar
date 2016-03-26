@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include "asm.h"
 #include "../libcw/string.h"
+#include "../libcw/char_type.h"
+#include "../libcw/parse_int.h"
 
 static t_token          *try_to_read_token(t_token_list **list_pointer,
                                            t_token_type type)
@@ -67,6 +69,25 @@ static t_syntax_error   *parse_directive(t_program *program,
   return (NULL);
 }
 
+static t_syntax_error   *parse_register(t_argument *arg,
+                                        const t_token *token)
+{
+  const char            *s;
+  long                  number;
+
+  arg->type = ARGUMENT_TYPE_REGISTER;
+  s = token->string_value;
+  if (string_get_length(s) < 2 || string_get_length(s) > 3 || s[0] != 'r')
+    return (syntax_error_new(&token->position, "Unknown identifier"));
+  s++;
+  if (parse_int(s, &number))
+    return (syntax_error_new(&token->position, "Invalid register name"));
+  if (!(number >= 1 && number <= VM_REGISTER_COUNT))
+    return (syntax_error_new(&token->position, "Invalid register number"));
+  arg->value = number;
+  return (NULL);
+}
+
 static t_syntax_error   *parse_arg_indirect(t_argument *arg,
                                             t_token_list **list_pointer,
                                             const t_token *previous)
@@ -82,15 +103,12 @@ static t_syntax_error   *parse_arg_indirect(t_argument *arg,
   token = try_to_read_token(list_pointer, TOKEN_TYPE_LABEL_REF);
   if (token)
     {
-      arg->label = token->string_value;
+      arg->label = string_duplicate(token->string_value);
       return (NULL);
     }
   token = try_to_read_token(list_pointer, TOKEN_TYPE_INSTRUCTION);
   if (token)
-    {
-      arg->label = token->string_value;
-      return (NULL);
-    }
+    return (parse_register(arg, token));
   return (syntax_error_new(&previous->position, "Expected value"));
 }
 
@@ -109,7 +127,7 @@ static t_syntax_error   *parse_arg_direct(t_argument *arg,
   token = try_to_read_token(list_pointer, TOKEN_TYPE_LABEL_REF);
   if (token)
     {
-      arg->label = token->string_value;
+      arg->label = string_duplicate(token->string_value);
       return (NULL);
     }
   return (syntax_error_new(&percent->position, "Expected value"));
@@ -160,26 +178,39 @@ static t_syntax_error   *parse_args(t_instr *instruction,
   return (NULL);
 }
 
-static t_syntax_error   *parse_instr(t_program *program,
+static t_syntax_error   *parse_instr(const t_instr_info *infos,
+                                     t_instr *instruction,
                                      t_token_list **list_pointer)
 {
   t_token               *instr_token;
   const t_instr_info    *info;
-  t_instr_info          list[32];
-  t_instr               instruction;
   t_syntax_error        *error;
 
-  instr_info_get_list(list);
+
   instr_token = try_to_read_token(list_pointer, TOKEN_TYPE_INSTRUCTION);
   if (!instr_token)
     return (NULL);
-  info = instr_info_get_from_name(list, instr_token->string_value);
+  info = instr_info_get_from_name(infos, instr_token->string_value);
   if (!info)
     return (syntax_error_new(&instr_token->position, "Unknown instruction"));
-  instruction.info = info;
-  error = parse_args(&instruction, list_pointer, instr_token);
+  instruction->info = info;
+  error = parse_args(instruction, list_pointer, instr_token);
   if (error)
     return (error);
+  return (NULL);
+}
+
+static t_syntax_error   *parse_instr_2(t_program *program,
+                                       t_token_list **list_pointer)
+{
+  t_syntax_error        *error;
+  t_instr               instruction;
+
+  instruction.info = NULL;
+  error = parse_instr(program->instr_infos, &instruction, list_pointer);
+  if (error || !instruction.info)
+    return (error);
+  instr_list_add(&program->instructions, &instruction);
   return (NULL);
 }
 
@@ -199,7 +230,7 @@ t_syntax_error          *parse_line(t_program *program,
   error = parse_label_def(program, list_pointer);
   if (error)
     return (error);
-  error = parse_instr(program, list_pointer);
+  error = parse_instr_2(program, list_pointer);
   if (error)
     return (error);
   if (!*list_pointer)

@@ -9,6 +9,7 @@
 ##
 
 ASM_SOURCES_NAMES	= \
+			argument.c \
 			instr.c \
 			instr_list.c \
 			label.c \

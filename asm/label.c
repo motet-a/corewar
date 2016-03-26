@@ -31,4 +31,10 @@ void                    label_print(const t_label *label)
   print_string("name: ");
   print_string(label->name);
   print_string("\n");
+  print_string("instruction: ");
+  if (label->instr)
+    print_string(label->instr->info->name);
+  else
+    print_string("<none>");
+  print_string("\n");
 }

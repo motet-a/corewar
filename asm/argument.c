@@ -8,6 +8,7 @@
 ** Last update Fri Mar 25 16:59:22 2016 antoine
 */
 
+#include <stdlib.h>
 #include "../libcw/print.h"
 #include "asm.h"
 
@@ -28,4 +29,9 @@ void                    argument_print(const t_argument *arg)
     }
   else
     print_int(arg->value);
+}
+
+void                    argument_free(t_argument *arg)
+{
+  free(arg->label);
 }

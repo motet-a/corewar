@@ -43,6 +43,7 @@ void                    instr_list_delete(t_instr_list *list)
   if (!list)
     return ;
   instr_list_delete(list->next);
+  instr_free(&list->instr);
   free(list);
 }
 

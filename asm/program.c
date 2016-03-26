@@ -10,12 +10,14 @@
 
 #include <stdlib.h>
 #include "asm.h"
+#include "../libcw/print.h"
 
 t_syntax_error          *program_parse(t_program *program,
                                        t_token_list *tokens)
 {
   t_syntax_error        *error;
 
+  instr_info_get_list(program->instr_infos);
   program->instructions = NULL;
   program->labels = NULL;
   while (tokens)
@@ -38,7 +40,10 @@ void            program_free(t_program *program)
 
 void            program_print(const t_program *program)
 {
+  print_string("\nlabels:\n");
   label_list_print(program->labels);
+  print_string("\ninstructions:\n");
+  instr_list_print(program->instructions);
 }
 
 void            program_write(const t_program *program, int output_file);

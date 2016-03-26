@@ -31,7 +31,7 @@ int                     compile(t_token_list *tokens)
   t_syntax_error        *error;
   t_program             program;
 
-  token_list_print(tokens, "\n", STDOUT_FILENO);
+  /*token_list_print(tokens, "\n", STDOUT_FILENO);*/
   error = program_parse(&program, tokens);
   token_list_delete(tokens, 1);
   if (error)
@@ -40,6 +40,7 @@ int                     compile(t_token_list *tokens)
       syntax_error_delete(error);
       return (-1);
     }
+  program_print(&program);
   program_free(&program);
   return (0);
 }
