@@ -14,10 +14,11 @@ VM_SOURCES_NAMES	= \
 			option.c \
 			vm_initialize.c \
 			vm_free.c \
-			vm_intsr_find_type_value.c \
-			vm_intsr_ld.c \
-			vm_intsr_add_sub.c \
-			vm_intsr_aff.c \
+			vm_instr_find_type_value.c \
+			vm_instr_ld.c \
+			vm_instr_add_sub.c \
+			vm_instr_and_or.c \
+			vm_instr_aff.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			corewar/$(file))

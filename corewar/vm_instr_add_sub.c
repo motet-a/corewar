@@ -1,11 +1,11 @@
 /*
-** vm_add_sub.c for corewar in /home/bailly_j/rendu/corewar/corewar
+** vm_instr_add_sub.c for corewar in /home/bailly_j/rendu/corewar/corewar
 **
 ** Made by Jamy Bailly
 ** Login   <bailly_j@epitech.net>
 **
-** Started on  Sat Mar 26 06:04:30 2016 Jamy Bailly
-** Last update Sat Mar 26 06:24:44 2016 Jamy Bailly
+** Started on  Sat Mar 26 07:40:41 2016 Jamy Bailly
+** Last update Sat Mar 26 07:40:45 2016 Jamy Bailly
 */
 
 #include "instructions.h"

@@ -1,11 +1,11 @@
 /*
-** vm_ld.c for corewar in /home/bailly_j/rendu/corewar/corewar
+** vm_instr_ld.c for corewar in /home/bailly_j/rendu/corewar/corewar
 **
 ** Made by Jamy Bailly
 ** Login   <bailly_j@epitech.net>
 **
-** Started on  Sat Mar 26 05:42:31 2016 Jamy Bailly
-** Last update Sat Mar 26 05:47:55 2016 Jamy Bailly
+** Started on  Sat Mar 26 07:42:29 2016 Jamy Bailly
+** Last update Sat Mar 26 07:42:32 2016 Jamy Bailly
 */
 
 #include "instructions.h"

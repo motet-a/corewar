@@ -1,11 +1,11 @@
 /*
-** vm_aff.c for corewar in /home/bailly_j/rendu/corewar/corewar
+** vm_instr_aff.c for corewar in /home/bailly_j/rendu/corewar/corewar
 **
 ** Made by Jamy Bailly
 ** Login   <bailly_j@epitech.net>
 **
-** Started on  Sat Mar 26 04:58:34 2016 Jamy Bailly
-** Last update Sat Mar 26 05:48:07 2016 Jamy Bailly
+** Started on  Sat Mar 26 07:41:39 2016 Jamy Bailly
+** Last update Sat Mar 26 07:41:42 2016 Jamy Bailly
 */
 
 #include "../libcw/print.h"

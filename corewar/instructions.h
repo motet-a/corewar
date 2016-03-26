@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sat Mar 26 07:37:36 2016 Jamy Bailly
+** Last update Sat Mar 26 07:46:19 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -50,6 +50,6 @@ void	vm_aff(t_instruction *i);
 /*
 **  Find the type of the value and return value
 */
-int	vm_intsr_find_type_value(t_instruction *, int pos);
+int	vm_instr_find_type_value(t_instruction *, int pos);
 
 #endif /* !INSTRUCTIONS_H_ */
