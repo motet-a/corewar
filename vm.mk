@@ -15,6 +15,7 @@ VM_SOURCES_NAMES	= \
 			vm_initialize.c \
 			vm_free.c \
 			vm_create_process.c \
+			vm_kill_process.c \
 			vm_instr_find_type_value.c \
 			vm_instr_ld.c \
 			vm_instr_add_sub.c \
