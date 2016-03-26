@@ -13,7 +13,8 @@ VM_SOURCES_NAMES	= \
 			option_extend.c \
 			option.c \
 			vm_initialize.c \
-			vm_free.c
+			vm_free.c \
+			vm_aff.c
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			corewar/$(file))

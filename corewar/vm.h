@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update ven. mars 25 23:58:47 2016 Antoine Baudrand
+** Last update Sat Mar 26 05:29:53 2016 Jamy Bailly
 */
 
 #ifndef VM_H
