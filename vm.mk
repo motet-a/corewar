@@ -22,6 +22,7 @@ VM_SOURCES_NAMES	= \
 			vm_instr_add_sub.c \
 			vm_instr_and_or.c \
 			vm_instr_aff.c \
+			vm_cycle.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			corewar/$(file))
