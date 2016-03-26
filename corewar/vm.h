@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update sam. mars 26 13:06:40 2016 Antoine Baudrand
+** Last update sam. mars 26 13:24:55 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -91,7 +91,7 @@ void	vm_create_process(t_vm *, int pc, t_program *);
 /*
 ** TODO
 */
-void	vm_kill_process(t_process *process, t_process *process_before);
+void	vm_kill_process(t_vm *vm, t_process *process);
 
 /*
 ** Run the vm, run cycles
