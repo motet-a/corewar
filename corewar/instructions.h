@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sat Mar 26 04:05:31 2016 Jamy Bailly
+** Last update Sat Mar 26 04:14:21 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -13,21 +13,31 @@
 
 #include "vm.h"
 
-void	vm_live(t_process *process);
-void	vm_ld(t_process *process, int type_params[4], int value[4]);
-void	vm_st(t_process *process, int type_params[4], int value[4]);
-void	vm_add(t_process *process, int type_params[4], int value[4]);
-void	vm_sub(t_process *process, int type_params[4], int value[4]);
-void	vm_and(t_process *process, int type_params[4], int value[4]);
-void	vm_or(t_process *process, int type_params[4], int value[4]);
-void	vm_xor(t_process *process, int type_params[4], int value[4]);
-void	vm_zjmp(t_process *process, int type_params[4], int value[4]);
-void	vm_ldi(t_process *process, int type_params[4], int value[4]);
-void	vm_sti(t_process *process, int type_params[4], int value[4]);
-void	vm_fork(t_process *process, int type_params[4], int value[4]);
-void	vm_lld(t_process *process, int type_params[4], int value[4]);
-void	vm_lldi(t_process *process, int type_params[4], int value[4]);
-void	vm_lfork(t_process *process, int type_params[4], int value[4]);
-void	vm_aff(t_process *process, int type_params[4], int value[4]);
+typedef struct	s_instruction
+{
+  t_process	*process;
+  int		type_params[4];
+  int		value[4];
+  char		*memory;
+}		t_instruction;
+
+#include "vm.h"
+
+void	vm_live(t_instruction *i);
+void	vm_ld(t_instruction *i);
+void	vm_st(t_instruction *i);
+void	vm_add(t_instruction *i);
+void	vm_sub(t_instruction *i);
+void	vm_and(t_instruction *i);
+void	vm_or(t_instruction *i);
+void	vm_xor(t_instruction *i);
+void	vm_zjmp(t_instruction *i);
+void	vm_ldi(t_instruction *i);
+void	vm_sti(t_instruction *i);
+void	vm_fork(t_instruction *i);
+void	vm_lld(t_instruction *i);
+void	vm_lldi(t_instruction *i);
+void	vm_lfork(t_instruction *i);
+void	vm_aff(t_instruction *i);
 
 #endif /* !INSTRUCTIONS_H_ */
