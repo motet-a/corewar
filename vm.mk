@@ -15,6 +15,7 @@ VM_SOURCES_NAMES	= \
 			vm_initialize.c \
 			vm_free.c \
 			vm_ld.c \
+			vm_add_sub.c \
 			vm_aff.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
