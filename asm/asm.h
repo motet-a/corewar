@@ -94,6 +94,13 @@ typedef struct  s_program
   t_instr_info  instr_infos[32];
 }               t_program;
 
+t_token         *try_to_read_token(t_token_list **list_pointer,
+                                   t_token_type type);
+
+t_syntax_error  *parse_arg(t_argument *arg,
+                           t_token_list **list_pointer,
+                           const t_token *previous);
+
 t_syntax_error  *parse_line(t_program *program, t_token_list **list_pointer);
 
 t_syntax_error  *program_parse(t_program *program, t_token_list *tokens);

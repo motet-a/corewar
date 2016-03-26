@@ -12,9 +12,8 @@
 #include "asm.h"
 #include "../libcw/string.h"
 #include "../libcw/char_type.h"
-#include "../libcw/parse_int.h"
 
-static t_token          *try_to_read_token(t_token_list **list_pointer,
+t_token                 *try_to_read_token(t_token_list **list_pointer,
                                            t_token_type type)
 {
   t_token               *token;
@@ -50,113 +49,41 @@ static t_syntax_error   *parse_directive(t_program *program,
 {
   t_token               *directive;
   t_token               *string;
-  int                   type;
+  char                  type;
 
   *ok = 0;
   directive = try_to_read_token(list_pointer, TOKEN_TYPE_DIRECTIVE);
   if (!directive)
     return (NULL);
   if (string_equals(directive->string_value, "name"))
-    type = 0;
+    type = 'n';
   else if (string_equals(directive->string_value, "comment"))
-    type = 1;
+    type = 'c';
   else
     return (syntax_error_new(&directive->position, "Invalid directive"));
   string = try_to_read_token(list_pointer, TOKEN_TYPE_STRING);
   if (!string)
     return (syntax_error_new(&directive->position, "Expected a string"));
+  if (type == 'n')
+    program->name = string_duplicate(string->string_value);
+  else
+    program->comment = string_duplicate(string->string_value);
   *ok = 1;
   return (NULL);
 }
 
-static t_syntax_error   *parse_register(t_argument *arg,
-                                        const t_token *token)
+static void             free_args(t_instr *instruction, int count)
 {
-  const char            *s;
-  long                  number;
-
-  arg->type = ARGUMENT_TYPE_REGISTER;
-  s = token->string_value;
-  if (string_get_length(s) < 2 || string_get_length(s) > 3 || s[0] != 'r')
-    return (syntax_error_new(&token->position, "Unknown identifier"));
-  s++;
-  if (parse_int(s, &number))
-    return (syntax_error_new(&token->position, "Invalid register name"));
-  if (!(number >= 1 && number <= VM_REGISTER_COUNT))
-    return (syntax_error_new(&token->position, "Invalid register number"));
-  arg->value = number;
-  return (NULL);
-}
-
-static t_syntax_error   *parse_arg_indirect(t_argument *arg,
-                                            t_token_list **list_pointer,
-                                            const t_token *previous)
-{
-  t_token               *token;
-
-  token = try_to_read_token(list_pointer, TOKEN_TYPE_INTEGER);
-  if (token)
+  while (count)
     {
-      arg->value = token->integer_value;
-      return (NULL);
-    }
-  token = try_to_read_token(list_pointer, TOKEN_TYPE_LABEL_REF);
-  if (token)
-    {
-      arg->label = string_duplicate(token->string_value);
-      return (NULL);
-    }
-  token = try_to_read_token(list_pointer, TOKEN_TYPE_INSTRUCTION);
-  if (token)
-    return (parse_register(arg, token));
-  return (syntax_error_new(&previous->position, "Expected value"));
-}
-
-static t_syntax_error   *parse_arg_direct(t_argument *arg,
-                                          t_token_list **list_pointer,
-                                          const t_token *percent)
-{
-  t_token               *token;
-
-  token = try_to_read_token(list_pointer, TOKEN_TYPE_INTEGER);
-  if (token)
-    {
-      arg->value = token->integer_value;
-      return (NULL);
-    }
-  token = try_to_read_token(list_pointer, TOKEN_TYPE_LABEL_REF);
-  if (token)
-    {
-      arg->label = string_duplicate(token->string_value);
-      return (NULL);
-    }
-  return (syntax_error_new(&percent->position, "Expected value"));
-}
-
-static t_syntax_error   *parse_arg(t_argument *arg,
-                                   t_token_list **list_pointer,
-                                   const t_token *previous)
-{
-  t_token               *percent;
-
-  arg->value = 0;
-  arg->label = NULL;
-  percent = try_to_read_token(list_pointer, TOKEN_TYPE_PERCENT);
-  if (percent)
-    {
-      arg->type = ARGUMENT_TYPE_DIRECT;
-      return (parse_arg_direct(arg, list_pointer, percent));
-    }
-  else
-    {
-      arg->type = ARGUMENT_TYPE_INDIRECT;
-      return (parse_arg_indirect(arg, list_pointer, previous));
+      count--;
+      argument_free(instruction->arguments + count);
     }
 }
 
 static t_syntax_error   *parse_args(t_instr *instruction,
                                     t_token_list **list_pointer,
-                                    const t_token *previous)
+                                    const t_token *prev)
 {
   int                   i;
   t_syntax_error        *error;
@@ -169,11 +96,17 @@ static t_syntax_error   *parse_args(t_instr *instruction,
         {
           comma = try_to_read_token(list_pointer, TOKEN_TYPE_COMMA);
           if (!comma)
-            return (syntax_error_new(&previous->position, "Expected comma"));
+            {
+              free_args(instruction, i);
+              return (syntax_error_new(&prev->position, "Expected comma"));
+            }
         }
-      error = parse_arg(instruction->arguments + i, list_pointer, previous);
+      error = parse_arg(instruction->arguments + i, list_pointer, prev);
       if (error)
-        return (error);
+        {
+          free_args(instruction, i);
+          return (error);
+        }
     }
   return (NULL);
 }

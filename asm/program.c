@@ -20,6 +20,8 @@ t_syntax_error          *program_parse(t_program *program,
   instr_info_get_list(program->instr_infos);
   program->instructions = NULL;
   program->labels = NULL;
+  program->name = NULL;
+  program->comment = NULL;
   while (tokens)
     {
       error = parse_line(program, &tokens);
@@ -36,6 +38,8 @@ void            program_free(t_program *program)
 {
   instr_list_delete(program->instructions);
   label_list_delete(program->labels);
+  free(program->name);
+  free(program->comment);
 }
 
 void            program_print(const t_program *program)

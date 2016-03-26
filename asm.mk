@@ -15,6 +15,7 @@ ASM_SOURCES_NAMES	= \
 			label.c \
 			label_list.c \
 			lexer.c \
+			parse_arg.c \
 			parse_line.c \
 			program.c \
 			program_link.c \
