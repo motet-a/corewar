@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  ven. mars 25 18:45:49 2016 Antoine Baudrand
-** Last update dim. mars 27 13:18:16 2016 Antoine Baudrand
+** Last update dim. mars 27 21:53:05 2016 Antoine Baudrand
 */
 
 #include "vm.h"
@@ -58,6 +58,8 @@ static int              read_program(t_vm *vm, int fd)
 
   if (cor_file_header_read(&header, fd))
     return (-1);
+  if (vm->program_count <= 0)
+    return(-1);
   if (header.program_size > (MEMORY_SIZE / vm->program_count))
     {
       cor_file_header_free(&header);

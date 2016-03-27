@@ -31,7 +31,7 @@ static char     *read_string(size_t length, int input_file)
   string = malloc(length + 1);
   if (!string)
     return (NULL);
-  if (write(input_file, string, length) <= 0)
+  if (read(input_file, string, length) <= 0)
     {
       free(string);
       return (NULL);

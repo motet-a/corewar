@@ -24,9 +24,10 @@ static void     print_help(const char *program_name, int output_file)
 
 int             main(int argc, char **argv)
 {
-  if (argc != 2) {
-    print_help(argv[0], STDERR_FILENO);
-    return (1);
-  }
+  if (argc != 2)
+    {
+      print_help(argv[0], STDERR_FILENO);
+      return (1);
+    }
   return (read_and_compile(argv[1]));
 }
