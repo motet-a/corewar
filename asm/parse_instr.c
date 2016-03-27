@@ -20,7 +20,7 @@ static void             free_args(t_instr *instruction, int count)
     }
 }
 
-static t_syntax_error   *parse_args(t_instr *instruction,
+static t_syntax_error   *parse_args(t_instr *instr,
                                     t_token_list **list_pointer,
                                     const t_token *prev)
 {
@@ -29,21 +29,22 @@ static t_syntax_error   *parse_args(t_instr *instruction,
   t_token               *comma;
 
   i = -1;
-  while (++i < instruction->info->argument_count)
+  while (++i < instr->info->argument_count)
     {
       if (i)
         {
           comma = try_to_read_token(list_pointer, TOKEN_TYPE_COMMA);
           if (!comma)
             {
-              free_args(instruction, i);
+              free_args(instr, i);
               return (syntax_error_new(&prev->position, "Expected comma"));
             }
         }
-      error = parse_arg(instruction->arguments + i, list_pointer, prev);
+      error = parse_arg(instr->arguments + i, list_pointer, prev,
+                        instr->info->argument_types[i]);
       if (error)
         {
-          free_args(instruction, i);
+          free_args(instr, i);
           return (error);
         }
     }

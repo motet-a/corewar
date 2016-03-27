@@ -8,13 +8,13 @@
 ** Last update Fri Mar 25 10:18:33 2016 antoine
 */
 
-#include "instr.h"
+#include "instr_private.h"
 
 static void     init_live(t_instr_info *i)
 {
   i->name = "live";
   i->argument_count = 1;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
+  i->argument_types[0] = T_DIR;
   i->code = 1;
   i->cycle_count = 10;
   i->has_argument_descriptor = 0;
@@ -25,8 +25,8 @@ static void     init_ld(t_instr_info *i)
 {
   i->name = "ld";
   i->argument_count = 2;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[0] = T_DIR | T_IND;
+  i->argument_types[1] = T_REG;
   i->code = 2;
   i->cycle_count = 5;
   i->has_argument_descriptor = 1;
@@ -37,8 +37,8 @@ static void     init_st(t_instr_info *i)
 {
   i->name = "st";
   i->argument_count = 2;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[0] = T_REG;
+  i->argument_types[1] = T_IND | T_REG;
   i->code = 3;
   i->cycle_count = 5;
   i->has_argument_descriptor = 1;
@@ -49,9 +49,9 @@ static void     init_add(t_instr_info *i)
 {
   i->name = "add";
   i->argument_count = 3;
-  i->argument_types[0] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[2] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[0] = T_REG;
+  i->argument_types[1] = T_REG;
+  i->argument_types[2] = T_REG;
   i->code = 4;
   i->cycle_count = 10;
   i->has_argument_descriptor = 1;
