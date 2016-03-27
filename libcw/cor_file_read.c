@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Thu Mar 24 21:11:27 2016 antoine
-** Last update dim. mars 27 14:51:30 2016 Antoine Baudrand
+** Last update dim. mars 27 18:06:19 2016 Antoine Baudrand
 */
 
 #include <unistd.h>
@@ -63,6 +63,7 @@ int             cor_file_header_read(t_cor_file_header *self,
 {
   long          n;
 
+  n = 0;
   if (read_magic_number(input_file))
     return (-1);
   if (!(self->name = read_string(NAME_LENGTH, input_file)))

@@ -11,10 +11,18 @@
 #include <stdlib.h>
 #include "../libcw/string.h"
 
+static const char       *get_file_name(const char *path)
+{
+  while (string_find(path, "/"))
+    path++;
+  return (path);
+}
+
 char                    *get_cor_file_path(const char *input)
 {
   char                  *s;
 
+  input = get_file_name(input);
   s = malloc(string_get_length(input) + 4);
   if (!s)
     return (NULL);
