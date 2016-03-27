@@ -10,7 +10,6 @@
 
 #include <unistd.h>
 #include "../libcw/string.h"
-#include "../libcw/memory.h"
 #include "../libcw/print.h"
 #include "asm.h"
 
@@ -45,49 +44,6 @@ void            instr_print(const t_instr *instr)
   print_string("\n");
 }
 
-static int      get_args_size_special(const t_instr *instr)
-{
-  const char    *name;
-
-  name = instr->info->name;
-  if (string_equals(name, "live"))
-    return (4);
-  if (string_equals(name, "zjmp"))
-    return (VM_INDIRECT_ARGUMENT_SIZE);
-  if (string_equals(name, "fork") || string_equals(name, "lfork"))
-    return (VM_INDIRECT_ARGUMENT_SIZE);
-  print_string_err("get_args_size_special(): error\n");
-  return (-1);
-}
-
-static int      get_sti_size(const t_instr *instr)
-{
-  int           size;
-
-  size = 2;
-  size += argument_get_size(instr->arguments);
-  size += (instr->arguments[1].type == ARGUMENT_TYPE_REGISTER) ? 1 : 2;
-  size += (instr->arguments[2].type == ARGUMENT_TYPE_REGISTER) ? 1 : 2;
-  return (size);
-}
-
-int             instr_get_size(const t_instr *instr)
-{
-  int           size;
-  int           i;
-
-  if (string_equals(instr->info->name, "sti"))
-    return (get_sti_size(instr));
-  size = 1;
-  if (!instr->info->has_argument_descriptor)
-    return (size + get_args_size_special(instr));
-  size++;
-  i = -1;
-  while (++i < instr->info->argument_count)
-    size += argument_get_size(instr->arguments + i);
-  return (size);
-}
-
 unsigned char   instr_get_arg_descr(const t_instr *instr)
 {
   int           i;
@@ -100,59 +56,4 @@ unsigned char   instr_get_arg_descr(const t_instr *instr)
       descr |= argument_get_descr(instr->arguments + i) << (3 - i) * 2;
     }
   return (descr);
-}
-
-static int      write_sti_arg(const t_argument *arg, int output_file)
-{
-  char          buffer[2];
-
-  if (arg->type == ARGUMENT_TYPE_REGISTER)
-    return (write(output_file, &arg->value, 1) == 1 ? 0 : -1);
-  else
-    {
-      memory_write_int_16(buffer, arg->value);
-      return (write(output_file, buffer, 2) == 2 ? 0 : -1);
-    }
-}
-
-static int      write_sti(const t_instr *instr, int output_file)
-{
-  if (argument_write(instr->arguments + 0, output_file))
-    return (-1);
-  if (write_sti_arg(instr->arguments + 1, output_file))
-    return (-1);
-  if (write_sti_arg(instr->arguments + 2, output_file))
-    return (-1);
-  return (0);
-}
-
-static int      write_zjmp(const t_instr *instr, int output_file)
-{
-  if (write_sti_arg(instr->arguments, output_file))
-    return (-1);
-  return (0);
-}
-
-int             instr_write(const t_instr *instr, int output_file)
-{
-  int           i;
-  char          descr;
-
-  if (write(output_file, &instr->info->code, 1) != 1)
-    return (-1);
-  if (instr->info->has_argument_descriptor)
-    {
-      descr = instr_get_arg_descr(instr);
-      if (write(output_file, &descr, 1) != 1)
-        return (-1);
-    }
-  if (string_equals(instr->info->name, "sti"))
-    return (write_sti(instr, output_file));
-  if (string_equals(instr->info->name, "zjmp"))
-    return (write_zjmp(instr, output_file));
-  i = -1;
-  while (++i < instr->info->argument_count)
-    if (argument_write(instr->arguments + i, output_file))
-      return (-1);
-  return (0);
 }
