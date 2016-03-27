@@ -1,11 +1,11 @@
 /*
-** instructions.h for vm in /home/antoine/corewar/src/vm
+** instructions.h for  in /Users/westery/Documents/tek1/CPE/corewar/corewar/
 **
-** Made by Antoine Baudrand
-** Login   <baudra_a@epitech.net>
+** Made by Valentin Pichard
+** Login   <pichar_v@epitech.net>
 **
-** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sun Mar 27 20:51:35 2016 Jamy Bailly
+** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
+** Last update Sun Mar 27 21:34:41 2016 Valentin Pichard
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -21,6 +21,7 @@ typedef struct		s_instruction
   t_argument_type	type_params[4];
   int			value[4];
   char			*memory;
+  t_vm			*vm;
 }			t_instruction;
 
 /*
