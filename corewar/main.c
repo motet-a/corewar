@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update dim. mars 27 14:30:32 2016 Antoine Baudrand
+** Last update Sun Mar 27 16:19:42 2016 Valentin Pichard
 */
 
 #include "../libcw/print.h"
@@ -35,14 +35,6 @@ static int              parse_options(int argc,
   return (0);
 }
 
-static void             print_instructions(void)
-{
-  t_instr_info          instructions[32];
-
-  instr_info_get_list(instructions);
-  instr_info_print_list(instructions);
-}
-
 static void	lunch_vm(int program_count)
 {
   t_vm		*vm;
@@ -56,7 +48,6 @@ int			main(int argc, char **argv)
   const char		*program_name;
   t_option		options[32];
 
-  print_instructions();
   init_vm_options(options);
   program_name = argv[0];
   lunch_vm(2);
