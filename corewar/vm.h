@@ -20,7 +20,7 @@
 # define CYCLE_DELTA            4
 # define MEMORY_SIZE            (6 * 1024)
 # define IDX_MOD                512
-# define NBR_LIVE		2048
+# define NBR_LIVE		40
 
 void		print_usage(const char *filename);
 
