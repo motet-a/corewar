@@ -52,16 +52,12 @@ static void             get_functions(t_lexer_function *functions)
 static t_result         lex_token_function(t_string_reader *reader,
                                            t_lexer_function function)
 {
-  t_position            begin;
   t_result              result;
 
   assert(has_more(reader));
-  begin = reader->position;
   result = function(reader);
   if (result.token || result.error)
     return (result);
-  if (function != lex_comment)
-    assert(begin.index == reader->position.index);
   return (result);
 }
 

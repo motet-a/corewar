@@ -23,7 +23,7 @@ char                    *get_cor_file_path(const char *input)
   char                  *s;
 
   input = get_file_name(input);
-  s = malloc(string_get_length(input) + 4);
+  s = malloc(string_get_length(input) + 5);
   if (!s)
     return (NULL);
   s[0] = '\0';
