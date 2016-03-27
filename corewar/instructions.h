@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sun Mar 27 20:10:54 2016 Jamy Bailly
+** Last update Sun Mar 27 21:24:26 2016 Valentin Pichard
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -21,6 +21,7 @@ typedef struct		s_instruction
   t_argument_type	type_params[4];
   int			value[4];
   char			*memory;
+  t_vm			*vm;
 }			t_instruction;
 
 /*
