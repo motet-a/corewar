@@ -5,31 +5,33 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Sun Mar 27 17:59:08 2016 Valentin Pichard
+** Last update dim. mars 27 20:40:43 2016 Antoine Baudrand
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "../libcw/print.h"
 #include "../libcw/instr.h"
 #include "vm.h"
-#include <stdio.h>
 #include "options.h"
 
 static int              parse_options(int argc,
-                                      char **argv,
-                                      const t_option *options,
-                                      t_vm *vm)
+				      char **argv,
+				      const t_option *options,
+				      t_vm *vm)
 {
   int                   arg_index;
   t_option_result       r;
 
   arg_index = 0;
   while (arg_index < argc)
-    {
       if (argv[arg_index][0] != '-')
         {
-          print_string("This is a program: ");
-          print_string(argv[arg_index]);
-          print_string("\n");
+	  if (vm_load_program(vm, argv[arg_index]))
+	    {
+	      print_string_err("Error loading program");
+	      exit(-1);
+	    }
           arg_index++;
         }
       else
@@ -42,7 +44,6 @@ static int              parse_options(int argc,
               return (-1);
             }
         }
-    }
   return (0);
 }
 

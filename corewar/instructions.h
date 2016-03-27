@@ -1,11 +1,11 @@
 /*
-** instructions.h for vm in /home/antoine/corewar/src/vm
+** instructions.h for  in /Users/westery/Documents/tek1/CPE/corewar/corewar/
 **
-** Made by Antoine Baudrand
-** Login   <baudra_a@epitech.net>
+** Made by Valentin Pichard
+** Login   <pichar_v@epitech.net>
 **
-** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sun Mar 27 21:24:26 2016 Valentin Pichard
+** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
+** Last update Sun Mar 27 21:34:41 2016 Valentin Pichard
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -26,7 +26,7 @@ typedef struct		s_instruction
 
 /*
 ** Instructions of corewar. See subject for more information.
-** TODO vm_live, vm_st, vm_sti, vm_fork, vm_lld, vm_lldi, vm_lfork
+** TODO vm_live, vm_sti, vm_fork, vm_lld, vm_lldi, vm_lfork
 */
 void	vm_live(t_instruction *i);
 void	vm_ld(t_instruction *i);
@@ -58,7 +58,7 @@ int	vm_instr_find_address(t_instruction *i, int pos);
 /*
 ** write the value in memory via the type of parameter
 */
-void	vm_instr_write_value(t_instruction *i, int pos, int value);
+void	vm_instr_write_value(t_instruction *i, int pos, int value, int relative);
 
 /*
 ** Find the value to edit carry
