@@ -5,13 +5,13 @@
 ** Login   <bailly_j@epitech.net>
 **
 ** Started on  Sat Mar 26 07:41:59 2016 Jamy Bailly
-** Last update sam. mars 26 12:19:28 2016 Antoine Baudrand
+** Last update Sun Mar 27 14:39:15 2016 Jamy Bailly
 */
 
 #include "instructions.h"
 #include "../libcw/memory.h"
 
-int	vm_instr_find_type_value(t_instruction *i, int pos)
+int	vm_instr_find_value(t_instruction *i, int pos)
 {
   if (i->type_params[pos] == ARGUMENT_TYPE_REGISTER)
     return (i->value[pos]);
