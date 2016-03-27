@@ -1,11 +1,11 @@
 /*
-** vm_init_options.c for  in /Users/westery/Documents/tek1/CPE/corewar/src/vm/
+** vm_initialize.c for corewar in /home/antoine/corewar/corewar
 **
 ** Made by Valentin Pichard
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Mon Mar 21 23:36:45 2016 Valentin Pichard
-** Last update Fri Mar 25 01:53:01 2016 Valentin Pichard
+** Last update dim. mars 27 14:35:40 2016 Antoine Baudrand
 */
 
 #include <stdlib.h>
@@ -39,21 +39,21 @@ t_vm		*init_new_vm(int program_count)
   if ((vm->programs = malloc(sizeof(t_program) * program_count)) == NULL)
     return (NULL);
   vm->processes = NULL;
-  if ((init_vm_memory(vm->memory)) == -1)
+  if ((init_vm_memory(vm)) == -1)
     return (NULL);
   return (vm);
 }
 
-int		init_vm_memory(char *memory)
+int		init_vm_memory(t_vm *vm)
 {
   int		i;
 
-  if ((memory = malloc(sizeof(char) * MEMORY_SIZE)) == NULL)
+  if ((vm->memory = malloc(sizeof(char) * MEMORY_SIZE)) == NULL)
     return (-1);
   i = 0;
   while (i < MEMORY_SIZE)
     {
-      memory[i] = 0;
+      vm->memory[i] = 0;
       i++;
     }
   return (0);

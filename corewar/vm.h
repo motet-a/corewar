@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update sam. mars 26 18:50:32 2016 Antoine Baudrand
+** Last update dim. mars 27 14:35:19 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -70,7 +70,7 @@ t_vm	*init_new_vm(int program_count);
 ** Allocates and initializes the memory of the VM
 ** Returns 0 on success, -1 on error.
 */
-int    init_vm_memory(char *memory);
+int    init_vm_memory(t_vm *vm);
 
 /*
 ** Frees all the VM including memory, programs, and processes
