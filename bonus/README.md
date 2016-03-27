@@ -12,7 +12,7 @@ This project is divided in three bonus:
 
 * An application coupled with an Jenkins enable an assessment to do a review of code quality in buildlogs and make different build levels: stable, unstable and failure; according to the code quality generated and warning(s)/error(s) during compilation.
 
-* A social BOT who send in real-time in our workspaces a summary of the last commit/push made using our code review application.
+* A social BOT who send in real-time in our workspaces (salck, telegram) a summary of the last commit/push made using our code review application.
 
 All these bonuses represent a significant time can be very useful for the maintainability of an application or a heavy project (open source or not) in company.
 
