@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
-** Last update Sun Mar 27 21:57:12 2016 Jamy Bailly
+** Last update Sun Mar 27 22:09:35 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -26,7 +26,7 @@ typedef struct		s_instruction
 
 /*
 ** Instructions of corewar. See subject for more information.
-** TODO vm_fork, vm_lldi, vm_lfork
+** TODO vm_fork, vm_lfork
 */
 void	vm_live(t_instruction *i);
 void	vm_ld(t_instruction *i);
@@ -50,10 +50,12 @@ void	vm_aff(t_instruction *i);
 */
 int	vm_instr_find_value(t_instruction *i, int pos);
 int	vm_instr_find_value_no_idx(t_instruction *i, int pos);
+
 /*
 ** Find the address in memory via the type of parameter and return value
 */
 int	vm_instr_find_address(t_instruction *i, int pos);
+int	vm_instr_find_address_no_idx(t_instruction *i, int pos);
 
 /*
 ** write the value in memory via the type of parameter
