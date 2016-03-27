@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 ** 
 ** Started on  ven. mars 25 18:45:49 2016 Antoine Baudrand
-** Last update sam. mars 26 14:19:33 2016 Antoine Baudrand
+** Last update dim. mars 27 13:18:16 2016 Antoine Baudrand
 */
 
 #include "vm.h"
@@ -15,6 +15,7 @@
 #include "../libcw/cor_file.h"
 #include <stdlib.h>
 #include "unistd.h"
+#include "../libcw/print.h"
 
 static void	create_program(t_vm *vm, const t_cor_file_header *header,
 			       int index)
@@ -29,7 +30,7 @@ static void	load_in_memory(int fd, int program_size, int pc, char *memory)
 {
   if (read(fd, &memory[pc], program_size) != program_size)
     {
-      write(2, "Error .cor file corrupted\n", 26);
+      print_string_err("Error .cor file corrupted\n");
       exit(-1);
     }
 }
