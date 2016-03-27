@@ -5,16 +5,15 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  ven. mars 25 18:45:49 2016 Antoine Baudrand
-** Last update dim. mars 27 13:18:16 2016 Antoine Baudrand
+** Last update Sun Mar 27 23:50:15 2016 Jamy Bailly
 */
 
-#include "vm.h"
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "vm.h"
 #include "../libcw/cor_file.h"
-#include <stdlib.h>
-#include "unistd.h"
 #include "../libcw/print.h"
 
 static int      read_program_code(t_program *program, int fd)

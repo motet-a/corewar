@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update Sun Mar 27 22:26:26 2016 Valentin Pichard
+** Last update Sun Mar 27 23:50:39 2016 Jamy Bailly
 */
 
 #ifndef VM_H
@@ -14,7 +14,7 @@
 # include <stddef.h>
 # include "../libcw/instr.h"
 # include "../libcw/cor_file.h"
-#include "options.h"
+# include "options.h"
 
 # define CYCLE_TO_DIE           1536
 # define CYCLE_DELTA            4
