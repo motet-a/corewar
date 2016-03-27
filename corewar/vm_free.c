@@ -15,5 +15,4 @@ void	vm_free(t_vm *vm)
 {
   free(vm->programs);
   free(vm->memory);
-  free(vm);
 }

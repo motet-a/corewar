@@ -26,25 +26,7 @@ void            init_vm_options(t_option *options)
   options[i].name = NULL;
 }
 
-t_vm		*init_new_vm(int program_count)
-{
-  t_vm		*vm;
-
-  if ((vm = malloc(sizeof(t_vm))) == NULL)
-    return (NULL);
-  vm->cycle = 0;
-  vm->cycle_to_die = CYCLE_TO_DIE;
-  vm->live_count = 0;
-  vm->program_count = program_count;
-  if ((vm->programs = malloc(sizeof(t_program) * program_count)) == NULL)
-    return (NULL);
-  vm->processes = NULL;
-  if ((init_vm_memory(vm)) == -1)
-    return (NULL);
-  return (vm);
-}
-
-int		init_vm_memory(t_vm *vm)
+static int      init_memory(t_vm *vm)
 {
   int		i;
 
@@ -56,5 +38,18 @@ int		init_vm_memory(t_vm *vm)
       vm->memory[i] = 0;
       i++;
     }
+  return (0);
+}
+
+int             vm_init(t_vm *vm)
+{
+  vm->cycle = 0;
+  vm->cycle_to_die = CYCLE_TO_DIE;
+  vm->live_count = 0;
+  vm->program_count = 0;
+  vm->programs = NULL;
+  vm->processes = NULL;
+  if ((init_memory(vm)) == -1)
+    return (-1);
   return (0);
 }

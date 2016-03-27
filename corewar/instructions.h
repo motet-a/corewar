@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sun Mar 27 18:31:06 2016 Jamy Bailly
+** Last update Sun Mar 27 18:46:49 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -22,8 +22,6 @@ typedef struct		s_instruction
   int			value[4];
   char			*memory;
 }			t_instruction;
-
-#include "vm.h"
 
 /*
 ** Instructions of corewar. See subject for more information.
