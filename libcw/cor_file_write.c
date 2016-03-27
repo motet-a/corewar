@@ -1,11 +1,11 @@
 /*
-** cor_file_write.c for  in /home/antoine
+** cor_file_write.c for libcw in /home/antoine/corewar/libcw
 **
 ** Made by antoine
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Thu Mar 24 21:17:14 2016 antoine
-** Last update Thu Mar 24 21:17:14 2016 antoine
+** Last update dim. mars 27 20:44:47 2016 Antoine Baudrand
 */
 
 #include <stdlib.h>
@@ -39,9 +39,13 @@ int             cor_file_header_write(const t_cor_file_header *self,
     return (-1);
   if (write_string(self->name, NAME_LENGTH, output_file))
     return (-1);
+  if (cor_file_write_int_32(output_file, 0))
+    return (-1);
   if (cor_file_write_int_32(output_file, self->program_size))
     return (-1);
   if (write_string(self->comment, COMMENT_LENGTH, output_file))
+    return (-1);
+  if (cor_file_write_int_32(output_file, 0))
     return (-1);
   return (0);
 }
