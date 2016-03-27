@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Thu Mar 24 21:11:27 2016 antoine
-** Last update ven. mars 25 15:11:14 2016 Antoine Baudrand
+** Last update dim. mars 27 14:51:30 2016 Antoine Baudrand
 */
 
 #include <unistd.h>
@@ -80,25 +80,5 @@ int             cor_file_header_read(t_cor_file_header *self,
       free(self->name);
       return (-1);
     }
-  return (0);
-}
-
-int             cor_file_read_int_16(int input_file, int *result)
-{
-  char          buffer[2];
-
-  if (read(input_file, buffer, sizeof(buffer)) != sizeof(buffer))
-    return (-1);
-  *result = memory_read_int_16(buffer);
-  return (0);
-}
-
-int             cor_file_read_int_32(int input_file, long *result)
-{
-  char          buffer[4];
-
-  if (read(input_file, buffer, sizeof(buffer)) != sizeof(buffer))
-    return (-1);
-  *result = memory_read_int_32(buffer);
   return (0);
 }
