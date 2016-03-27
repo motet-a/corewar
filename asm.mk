@@ -21,7 +21,9 @@ ASM_SOURCES_NAMES	= \
 			parse_instr.c \
 			parse_line.c \
 			program.c \
+			program_instr.c \
 			program_link.c \
+			program_write.c \
 			syntax_error.c \
 			token.c \
 			token_has_value.c \

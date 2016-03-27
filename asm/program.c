@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "asm.h"
 #include "../libcw/print.h"
-#include "../libcw/cor_file.h"
+#include "../libcw/string.h"
 
 t_syntax_error          *program_parse(t_program *program,
                                        t_token_list *tokens)
@@ -63,51 +63,32 @@ void            program_print(const t_program *program)
   instr_list_print(program->instructions);
 }
 
-static int              write_header(const t_program *program,
-                                     int output_file)
-{
-  t_cor_file_header     header;
-  int                   size;
-
-  size = program_get_size(program);
-  if (cor_file_header_init(&header, program->name, program->comment, size))
-    return (-1);
-  if (cor_file_header_write(&header, output_file))
-    {
-      cor_file_header_free(&header);
-      return (-1);
-    }
-  cor_file_header_free(&header);
-  return (0);
-}
-
-int             program_write(const t_program *program, int output_file)
+int             program_get_size(const t_program *program)
 {
   t_instr_list  *instructions;
+  int           size;
 
-  if (write_header(program, output_file))
-    return (-1);
+  size = 0;
   instructions = program->instructions;
   while (instructions)
     {
-      if (instr_write(&instructions->instr, output_file))
-        return (-1);
+      size += instr_get_size(&instructions->instr);
       instructions = instructions->next;
     }
-  return (0);
+  return (size);
 }
 
-void            program_add_instr(t_program *program, const t_instr *instr)
+t_label         *program_get_label(const t_program *program,
+                                   const char *name)
 {
   t_label_list  *labels;
 
-  instr_list_add(&program->instructions, instr);
-  instr = &instr_list_get_last(program->instructions)->instr;
   labels = program->labels;
   while (labels)
     {
-      if (!labels->label.instr)
-        labels->label.instr = instr;
+      if (string_equals(name, labels->label.name))
+        return (&labels->label);
       labels = labels->next;
     }
+  return (NULL);
 }
