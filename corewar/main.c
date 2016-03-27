@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Sun Mar 27 21:56:26 2016 Valentin Pichard
+** Last update Sun Mar 27 22:28:31 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -14,8 +14,9 @@
 #include "../libcw/string.h"
 #include "../libcw/parse_int.h"
 #include "vm.h"
+#include "options.h"
 
-static int              set_program_number(t_program_opt *program,
+int	              set_program_number(t_program_opt *program,
                                            const char *string)
 {
   long                  n;
@@ -29,8 +30,8 @@ static int              set_program_number(t_program_opt *program,
   return (0);
 }
 
-static int              set_option(t_program_opt *program,
-                                   const t_option_result *r)
+int	              set_option(t_program_opt *program,
+                                 const t_option_result *r)
 {
   if (string_equals(r->option->name, "n"))
     return (set_program_number(program, r->value));
@@ -40,75 +41,6 @@ static int              set_option(t_program_opt *program,
   print_string_err(r->option->name);
   print_string_err("'\n");
   return (-1);
-}
-
-static int              parse_program_options(t_parser_state *state,
-                                              t_program_opt *program)
-{
-  t_option_result       r;
-
-  program_opt_init(program);
-  while (state->index < state->argc)
-    {
-      if (state->argv[state->index][0] != '-')
-        break;
-      r = option_get_next(state->argc, state->argv,
-                          &state->index, state->options);
-      if (r.error_message)
-        {
-          print_string_err(r.error_message);
-          print_string_err("\n");
-          return (-1);
-        }
-      if (set_option(program, &r))
-        return (-1);
-    }
-  return (0);
-}
-
-static int              parse_program_opt(t_parser_state *state,
-                                          t_program_opt *program)
-{
-  if (parse_program_options(state, program))
-    return (-1);
-  if (state->index >= state->argc)
-    {
-      print_string("Expected program name\n");
-      return (-1);
-    }
-  if (state->argv[state->index][0] != '-')
-    {
-      print_string("This is a program: ");
-      print_string(state->argv[state->index]);
-      print_string("\n");
-      state->index++;
-    }
-  return (0);
-}
-
-static int              parse_programs(t_parser_state *state)
-{
-  t_program_opt         program;
-
-  while (state->index < state->argc)
-    {
-      if (parse_program_opt(state, &program))
-        return (-1);
-    }
-  return (0);
-}
-
-static int              parse_options(int argc,
-                                      char **argv,
-                                      const t_option *options)
-{
-  t_parser_state        state;
-
-  state.argv = argv;
-  state.argc = argc;
-  state.options = options;
-  state.index = 0;
-  return (parse_programs(&state));
 }
 
 int			main(int argc, char **argv)
