@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 **
 ** Started on  lun. mars 21 23:52:26 2016 Antoine Baudrand
-** Last update Sun Mar 27 18:31:06 2016 Jamy Bailly
+** Last update Sun Mar 27 20:51:35 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -23,11 +23,9 @@ typedef struct		s_instruction
   char			*memory;
 }			t_instruction;
 
-#include "vm.h"
-
 /*
 ** Instructions of corewar. See subject for more information.
-** TODO vm_live, vm_st, vm_sti, vm_fork, vm_lld, vm_lldi, vm_lfork
+** TODO vm_live, vm_sti, vm_fork, vm_lld, vm_lldi, vm_lfork
 */
 void	vm_live(t_instruction *i);
 void	vm_ld(t_instruction *i);
@@ -49,12 +47,17 @@ void	vm_aff(t_instruction *i);
 /*
 ** Find the value via the type of parameter and return value
 */
-int	vm_instr_find_value(t_instruction *, int pos);
+int	vm_instr_find_value(t_instruction *i, int pos);
 
 /*
 ** Find the address in memory via the type of parameter and return value
 */
 int	vm_instr_find_address(t_instruction *i, int pos);
+
+/*
+** write the value in memory via the type of parameter
+*/
+void	vm_instr_write_value(t_instruction *i, int pos, int value, int relative);
 
 /*
 ** Find the value to edit carry
