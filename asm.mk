@@ -12,6 +12,8 @@ ASM_SOURCES_NAMES	= \
 			argument.c \
 			instr.c \
 			instr_list.c \
+			instr_size.c \
+			instr_write.c \
 			label.c \
 			label_list.c \
 			lexer.c \
