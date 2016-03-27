@@ -1,11 +1,11 @@
 /*
-** main.c for  in /home/antoine
+** main.c for corewar in /home/antoine/corewar/corewar
 **
 ** Made by antoine
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Fri Mar 25 01:55:02 2016 Valentin Pichard
+** Last update dim. mars 27 14:30:32 2016 Antoine Baudrand
 */
 
 #include "../libcw/print.h"
@@ -43,6 +43,14 @@ static void             print_instructions(void)
   instr_info_print_list(instructions);
 }
 
+static void	lunch_vm(int program_count)
+{
+  t_vm		*vm;
+
+  vm = init_new_vm(program_count);
+  vm_free(vm);
+}
+
 int			main(int argc, char **argv)
 {
   const char		*program_name;
@@ -51,6 +59,7 @@ int			main(int argc, char **argv)
   print_instructions();
   init_vm_options(options);
   program_name = argv[0];
+  lunch_vm(2);
   if (parse_options(argc - 1, argv + 1, options) || argv[1] == NULL)
     {
       print_usage(program_name);
