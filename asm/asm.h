@@ -14,6 +14,18 @@
 # include "../libcw/instr.h"
 # include "lexer.h"
 
+# ifdef NDEBUG
+#  define ASM_DEBUG 0
+# else
+#  define ASM_DEBUG 1
+# endif
+
+# ifdef NDEBUG
+#  define IF_DEBUG(a)
+# else
+#  define IF_DEBUG(a) if (ASM_DEBUG) (a)
+# endif
+
 typedef struct          s_argument
 {
   t_argument_type       type;
@@ -118,5 +130,8 @@ int             program_write(const t_program *program, int output_file);
 int             program_get_size(const t_program *program);
 t_label         *program_get_label(const t_program *program,
                                    const char *name);
+
+char            *get_cor_file_path(const char *input);
+int             read_and_compile(const char *source_file_path);
 
 #endif /* ASM_H */
