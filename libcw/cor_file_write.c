@@ -51,7 +51,8 @@ int             cor_file_write_int_16(int output_file, int n)
   char          buffer[2];
 
   memory_write_int_16(buffer, n);
-  return (write(output_file, buffer, sizeof(buffer)) == sizeof(buffer));
+  return (write(output_file, buffer, sizeof(buffer)) == sizeof(buffer) ?
+          0 : -1);
 }
 
 int             cor_file_write_int_32(int output_file, long n)
@@ -59,5 +60,6 @@ int             cor_file_write_int_32(int output_file, long n)
   char          buffer[4];
 
   memory_write_int_32(buffer, n);
-  return (write(output_file, buffer, sizeof(buffer)) == sizeof(buffer));
+  return (write(output_file, buffer, sizeof(buffer)) == sizeof(buffer) ?
+          0 : -1);
 }

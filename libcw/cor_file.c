@@ -23,7 +23,7 @@ const char      *cor_file_header_init(t_cor_file_header *self,
   if (string_get_length(comment) > COMMENT_LENGTH)
     return (COMMENT_TOO_LONG_ERROR);
   self->name = string_duplicate(name);
-  self->comment = string_duplicate(name);
+  self->comment = string_duplicate(comment);
   if (!self->name || !self->comment)
     return (NO_MEMORY_ERROR);
   self->program_size = program_size;

@@ -47,7 +47,7 @@ int             write_program(const t_program *program,
   if (program_write(program, file) == -1)
     {
       close(file);
-      print_string_err("Error w\n");
+      print_string_err("write() error\n");
       return (-1);
     }
   close(file);
@@ -60,7 +60,6 @@ static int              compile(t_token_list *tokens,
   t_syntax_error        *error;
   t_program             program;
 
-  /*token_list_print(tokens, "\n", STDOUT_FILENO);*/
   error = program_parse(&program, tokens);
   token_list_delete(tokens, 1);
   if (error)

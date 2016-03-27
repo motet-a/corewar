@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "asm.h"
 #include "../libcw/print.h"
+#include "../libcw/cor_file.h"
 
 t_syntax_error          *program_parse(t_program *program,
                                        t_token_list *tokens)
@@ -50,16 +51,42 @@ void            program_free(t_program *program)
 
 void            program_print(const t_program *program)
 {
+  print_string("name: ");
+  print_string(program->name);
+  print_string("\n");
+  print_string("comment: ");
+  print_string(program->comment);
+  print_string("\n");
   print_string("\nlabels:\n");
   label_list_print(program->labels);
   print_string("\ninstructions:\n");
   instr_list_print(program->instructions);
 }
 
+static int              write_header(const t_program *program,
+                                     int output_file)
+{
+  t_cor_file_header     header;
+  int                   size;
+
+  size = program_get_size(program);
+  if (cor_file_header_init(&header, program->name, program->comment, size))
+    return (-1);
+  if (cor_file_header_write(&header, output_file))
+    {
+      cor_file_header_free(&header);
+      return (-1);
+    }
+  cor_file_header_free(&header);
+  return (0);
+}
+
 int             program_write(const t_program *program, int output_file)
 {
   t_instr_list  *instructions;
 
+  if (write_header(program, output_file))
+    return (-1);
   instructions = program->instructions;
   while (instructions)
     {

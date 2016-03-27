@@ -12,6 +12,7 @@
 #include "lexer_private.h"
 
 static t_result         create_string_result(const t_position *begin_quote,
+                                             const t_position *begin,
                                              const t_position *end_quote,
                                              t_string_reader *reader)
 {
@@ -21,7 +22,7 @@ static t_result         create_string_result(const t_position *begin_quote,
 
   pos = reader->position;
   reader->position = *end_quote;
-  string = get_string(begin_quote, reader);
+  string = get_string(begin, reader);
   token = token_new_string(TOKEN_TYPE_STRING, begin_quote, string);
   free(string);
   reader->position = pos;
@@ -45,7 +46,7 @@ static t_result         lex_string_end(t_string_reader *reader,
       if (c == '\n')
         return create_error_result("Expected '\"'", &begin);
     }
-  return (create_string_result(begin_quote, &previous, reader));
+  return (create_string_result(begin_quote, &begin, &previous, reader));
 }
 
 static t_result         lex_string(t_string_reader *reader)
