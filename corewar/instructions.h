@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
-** Last update Sun Mar 27 21:57:12 2016 Jamy Bailly
+** Last update Sun Mar 27 22:08:09 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -50,10 +50,12 @@ void	vm_aff(t_instruction *i);
 */
 int	vm_instr_find_value(t_instruction *i, int pos);
 int	vm_instr_find_value_no_idx(t_instruction *i, int pos);
+
 /*
 ** Find the address in memory via the type of parameter and return value
 */
 int	vm_instr_find_address(t_instruction *i, int pos);
+int	vm_instr_find_address_no_idx(t_instruction *i, int pos);
 
 /*
 ** write the value in memory via the type of parameter
