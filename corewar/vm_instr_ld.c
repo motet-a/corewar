@@ -5,7 +5,7 @@
 ** Login   <bailly_j@epitech.net>
 **
 ** Started on  Sat Mar 26 07:42:29 2016 Jamy Bailly
-** Last update Sun Mar 27 18:28:46 2016 Jamy Bailly
+** Last update Sun Mar 27 21:56:52 2016 Jamy Bailly
 */
 
 #include "instructions.h"
@@ -16,6 +16,15 @@ void	vm_ld(t_instruction *i)
   int	out;
 
   out = vm_instr_find_value(i, 0);
+  i->processes->registers[i->value[1] - 1] = out;
+  i->processes->carry = vm_edit_value_carry(out);
+}
+
+void	vm_lld(t_instruction *i)
+{
+  int	out;
+
+  out = vm_instr_find_value_no_idx(i, 0);
   i->processes->registers[i->value[1] - 1] = out;
   i->processes->carry = vm_edit_value_carry(out);
 }
