@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Sun Mar 27 22:28:31 2016 Valentin Pichard
+** Last update Sun Mar 27 23:28:45 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -52,7 +52,7 @@ int			main(int argc, char **argv)
   init_vm_options(options);
   program_name = argv[0];
   vm_init(&vm);
-  if (parse_options(argc - 1, argv + 1, options))
+  if (parse_options(argc - 1, argv + 1, options) || argc < 2)
     {
       vm_free(&vm);
       print_usage(program_name);
