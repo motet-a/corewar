@@ -14,7 +14,7 @@ include asm.mk
 include vm.mk
 include test.mk
 
-DELIVERY	= false
+DELIVERY	= true
 
 CC		= cc
 

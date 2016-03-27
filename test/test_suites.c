@@ -10,7 +10,6 @@
 
 #include "test.h"
 
-/* TODO: Put a lot of amazing tests right here */
 void    run_vm_suites(void)
 {
   return ;

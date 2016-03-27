@@ -23,6 +23,17 @@ static int      get_sti_size(const t_instr *instr)
   return (size);
 }
 
+static int      get_ldi_size(const t_instr *instr)
+{
+  int           size;
+
+  size = 2;
+  size += (instr->arguments[0].type == ARGUMENT_TYPE_REGISTER) ? 1 : 2;
+  size += (instr->arguments[1].type == ARGUMENT_TYPE_REGISTER) ? 1 : 2;
+  size += argument_get_size(instr->arguments + 2);
+  return (size);
+}
+
 static int      get_args_size_special(const t_instr *instr)
 {
   const char    *name;
@@ -45,6 +56,8 @@ int             instr_get_size(const t_instr *instr)
 
   if (string_equals(instr->info->name, "sti"))
     return (get_sti_size(instr));
+  if (string_equals(instr->info->name, "ldi"))
+    return (get_ldi_size(instr));
   size = 1;
   if (!instr->info->has_argument_descriptor)
     return (size + get_args_size_special(instr));

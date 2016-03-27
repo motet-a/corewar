@@ -71,7 +71,6 @@ void            token_delete(t_token *token);
 /*
 ** Returns a malloced string for debugging purposes.
 ** Returns NULL on error.
-** TODO
 */
 char            *token_to_string(const t_token *token);
 
