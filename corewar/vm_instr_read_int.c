@@ -5,7 +5,7 @@
 ** Login   <bailly_j@epitech.net>
 **
 ** Started on  Sat Mar 26 07:41:59 2016 Jamy Bailly
-** Last update Sun Mar 27 22:13:29 2016 Jamy Bailly
+** Last update Sun Mar 27 22:39:31 2016 Jamy Bailly
 */
 
 #include "instructions.h"
@@ -22,7 +22,7 @@ int	vm_instr_find_value(t_instruction *i, int pos)
   else if (i->type_params[pos] == ARGUMENT_TYPE_INDIRECT)
     {
       relative = i->processes->pc + (i->value[pos] % IDX_MOD);
-      return (memory_read_int_32(i->memory + relative));
+      return (memory_read_int_32(i->vm->memory + relative));
     }
   return (0);
 }
@@ -38,7 +38,7 @@ int	vm_instr_find_value_no_idx(t_instruction *i, int pos)
   else if (i->type_params[pos] == ARGUMENT_TYPE_INDIRECT)
     {
       relative = i->processes->pc + (i->value[pos]);
-      return (memory_read_int_32(i->memory + relative));
+      return (memory_read_int_32(i->vm->memory + relative));
     }
   return (0);
 }

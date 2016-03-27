@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
-** Last update Sun Mar 27 22:09:35 2016 Jamy Bailly
+** Last update Sun Mar 27 22:43:21 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -20,7 +20,6 @@ typedef struct		s_instruction
   int			params_count;
   t_argument_type	type_params[4];
   int			value[4];
-  char			*memory;
   t_vm			*vm;
 }			t_instruction;
 
