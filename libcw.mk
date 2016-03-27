@@ -40,7 +40,8 @@ LIBCW_SOURCES_NAMES = 	char_type.c \
 			string_reader.c \
 			string_starts_with.c \
 			string_type.c \
-			string_type_convert.c
+			string_type_convert.c \
+			cor_file_read_int.c \
 
 LIBCW_SOURCES		= $(foreach file,$(LIBCW_SOURCES_NAMES), \
 			libcw/$(file))

@@ -8,15 +8,15 @@
 ** Last update Fri Mar 25 10:20:40 2016 antoine
 */
 
-#include "instr.h"
+#include "instr_private.h"
 
 static void     init_sub(t_instr_info *i)
 {
   i->name = "sub";
   i->argument_count = 3;
-  i->argument_types[0] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[2] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[0] = T_REG;
+  i->argument_types[1] = T_REG;
+  i->argument_types[2] = T_REG;
   i->code = 5;
   i->cycle_count = 10;
   i->has_argument_descriptor = 1;
@@ -27,9 +27,9 @@ static void     init_and(t_instr_info *i)
 {
   i->name = "and";
   i->argument_count = 3;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
+  i->argument_types[0] = T_REG | T_IND | T_DIR;
+  i->argument_types[1] = T_REG | T_IND | T_DIR;
+  i->argument_types[2] = T_REG;
   i->code = 6;
   i->cycle_count = 6;
   i->has_argument_descriptor = 1;
@@ -40,9 +40,9 @@ static void     init_or(t_instr_info *i)
 {
   i->name = "or";
   i->argument_count = 3;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
+  i->argument_types[0] = T_REG | T_IND | T_DIR;
+  i->argument_types[1] = T_REG | T_IND | T_DIR;
+  i->argument_types[2] = T_REG;
   i->code = 7;
   i->cycle_count = 6;
   i->has_argument_descriptor = 1;
@@ -53,9 +53,9 @@ static void     init_xor(t_instr_info *i)
 {
   i->name = "xor";
   i->argument_count = 3;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
+  i->argument_types[0] = T_REG | T_IND | T_DIR;
+  i->argument_types[1] = T_REG | T_IND | T_DIR;
+  i->argument_types[2] = T_REG;
   i->code = 8;
   i->cycle_count = 6;
   i->has_argument_descriptor = 1;

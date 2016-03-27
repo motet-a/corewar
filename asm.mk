@@ -10,6 +10,7 @@
 
 ASM_SOURCES_NAMES	= \
 			argument.c \
+			compile.c \
 			instr.c \
 			instr_list.c \
 			instr_size.c \
@@ -20,8 +21,11 @@ ASM_SOURCES_NAMES	= \
 			parse_arg.c \
 			parse_instr.c \
 			parse_line.c \
+			path.c \
 			program.c \
+			program_instr.c \
 			program_link.c \
+			program_write.c \
 			syntax_error.c \
 			token.c \
 			token_has_value.c \

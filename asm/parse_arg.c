@@ -77,9 +77,9 @@ static t_syntax_error   *parse_arg_direct(t_argument *arg,
   return (syntax_error_new(&percent->position, "Expected value"));
 }
 
-t_syntax_error          *parse_arg(t_argument *arg,
-                                   t_token_list **list_pointer,
-                                   const t_token *previous)
+t_syntax_error          *parse_arg_impl(t_argument *arg,
+                                        t_token_list **list_pointer,
+                                        const t_token *previous)
 {
   t_token               *percent;
 
@@ -96,4 +96,22 @@ t_syntax_error          *parse_arg(t_argument *arg,
       arg->type = ARGUMENT_TYPE_INDIRECT;
       return (parse_arg_indirect(arg, list_pointer, previous));
     }
+}
+
+t_syntax_error          *parse_arg(t_argument *arg,
+                                   t_token_list **list_pointer,
+                                   const t_token *previous,
+                                   t_argument_type expected_type)
+{
+  t_syntax_error        *error;
+
+  error = parse_arg_impl(arg, list_pointer, previous);
+  if (error)
+    return (error);
+  if (!(arg->type & expected_type))
+    {
+      argument_free(arg);
+      return (syntax_error_new(&previous->position, "Invalid argument"));
+    }
+  return (NULL);
 }
