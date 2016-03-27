@@ -5,7 +5,7 @@
 ## Login   <antoine@epitech.net>
 ##
 ## Started on  Thu Mar  3 10:29:22 2016 antoine
-## Last update Fri Mar 25 01:53:32 2016 Valentin Pichard
+## Last update Sun Mar 27 22:28:13 2016 Valentin Pichard
 ##
 
 VM_SOURCES_NAMES	= \
@@ -27,6 +27,7 @@ VM_SOURCES_NAMES	= \
 			vm_instr_aff.c \
 			vm_edit_value_carry.c \
 			vm_cycle.c \
+			vm_parsing.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			corewar/$(file))
