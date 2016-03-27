@@ -12,6 +12,11 @@
 #include "lexer_private.h"
 #include "../libcw/char_type.h"
 
+static int              is_label_char(char c)
+{
+  return (char_is_alphanumeric(c) || c == '_');
+}
+
 static t_result         lex_label_def_2(t_string_reader *reader,
                                         const t_position *begin,
                                         const char *string)
@@ -63,7 +68,7 @@ static t_result         lex_instruction_end(t_string_reader *reader,
       c = next(reader);
       if (c == ':')
         return (lex_label_def(reader, begin, &previous));
-      if (!char_is_alphanumeric(c))
+      if (!is_label_char(c))
         {
           reader->position = previous;
           break;
@@ -79,7 +84,7 @@ static t_result         lex_instruction(t_string_reader *reader)
 
   begin = reader->position;
   c = next(reader);
-  if (char_is_alphanumeric(c))
+  if (is_label_char(c))
     return (lex_instruction_end(reader, &begin));
   reader->position = begin;
   return (create_null_result());

@@ -26,7 +26,7 @@ static t_result         lex_label_ref_end(t_string_reader *reader,
     {
       previous = reader->position;
       c = next(reader);
-      if (!char_is_alphanumeric(c))
+      if (!char_is_alphanumeric(c) && c != '_')
         {
           reader->position = previous;
           break;
