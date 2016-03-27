@@ -9,43 +9,7 @@
 */
 
 #include <stdlib.h>
-#include "../libcw/string.h"
 #include "asm.h"
-
-int             program_get_instr_offset(const t_program *program,
-                                         const t_instr *instr)
-{
-  t_instr_list  *instructions;
-  int           offset;
-
-  offset = 0;
-  instructions = program->instructions;
-  while (instructions)
-    {
-      if (&instructions->instr == instr)
-        {
-          return (offset);
-        }
-      offset += instr_get_size(&instructions->instr);
-      instructions = instructions->next;
-    }
-  return (-1);
-}
-
-int             program_get_size(const t_program *program)
-{
-  t_instr_list  *instructions;
-  int           size;
-
-  size = 0;
-  instructions = program->instructions;
-  while (instructions)
-    {
-      size += instr_get_size(&instructions->instr);
-      instructions = instructions->next;
-    }
-  return (size);
-}
 
 static void     set_label_offset(const t_program *program, t_label *label)
 {
@@ -65,21 +29,6 @@ static void     set_label_offsets(const t_program *program)
       set_label_offset(program, &labels->label);
       labels = labels->next;
     }
-}
-
-t_label         *program_get_label(const t_program *program,
-                                   const char *name)
-{
-  t_label_list  *labels;
-
-  labels = program->labels;
-  while (labels)
-    {
-      if (string_equals(name, labels->label.name))
-        return (&labels->label);
-      labels = labels->next;
-    }
-  return (NULL);
 }
 
 static t_syntax_error   *link_arg(const t_program *program,
