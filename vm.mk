@@ -28,6 +28,7 @@ VM_SOURCES_NAMES	= \
 			vm_edit_value_carry.c \
 			vm_cycle.c \
 			vm_parsing.c \
+			vm_run.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			corewar/$(file))
