@@ -5,12 +5,13 @@
 ** Login   <baudra_a@epitech.net>
 ** 
 ** Started on  sam. mars 26 00:03:04 2016 Antoine Baudrand
-** Last update sam. mars 26 13:11:29 2016 Antoine Baudrand
+** Last update dim. mars 27 13:18:38 2016 Antoine Baudrand
 */
 
 #include "stdlib.h"
 #include "unistd.h"
 #include "vm.h"
+#include "../libcw/print.h"
 
 static t_process	*get_last_process(t_process *processes)
 {
@@ -25,7 +26,7 @@ void		vm_create_process(t_vm *vm, int pc, t_program *program)
 
   if (!(new = malloc(sizeof(t_process))))
     {
-      write(2, "can't malloc\n", 13);
+      print_string_err("can't malloc\n");
       exit(-1);
     }
   new->pc = pc;
