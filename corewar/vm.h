@@ -27,9 +27,11 @@ typedef	struct		s_program
 {
   char			*name;
   char			*comment;
+  char                  *code;
   int			live_id;
   int			last_live_cycle;
   int			alive;
+  int                   size;
 }			t_program;
 
 /*
@@ -62,30 +64,24 @@ typedef struct  s_vm
 /*
 ** Initializes the VM
 **
-** Returns a t_vm* on success, NULL on error.
-*/
-t_vm	*init_new_vm(int program_count);
-
-/*
-** Allocates and initializes the memory of the VM
 ** Returns 0 on success, -1 on error.
 */
-int    init_vm_memory(t_vm *vm);
+int     vm_init(t_vm *vm);
 
 /*
 ** Frees all the VM including memory, programs, and processes
 */
-void	vm_free(t_vm *);
+void	vm_free(t_vm *vm);
 
 /*
-** Return 0 on success
+** Return 0 on success, -1 on error.
 */
-int	vm_load_program(t_vm *, const char *file, int index);
+int	vm_load_program(t_vm *vm, const char *file_path);
 
-void	vm_create_process(t_vm *, int pc, t_program *);
+void	vm_create_process(t_vm *vm, int pc, t_program *);
 
 /*
-** Return 0 on success
+** Return 0 on success, -1 on error.
 */
 int	vm_kill_process(t_vm *vm, t_process *process);
 
