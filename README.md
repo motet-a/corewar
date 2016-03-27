@@ -24,7 +24,7 @@ the VM.
 In the Makefile, don't forget to remove the `-g` compiler option, and
 enable the `-D NDEBUG` option to disable the `assert` macro from `assert.h`.
 
-# Project Statats
+# Project Stats
 
 * 423 build
 * 393 commits
