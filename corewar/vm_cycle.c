@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 ** 
 ** Started on  sam. mars 26 17:17:59 2016 Antoine Baudrand
-** Last update sam. mars 26 18:54:19 2016 Antoine Baudrand
+** Last update dim. mars 27 12:26:40 2016 Antoine Baudrand
 */
 
 #include "vm.h"
@@ -25,6 +25,7 @@ int    	vm_cycle(t_vm *vm)
   t_process	*to_kill;
 
   vm->cycle += 1;
+  vm_check_alive(vm);
   processes = vm->processes;
   if (processes == NULL)
     return (0);
