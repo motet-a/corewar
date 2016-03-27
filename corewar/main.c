@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update Sun Mar 27 16:19:42 2016 Valentin Pichard
+** Last update Sun Mar 27 16:21:20 2016 Valentin Pichard
 */
 
 #include "../libcw/print.h"
@@ -35,7 +35,7 @@ static int              parse_options(int argc,
   return (0);
 }
 
-static void	lunch_vm(int program_count)
+static void	launch_vm(int program_count)
 {
   t_vm		*vm;
 
@@ -50,7 +50,7 @@ int			main(int argc, char **argv)
 
   init_vm_options(options);
   program_name = argv[0];
-  lunch_vm(2);
+  launch_vm(2);
   if (parse_options(argc - 1, argv + 1, options) || argv[1] == NULL)
     {
       print_usage(program_name);
