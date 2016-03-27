@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
-** Last update Sun Mar 27 22:08:09 2016 Jamy Bailly
+** Last update Sun Mar 27 22:09:35 2016 Jamy Bailly
 */
 
 #ifndef INSTRUCTIONS_H_
@@ -26,7 +26,7 @@ typedef struct		s_instruction
 
 /*
 ** Instructions of corewar. See subject for more information.
-** TODO vm_fork, vm_lldi, vm_lfork
+** TODO vm_fork, vm_lfork
 */
 void	vm_live(t_instruction *i);
 void	vm_ld(t_instruction *i);
