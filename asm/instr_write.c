@@ -13,7 +13,7 @@
 #include "../libcw/memory.h"
 #include "../libcw/string.h"
 
-static int      write_sti_arg(const t_argument *arg, int output_file)
+static int      write_index_arg(const t_argument *arg, int output_file)
 {
   char          buffer[2];
 
@@ -30,16 +30,20 @@ static int      write_sti(const t_instr *instr, int output_file)
 {
   if (argument_write(instr->arguments + 0, output_file))
     return (-1);
-  if (write_sti_arg(instr->arguments + 1, output_file))
+  if (write_index_arg(instr->arguments + 1, output_file))
     return (-1);
-  if (write_sti_arg(instr->arguments + 2, output_file))
+  if (write_index_arg(instr->arguments + 2, output_file))
     return (-1);
   return (0);
 }
 
-static int      write_zjmp(const t_instr *instr, int output_file)
+static int      write_ldi(const t_instr *instr, int output_file)
 {
-  if (write_sti_arg(instr->arguments, output_file))
+  if (write_index_arg(instr->arguments + 0, output_file))
+    return (-1);
+  if (write_index_arg(instr->arguments + 1, output_file))
+    return (-1);
+  if (argument_write(instr->arguments + 2, output_file))
     return (-1);
   return (0);
 }
@@ -59,8 +63,12 @@ int             instr_write(const t_instr *instr, int output_file)
     }
   if (string_equals(instr->info->name, "sti"))
     return (write_sti(instr, output_file));
+  if (string_equals(instr->info->name, "ldi"))
+    return (write_ldi(instr, output_file));
   if (string_equals(instr->info->name, "zjmp"))
-    return (write_zjmp(instr, output_file));
+    return (write_index_arg(instr->arguments, output_file));
+  if (string_equals(instr->info->name, "fork"))
+    return (write_index_arg(instr->arguments, output_file));
   i = -1;
   while (++i < instr->info->argument_count)
     if (argument_write(instr->arguments + i, output_file))
