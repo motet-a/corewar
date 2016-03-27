@@ -13,7 +13,7 @@
 
 # include "cor_file.h"
 
-# define MAGIC_NUMBER   0xea83f3
+# define MAGIC_NUMBER   -1473805
 # define NAME_LENGTH    128
 # define COMMENT_LENGTH 2048
 
