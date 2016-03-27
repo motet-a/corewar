@@ -20,9 +20,10 @@ VM_SOURCES_NAMES	= \
 			vm_instr_find_type_value.c \
 			vm_instr_ld.c \
 			vm_instr_add_sub.c \
-			vm_instr_and_or.c \
+			vm_instr_and_or_xor.c \
 			vm_instr_zjmp.c \
 			vm_instr_aff.c \
+			vm_edit_value_carry.c \
 			vm_cycle.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
