@@ -36,7 +36,7 @@ static t_result         lex_comment(t_string_reader *reader)
 
   begin = reader->position;
   c = next(reader);
-  if (c == '#')
+  if (c == '#' || c == ';')
     return (lex_comment_end(reader));
   reader->position = begin;
   return (create_null_result());
