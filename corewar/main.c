@@ -5,7 +5,7 @@
 ** Login   <antoine@epitech.net>
 **
 ** Started on  Mon Feb 29 17:34:08 2016 antoine
-** Last update dim. mars 27 20:40:43 2016 Antoine Baudrand
+** Last update Sun Mar 27 21:56:26 2016 Valentin Pichard
 */
 
 #include <stdlib.h>
@@ -14,13 +14,6 @@
 #include "../libcw/string.h"
 #include "../libcw/parse_int.h"
 #include "vm.h"
-
-void                    program_opt_init(t_program_opt *program)
-{
-  program->name = NULL;
-  program->number = -1;
-  program->address = -1;
-}
 
 static int              set_program_number(t_program_opt *program,
                                            const char *string)
@@ -37,13 +30,12 @@ static int              set_program_number(t_program_opt *program,
 }
 
 static int              set_option(t_program_opt *program,
-                                   const t_option_result *r,
-                                   t_vm *vm)
+                                   const t_option_result *r)
 {
   if (string_equals(r->option->name, "n"))
     return (set_program_number(program, r->value));
   else if (string_equals(r->option->name, "n"))
-    return (0); /* TODO:  */
+    return (0);
   print_string_err("Unexpected option '-");
   print_string_err(r->option->name);
   print_string_err("'\n");
@@ -51,8 +43,7 @@ static int              set_option(t_program_opt *program,
 }
 
 static int              parse_program_options(t_parser_state *state,
-                                              t_program_opt *program,
-                                              t_vm *vm)
+                                              t_program_opt *program)
 {
   t_option_result       r;
 
@@ -69,17 +60,16 @@ static int              parse_program_options(t_parser_state *state,
           print_string_err("\n");
           return (-1);
         }
-      if (set_option(program, &r, vm))
+      if (set_option(program, &r))
         return (-1);
     }
   return (0);
 }
 
 static int              parse_program_opt(t_parser_state *state,
-                                          t_program_opt *program,
-                                          t_vm *vm)
+                                          t_program_opt *program)
 {
-  if (parse_program_options(state, program, vm))
+  if (parse_program_options(state, program))
     return (-1);
   if (state->index >= state->argc)
     {
@@ -96,13 +86,13 @@ static int              parse_program_opt(t_parser_state *state,
   return (0);
 }
 
-static int              parse_programs(t_parser_state *state, t_vm *vm)
+static int              parse_programs(t_parser_state *state)
 {
   t_program_opt         program;
 
   while (state->index < state->argc)
     {
-      if (parse_program_opt(state, &program, vm))
+      if (parse_program_opt(state, &program))
         return (-1);
     }
   return (0);
@@ -110,8 +100,7 @@ static int              parse_programs(t_parser_state *state, t_vm *vm)
 
 static int              parse_options(int argc,
                                       char **argv,
-                                      const t_option *options,
-                                      t_vm *vm)
+                                      const t_option *options)
 {
   t_parser_state        state;
 
@@ -119,7 +108,7 @@ static int              parse_options(int argc,
   state.argc = argc;
   state.options = options;
   state.index = 0;
-  return (parse_programs(&state, vm));
+  return (parse_programs(&state));
 }
 
 int			main(int argc, char **argv)
@@ -131,7 +120,7 @@ int			main(int argc, char **argv)
   init_vm_options(options);
   program_name = argv[0];
   vm_init(&vm);
-  if (parse_options(argc - 1, argv + 1, options, &vm))
+  if (parse_options(argc - 1, argv + 1, options))
     {
       vm_free(&vm);
       print_usage(program_name);
