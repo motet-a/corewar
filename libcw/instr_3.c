@@ -8,14 +8,14 @@
 ** Last update Fri Mar 25 10:22:43 2016 antoine
 */
 
-#include "instr.h"
+#include "instr_private.h"
 
 static void     init_lld(t_instr_info *i)
 {
   i->name = "lld";
   i->argument_count = 2;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[0] = T_DIR | T_IND;
+  i->argument_types[1] = T_REG;
   i->code = 13;
   i->cycle_count = 10;
   i->has_argument_descriptor = 1;
@@ -26,9 +26,9 @@ static void     init_lldi(t_instr_info *i)
 {
   i->name = "lldi";
   i->argument_count = 3;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
-  i->argument_types[1] = ARGUMENT_TYPE_REGISTER;
-  i->argument_types[2] = ARGUMENT_TYPE_INDIRECT;
+  i->argument_types[0] = T_REG | T_DIR | T_IND;
+  i->argument_types[1] = T_DIR | T_REG;
+  i->argument_types[2] = T_REG;
   i->code = 14;
   i->cycle_count = 50;
   i->has_argument_descriptor = 1;
@@ -39,7 +39,7 @@ static void     init_lfork(t_instr_info *i)
 {
   i->name = "lfork";
   i->argument_count = 1;
-  i->argument_types[0] = ARGUMENT_TYPE_DIRECT;
+  i->argument_types[0] = T_DIR;
   i->code = 15;
   i->cycle_count = 1000;
   i->has_argument_descriptor = 0;
@@ -50,7 +50,7 @@ static void     init_aff(t_instr_info *i)
 {
   i->name = "aff";
   i->argument_count = 1;
-  i->argument_types[0] = ARGUMENT_TYPE_REGISTER;
+  i->argument_types[0] = T_REG;
   i->code = 16;
   i->cycle_count = 2;
   i->has_argument_descriptor = 1;

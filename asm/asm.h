@@ -99,7 +99,8 @@ t_token         *try_to_read_token(t_token_list **list_pointer,
 
 t_syntax_error  *parse_arg(t_argument *arg,
                            t_token_list **list_pointer,
-                           const t_token *previous);
+                           const t_token *previous,
+                           t_argument_type expected_type);
 
 t_syntax_error  *parse_instr(t_program *program,
                              t_token_list **list_pointer);
