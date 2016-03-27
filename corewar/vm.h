@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update dim. mars 27 14:35:19 2016 Antoine Baudrand
+** Last update Sun Mar 27 22:26:26 2016 Valentin Pichard
 */
 
 #ifndef VM_H
@@ -119,5 +119,15 @@ int	vm_cycle(t_vm *);
 ** Check alive programs
 */
 void	vm_check_alive(t_vm *);
+
+int              	parse_program_options(t_parser_state *state,
+                                              t_program_opt *program);
+int	              	parse_program_opt(t_parser_state *state,
+					  t_program_opt *program);
+int			parse_programs(t_parser_state *state);
+int	        	set_option(t_program_opt *program,
+				   const t_option_result *r);
+int	              	set_program_number(t_program_opt *program,
+					   const char *string);
 
 #endif /* VM_H */
