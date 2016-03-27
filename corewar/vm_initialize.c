@@ -46,7 +46,7 @@ int             vm_init(t_vm *vm)
   vm->cycle = 0;
   vm->cycle_to_die = CYCLE_TO_DIE;
   vm->live_count = 0;
-  vm->program_count = 0;
+  vm->program_count = 2;
   vm->programs = NULL;
   vm->processes = NULL;
   if ((init_memory(vm)) == -1)
