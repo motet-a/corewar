@@ -5,11 +5,11 @@
 ** Login   <bailly_j@epitech.net>
 **
 ** Started on  Sat Mar 26 20:00:55 2016 Jamy Bailly
-** Last update Sun Mar 27 14:59:41 2016 Jamy Bailly
+** Last update Mon Mar 28 22:07:21 2016 Antoine
 */
 
 #include "instructions.h"
-#include "../libcw/memory.h"
+#include "../../libcw/memory.h"
 
 void	vm_zjmp(t_instruction *i)
 {

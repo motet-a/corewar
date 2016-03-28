@@ -5,7 +5,7 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Tue Mar  8 23:44:36 2016 Valentin Pichard
-** Last update dim. mars 27 23:52:43 2016 Antoine Baudrand
+** Last update lun. mars 28 22:01:52 2016 Antoine Baudrand
 */
 
 #ifndef VM_H
@@ -14,7 +14,6 @@
 # include <stddef.h>
 # include "../libcw/instr.h"
 # include "../libcw/cor_file.h"
-# include "options.h"
 
 # define CYCLE_TO_DIE           1536
 # define CYCLE_DELTA            4
@@ -23,23 +22,6 @@
 # define NBR_LIVE		40
 
 void		print_usage(const char *filename);
-
-typedef struct          s_parser_state
-{
-  char                  **argv;
-  int                   argc;
-  int                   index;
-  const t_option        *options;
-}                       t_parser_state;
-
-typedef struct          s_program_opt
-{
-  const char            *name;
-  int                   number;
-  int                   address;
-}                       t_program_opt;
-
-void                    program_opt_init(t_program_opt *program);
 
 typedef	struct		s_program
 {
@@ -118,15 +100,5 @@ int	vm_cycle(t_vm *);
 ** Check alive programs
 */
 void	vm_check_alive(t_vm *);
-
-int              	parse_program_options(t_parser_state *state,
-                                              t_program_opt *program);
-int	              	parse_program_opt(t_parser_state *state,
-					  t_program_opt *program);
-int			parse_programs(t_parser_state *state);
-int	        	set_option(t_program_opt *program,
-				   const t_option_result *r);
-int	              	set_program_number(t_program_opt *program,
-					   const char *string);
 
 #endif /* VM_H */

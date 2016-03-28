@@ -10,25 +10,24 @@
 
 VM_SOURCES_NAMES	= \
 			usage.c \
-			option_extend.c \
-			option.c \
-			vm_initialize.c \
+			vm_init.c \
 			vm_free.c \
 			vm_create_process.c \
 			vm_kill_process.c \
 			vm_load_program.c \
-			vm_instr_read_int.c \
-			vm_instr_write_int.c \
-			vm_instr_ld.c \
-			vm_instr_st.c \
-			vm_instr_add_sub.c \
-			vm_instr_and_or_xor.c \
-			vm_instr_zjmp.c \
-			vm_instr_aff.c \
-			vm_edit_value_carry.c \
 			vm_cycle.c \
-			vm_parsing.c \
 			vm_run.c \
+			instructions/read_int.c \
+			instructions/write_int.c \
+			instructions/ld.c \
+			instructions/st.c \
+			instructions/add.c \
+			instructions/sub.c \
+			instructions/and.c \
+			instructions/or.c \
+			instructions/xor.c \
+			instructions/zjmp.c \
+			instructions/aff.c \
 
 VM_SOURCES		= $(foreach file,$(VM_SOURCES_NAMES), \
 			corewar/$(file))

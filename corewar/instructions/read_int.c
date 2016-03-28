@@ -5,11 +5,11 @@
 ** Login   <bailly_j@epitech.net>
 **
 ** Started on  Sat Mar 26 07:41:59 2016 Jamy Bailly
-** Last update Sun Mar 27 23:06:15 2016 Jamy Bailly
+** Last update Mon Mar 28 22:07:26 2016 Antoine
 */
 
 #include "instructions.h"
-#include "../libcw/memory.h"
+#include "../../libcw/memory.h"
 
 int	vm_instr_find_value(t_instruction *i, int pos)
 {

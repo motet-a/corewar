@@ -5,14 +5,14 @@
 ** Login   <pichar_v@epitech.net>
 **
 ** Started on  Sun Mar 27 21:34:39 2016 Valentin Pichard
-** Last update Mon Mar 28 00:40:10 2016 Jamy Bailly
+** Last update Mon Mar 28 22:07:27 2016 Antoine
 */
 
 #ifndef INSTRUCTIONS_H_
 # define INSTRUCTIONS_H_
 
-#include "vm.h"
-#include "../libcw/instr.h"
+#include "../vm.h"
+#include "../../libcw/instr.h"
 
 typedef struct		s_instruction
 {
