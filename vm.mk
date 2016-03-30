@@ -17,6 +17,7 @@ VM_SOURCES_NAMES	= \
 			vm_load_program.c \
 			vm_cycle.c \
 			vm_run.c \
+			options.c \
 			instructions/read_int.c \
 			instructions/write_int.c \
 			instructions/ld.c \
