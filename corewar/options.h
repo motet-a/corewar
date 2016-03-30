@@ -5,7 +5,7 @@
 ** Login   <baudra_a@epitech.net>
 ** 
 ** Started on  lun. mars 28 22:23:51 2016 Antoine Baudrand
-** Last update lun. mars 28 22:42:32 2016 Antoine Baudrand
+** Last update mer. mars 30 13:53:48 2016 Antoine Baudrand
 */
 
 #ifndef OPTIONS_H_
@@ -33,6 +33,6 @@ int	opt_add_program(t_vm_options *opt);
 /*
 ** TODO
 */
-int	opt_parse(t_vm_options *opt, argc, arv);
+int	opt_parse(t_vm_options *opt, int argc, char **argv);
 
 #endif /* !OPTIONS_H_ */
